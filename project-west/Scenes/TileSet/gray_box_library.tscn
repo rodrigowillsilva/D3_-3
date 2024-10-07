@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1tec57aae3fr"]
+
+[ext_resource type="PackedScene" uid="uid://cnd084uvsh28p" path="res://Scenes/TileSet/Tiles/floor_gray_box.tscn" id="1_idv35"]
+[ext_resource type="PackedScene" uid="uid://ykun1if5n2ns" path="res://Scenes/TileSet/Tiles/wall_gray_box.tscn" id="2_xp2wm"]
+
+[node name="GrayBoxLibrary" type="Node3D"]
+
+[node name="FloorGrayBox" parent="." instance=ExtResource("1_idv35")]
+
+[node name="WallGrayBox" parent="." instance=ExtResource("2_xp2wm")]
