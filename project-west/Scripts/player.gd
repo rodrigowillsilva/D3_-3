@@ -12,24 +12,30 @@ extends CharacterBody3D
 var input_dir: Vector2
 
 
-
 func _physics_process(delta: float) -> void:
+	var velocity_xz = Vector3(velocity.x, 0, velocity.z)
+	var velocity_y = Vector3(0, velocity.y, 0)
+
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += gravity * delta * Vector3(0, -1, 0)
+		velocity_y += gravity * delta * Vector3(0, -1, 0)
 
 	# Handle jump.
 	if Input.is_action_just_pressed("space") and is_on_floor():
-		velocity.y = sqrt(jumpHeight * 2.0 * gravity)
+		velocity_y.y = sqrt(jumpHeight * 2.0 * gravity)
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	#var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
+	print(transform.basis * Vector3(input_dir.x, 0, input_dir.y))
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		velocity = velocity.move_toward(direction * maxSpeed, acceleration * delta)
+		velocity_xz = velocity_xz.move_toward(direction * maxSpeed, acceleration * delta)
 	else:
-		velocity = velocity.move_toward(Vector3(), deceleration * delta)
+		
+		velocity_xz = velocity_xz.move_toward(Vector3(), deceleration * delta)
+
+	velocity = velocity_xz + velocity_y
 
 	move_and_slide()
 
