@@ -41,6 +41,15 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+
+func take_damage(damage: float) -> void:
+	health -= damage
+	# signal damage taken
+	if health <= 0:
+		# signal the player's death 
+		pass
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		# Apply sensitivity directly to the raw input
