@@ -8,6 +8,7 @@ extends CharacterBody3D
 @export var jumpHeight: float
 @export var gravity: float
 @export var sens: float
+@export var gun_controller: GunController
 
 var input_dir: Vector2
 
@@ -60,8 +61,23 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.is_pressed():
 			if event.is_action("mouse_1"):
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+				gun_controller.shoot_gun()
 			elif event.is_action("mouse_2"):
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 	if event is InputEventKey:
 		input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+		
+		if event.is_action_pressed("r"):
+			gun_controller.reload_gun()
+		elif event.is_action_pressed("mouse_wheel_up"):
+			gun_controller.change_gun(-1)
+		elif event.is_action_pressed("mouse_wheel_down"):
+			gun_controller.change_gun(-2)
+		
+		#check if the player is pressing onw through four keys
+		if event.pressed:
+			if event.keycode > 49 and event.keycode < 49 + gun_controller.guns.size():
+				gun_controller.change_gun(event.keycode - 49)
+
+		

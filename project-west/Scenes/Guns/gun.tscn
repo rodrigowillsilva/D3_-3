@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://1ujdfnq5agh3"]
+
+[ext_resource type="Script" path="res://Scripts/gun.gd" id="1_fb1kr"]
+
+[node name="Gun" type="Node3D"]
+script = ExtResource("1_fb1kr")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 1
+no_depth_test = true

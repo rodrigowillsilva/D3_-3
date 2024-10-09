@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cu6tuwo3wkbru"]
+[gd_scene load_steps=10 format=3 uid="uid://cu6tuwo3wkbru"]
 
 [ext_resource type="MeshLibrary" uid="uid://bhmny2rbtg74v" path="res://Scenes/TileSet/Libraries/gray_box_lib.tres" id="1_a1wvm"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="2_qvl1s"]
 [ext_resource type="Texture2D" uid="uid://mbtntsp6rm4d" path="res://Graphics/moonless_golf_2k.hdr" id="3_8wgnw"]
+[ext_resource type="Script" path="res://Scripts/gun_controller.gd" id="4_0pfjl"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_oh44j"]
 panorama = ExtResource("3_8wgnw")
@@ -17,6 +18,8 @@ sky = SubResource("Sky_dvvac")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hjtqv"]
 height = 1.7
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_up8rt"]
 
 [node name="GrayBox" type="Node3D"]
 
@@ -48,3 +51,11 @@ environment = SubResource("Environment_ifvgg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("CapsuleShape3D_hjtqv")
+
+[node name="GunController" type="Node3D" parent="Player"]
+script = ExtResource("4_0pfjl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/GunController"]
+libraries = {
+"": SubResource("AnimationLibrary_up8rt")
+}
