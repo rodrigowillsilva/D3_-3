@@ -35,7 +35,7 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 2, 0)
 
-[node name="Player" type="CharacterBody3D" parent="."]
+[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("gun_controller")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86306, 0)
 script = ExtResource("2_qvl1s")
 maxSpeed = 10.0
@@ -44,6 +44,7 @@ deceleration = 50.0
 jumpHeight = 2.0
 gravity = 20.0
 sens = 0.456
+gun_controller = NodePath("GunController")
 
 [node name="PlayerCamera" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.728799, 0)
