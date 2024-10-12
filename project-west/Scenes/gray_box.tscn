@@ -63,7 +63,6 @@ libraries = {
 [node name="Revolver" parent="Player/Head/GunController" instance=ExtResource("5_rrcug")]
 
 [node name="Shotgun" parent="Player/Head/GunController" instance=ExtResource("5_ue5n7")]
-pull_for_axis_mod = Vector3(1, 0.7, 1)
 max_ammo = 5
 fire_rate = 1.0
 reload_time = 1.0
