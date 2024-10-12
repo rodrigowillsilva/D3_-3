@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfs488wko380u"]
+
+[ext_resource type="Script" path="res://Scripts/damage_and_life_controller.gd" id="1_qxogc"]
+
+[node name="DamageAndLifeController" type="Node3D"]
+script = ExtResource("1_qxogc")
