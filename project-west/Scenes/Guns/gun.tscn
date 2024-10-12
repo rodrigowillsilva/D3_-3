@@ -2,9 +2,28 @@
 
 [ext_resource type="Script" path="res://Scripts/gun.gd" id="1_fb1kr"]
 
-[node name="Gun" type="Node3D"]
+[node name="Gun" type="Node3D" node_paths=PackedStringArray("timers")]
 script = ExtResource("1_fb1kr")
+timers = [NodePath("Timer"), NodePath("Timer2"), NodePath("Timer3")]
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.587761, -0.320162, 0)
 billboard = 1
 no_depth_test = true
+
+[node name="GunRay" type="RayCast3D" parent="."]
+enabled = false
+exclude_parent = false
+target_position = Vector3(0, 0, -1)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Timer2" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Timer3" type="Timer" parent="."]
+one_shot = true
+autostart = true

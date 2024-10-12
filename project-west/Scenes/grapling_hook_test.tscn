@@ -1,0 +1,118 @@
+[gd_scene load_steps=7 format=3 uid="uid://domlfj1lpqwdb"]
+
+[ext_resource type="PackedScene" uid="uid://cu6tuwo3wkbru" path="res://Scenes/gray_box.tscn" id="1_ilnbg"]
+[ext_resource type="Texture2D" uid="uid://c73hl3tk5ouar" path="res://addons/kenney_prototype_textures/red/texture_01.png" id="2_cntam"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wqtjh"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1cdv3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0nf2"]
+albedo_texture = ExtResource("2_cntam")
+
+[sub_resource type="SphereMesh" id="SphereMesh_8741h"]
+radius = 0.1
+height = 0.2
+
+[node name="Grapling hook test" instance=ExtResource("1_ilnbg")]
+
+[node name="GridMap" parent="." index="1"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(0.5, 0, 0, 0, 7.225, 0, 0, 0, 0.5, 6.65468, 8.17016, 4.49643)
+mesh = SubResource("CylinderMesh_wqtjh")
+
+[node name="Area3D" type="StaticBody3D" parent="MeshInstance3D" index="0"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D" index="0"]
+shape = SubResource("CylinderShape3D_1cdv3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="3"]
+transform = Transform3D(0.5, 0, 0, 0, 7.225, 0, 0, 0, 0.5, -5.77114, 8.17016, 3.7578)
+mesh = SubResource("CylinderMesh_wqtjh")
+
+[node name="Area3D" type="StaticBody3D" parent="MeshInstance3D2" index="0"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/Area3D" index="0"]
+shape = SubResource("CylinderShape3D_1cdv3")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." index="4"]
+transform = Transform3D(0.5, 0, 0, 0, 7.225, 0, 0, 0, 0.5, -7.57887, 8.17016, -11.082)
+mesh = SubResource("CylinderMesh_wqtjh")
+
+[node name="Area3D" type="StaticBody3D" parent="MeshInstance3D3" index="0"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D3/Area3D" index="0"]
+shape = SubResource("CylinderShape3D_1cdv3")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." index="5"]
+transform = Transform3D(0.5, 0, 0, 0, 7.225, 0, 0, 0, 0.5, 6.65468, 8.17016, -12.5175)
+mesh = SubResource("CylinderMesh_wqtjh")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="MeshInstance3D4" index="0"]
+transform = Transform3D(1, 0, 0, 0, -2.90899e-07, 0.07, 0, -6.655, -3.0598e-09, 0, 0.136191, 6)
+mesh = SubResource("CylinderMesh_wqtjh")
+
+[node name="Area3D" type="StaticBody3D" parent="MeshInstance3D4/MeshInstance3D4" index="0"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D4/MeshInstance3D4/Area3D" index="0"]
+shape = SubResource("CylinderShape3D_1cdv3")
+
+[node name="Area3D" type="StaticBody3D" parent="MeshInstance3D4" index="1"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D4/Area3D" index="0"]
+shape = SubResource("CylinderShape3D_1cdv3")
+
+[node name="Player" parent="." index="6"]
+floor_constant_speed = true
+safe_margin = 0.01
+max_speed = 5.0
+accel = 30.0
+decel = 30.0
+sens = 0.25
+
+[node name="Revolver" parent="Player/Head/GunController" index="1" node_paths=PackedStringArray("hit_placeholder")]
+hit_placeholder = NodePath("../../../../MeshInstance3D5")
+max_ammo = 6
+fire_rate = 1.0
+reload_time = 1.0
+skill_cooldown = 1.0
+
+[node name="Shotgun" parent="Player/Head/GunController" index="2"]
+grapling_speed = 50
+pull_for_axis_mod = Vector3(1, 0.7, 1)
+skill_cooldown = 3.0
+
+[node name="ColorRect" type="ColorRect" parent="Player/Head" index="2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(5, 5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.50786, 0)
+material_override = SubResource("StandardMaterial3D_b0nf2")
+mesh = SubResource("SphereMesh_8741h")

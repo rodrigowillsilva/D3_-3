@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cu6tuwo3wkbru"]
+[gd_scene load_steps=12 format=3 uid="uid://cu6tuwo3wkbru"]
 
 [ext_resource type="MeshLibrary" uid="uid://bhmny2rbtg74v" path="res://Scenes/TileSet/Libraries/gray_box_lib.tres" id="1_a1wvm"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="2_qvl1s"]
 [ext_resource type="Texture2D" uid="uid://mbtntsp6rm4d" path="res://Graphics/moonless_golf_2k.hdr" id="3_8wgnw"]
 [ext_resource type="Script" path="res://Scripts/gun_controller.gd" id="4_0pfjl"]
+[ext_resource type="PackedScene" uid="uid://cbixfw2ybvibg" path="res://Scenes/Guns/revolver.tscn" id="5_rrcug"]
+[ext_resource type="PackedScene" uid="uid://bbli8sjire3s2" path="res://Scenes/Guns/shotgun.tscn" id="5_ue5n7"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_oh44j"]
 panorama = ExtResource("3_8wgnw")
@@ -16,10 +18,10 @@ background_mode = 2
 background_energy_multiplier = 0.03
 sky = SubResource("Sky_dvvac")
 
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_up8rt"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hjtqv"]
 height = 1.7
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_up8rt"]
 
 [node name="GrayBox" type="Node3D"]
 
@@ -35,27 +37,36 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 2, 0)
 
-[node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86306, 0)
+[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("gun_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85, 0)
 script = ExtResource("2_qvl1s")
-maxSpeed = 10.0
-acceleration = 25.0
-deceleration = 50.0
 jumpHeight = 2.0
 gravity = 20.0
 sens = 0.456
+gun_controller = NodePath("Head/GunController")
 
-[node name="PlayerCamera" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.728799, 0)
+[node name="Head" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[node name="PlayerCamera" type="Camera3D" parent="Player/Head"]
 environment = SubResource("Environment_ifvgg")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-shape = SubResource("CapsuleShape3D_hjtqv")
-
-[node name="GunController" type="Node3D" parent="Player"]
+[node name="GunController" type="Node3D" parent="Player/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.504471)
 script = ExtResource("4_0pfjl")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/GunController"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Head/GunController"]
 libraries = {
 "": SubResource("AnimationLibrary_up8rt")
 }
+
+[node name="Revolver" parent="Player/Head/GunController" instance=ExtResource("5_rrcug")]
+
+[node name="Shotgun" parent="Player/Head/GunController" instance=ExtResource("5_ue5n7")]
+pull_for_axis_mod = Vector3(1, 0.7, 1)
+max_ammo = 5
+fire_rate = 1.0
+reload_time = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_hjtqv")

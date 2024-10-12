@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://domlfj1lpqwdb"]
+
+[ext_resource type="PackedScene" uid="uid://cu6tuwo3wkbru" path="res://Scenes/gray_box.tscn" id="1_ilnbg"]
+[ext_resource type="Script" path="res://Scripts/grapling_hook.gd" id="2_2x5pp"]
+[ext_resource type="PackedScene" uid="uid://bbli8sjire3s2" path="res://Scenes/Guns/shotgun.tscn" id="2_e30uv"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wqtjh"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1cdv3"]
+
+[node name="Grapling hook test" instance=ExtResource("1_ilnbg")]
+
+[node name="Shotgun" parent="Player/GunController" index="2" instance=ExtResource("2_e30uv")]
+spread = 0.1
+pellets = 5
+max_ammo = 0
+fire_rate = 0.0
+reload_time = 0.0
+
+[node name="Grapling hook" type="Node3D" parent="Player" index="3"]
+script = ExtResource("2_2x5pp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="3"]
+transform = Transform3D(0.5, 0, 0, 0, 7.225, 0, 0, 0, 0.5, 6.65468, 8.17016, 4.49643)
+mesh = SubResource("CylinderMesh_wqtjh")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D" index="0"]
+shape = SubResource("CylinderShape3D_1cdv3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="4"]
+transform = Transform3D(0.5, 0, 0, 0, 7.225, 0, 0, 0, 0.5, -5.77114, 8.17016, 3.7578)
+mesh = SubResource("CylinderMesh_wqtjh")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D2" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/Area3D" index="0"]
+shape = SubResource("CylinderShape3D_1cdv3")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." index="5"]
+transform = Transform3D(0.5, 0, 0, 0, 7.225, 0, 0, 0, 0.5, -7.57887, 8.17016, -11.082)
+mesh = SubResource("CylinderMesh_wqtjh")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D3" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D3/Area3D" index="0"]
+shape = SubResource("CylinderShape3D_1cdv3")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." index="6"]
+transform = Transform3D(0.5, 0, 0, 0, 7.225, 0, 0, 0, 0.5, 6.65468, 8.17016, -12.5175)
+mesh = SubResource("CylinderMesh_wqtjh")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="MeshInstance3D4" index="0"]
+transform = Transform3D(1, 0, 0, 0, -2.90899e-07, 0.07, 0, -6.655, -3.0598e-09, 0, 0.136191, 6)
+mesh = SubResource("CylinderMesh_wqtjh")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D4/MeshInstance3D4" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D4/MeshInstance3D4/Area3D" index="0"]
+shape = SubResource("CylinderShape3D_1cdv3")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D4" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D4/Area3D" index="0"]
+shape = SubResource("CylinderShape3D_1cdv3")

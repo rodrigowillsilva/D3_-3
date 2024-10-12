@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://bbli8sjire3s2"]
+
+[ext_resource type="PackedScene" uid="uid://1ujdfnq5agh3" path="res://Scenes/Guns/gun.tscn" id="1_psox5"]
+[ext_resource type="Script" path="res://Scripts/shotgun.gd" id="2_3b4g3"]
+[ext_resource type="Texture2D" uid="uid://c73hl3tk5ouar" path="res://addons/kenney_prototype_textures/red/texture_01.png" id="3_j0uiq"]
+
+[sub_resource type="Gradient" id="Gradient_i5lf8"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.455817, 0.455817, 0.455817, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vwu7e"]
+gradient = SubResource("Gradient_i5lf8")
+width = 19
+height = 34
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r6a10"]
+albedo_texture = ExtResource("3_j0uiq")
+
+[sub_resource type="SphereMesh" id="SphereMesh_50jal"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_blk8u"]
+radius = 1.75
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_k7suu"]
+shape = 0
+size = 0.3
+sections = 8
+
+[node name="Shotgun" instance=ExtResource("1_psox5")]
+script = ExtResource("2_3b4g3")
+spread = 0.1
+pellets = 5
+grapiling_max_dist = 100
+grapling_speed = 75
+pull_for_axis_mod = Vector3(1, 0.7, 1)
+max_grapling_time = 1.5
+
+[node name="Sprite3D" parent="." index="0"]
+texture = SubResource("GradientTexture2D_vwu7e")
+
+[node name="Hook" type="Area3D" parent="." index="2"]
+top_level = true
+collision_layer = 2
+collision_mask = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hook" index="0"]
+material_override = SubResource("StandardMaterial3D_r6a10")
+mesh = SubResource("SphereMesh_50jal")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hook" index="1"]
+transform = Transform3D(0.165, 0, 0, 0, -7.21238e-09, 0.165, 0, -0.165, -7.21238e-09, 0, 0, 0)
+shape = SubResource("SphereShape3D_blk8u")
+
+[node name="Rope" type="MeshInstance3D" parent="." index="3"]
+top_level = true
+visible = false
+mesh = SubResource("RibbonTrailMesh_k7suu")

@@ -1,5 +1,9 @@
 extends Node
 
-enum TimerType { SHOOTCOOLDOWN, RELOADCOOLDOWN, NULL }
+enum TimerType { SHOOTCOOLDOWN, RELOADCOOLDOWN, SKILLCOOLDOWN, NULL }
 
-enum GunReturn { SHOOT, RELOAD, OUT_OF_AMMO, NULL }
+enum GunShootReturn { SHOOT, OUT_OF_AMMO, CANT_SHOOT }
+
+enum GunReloadReturn { RELOAD, CANT_RELOAD, RELOADING }
+
+enum DamageType { BULLET, EXPLOSION, MELEE }

@@ -2,29 +2,76 @@ extends Node3D
 
 class_name Gun
 
+signal shoot_signal
+signal reload_signal
+signal skill_signal
+signal on_equip_signal
+signal on_unequip_signal
 
 @export var max_ammo: int
 @export var fire_rate: float
 @export var reload_time: float
+@export var skill_cooldown: float
 @export var timers: Array[Timer]
 
 @onready var ammo = max_ammo
 
-func shoot() -> Enums.GunReturn:
-	if ammo > 0:
-		ammo -= 1
-		print("Shooting")
-		timers[Enums.TimerType.SHOOTCOOLDOWN].start(fire_rate)
-		return Enums.GunReturn.SHOOT
-	else:
-		print("Out of ammo")
-		return Enums.GunReturn.OUT_OF_AMMO
+var can_shoot: bool = true
+var can_skill: bool = true
 
-func reload() -> Enums.GunReturn:
-	if ammo < max_ammo:
+
+func _ready() -> void:
+	timers[Enums.TimerType.RELOADCOOLDOWN].timeout.connect(func() -> void:
 		ammo = max_ammo
-		print("Reloading")
-		timers[Enums.TimerType.RELOADCOOLDOWN].start(reload_time)
-		return Enums.GunReturn.RELOAD
+	)
+
+	timers[Enums.TimerType.SHOOTCOOLDOWN].timeout.connect(func() -> void:
+		can_shoot = true
+	)
+
+	timers[Enums.TimerType.SKILLCOOLDOWN].timeout.connect(func() -> void:
+		can_skill = true
+	)
+
 	
-	return Enums.GunReturn.NULL
+
+
+func shoot() -> Enums.GunShootReturn:
+	timers[Enums.TimerType.RELOADCOOLDOWN].stop()
+	if not can_shoot: return Enums.GunShootReturn.CANT_SHOOT
+	if timers[Enums.TimerType.SHOOTCOOLDOWN].time_left != 0: return Enums.GunShootReturn.CANT_SHOOT
+	if ammo <= 0: return Enums.GunShootReturn.OUT_OF_AMMO
+	print(ammo)
+	timers[Enums.TimerType.SHOOTCOOLDOWN].start(fire_rate)
+	ammo -= 1
+	shoot_signal.emit()
+	can_shoot = false
+	return Enums.GunShootReturn.SHOOT
+
+
+
+func reload() -> Enums.GunReloadReturn:
+	if can_shoot: return Enums.GunReloadReturn.CANT_RELOAD
+	if ammo == max_ammo: return Enums.GunReloadReturn.CANT_RELOAD
+	if timers[Enums.TimerType.RELOADCOOLDOWN].time_left != 0: return Enums.GunReloadReturn.RELOADING
+
+	timers[Enums.TimerType.RELOADCOOLDOWN].start(reload_time)
+	reload_signal.emit()
+
+	return Enums.GunReloadReturn.RELOAD
+
+func skill() -> void:
+	timers[Enums.TimerType.RELOADCOOLDOWN].stop()
+	# if not can_skill: return
+	# if timers[Enums.TimerType.SKILLCOOLDOWN].time_left != 0: return
+
+	# timers[Enums.TimerType.SKILLCOOLDOWN].start(skill_cooldown)
+	# skill_signal.emit()
+
+func on_equip() -> void:
+	pass
+	# on_equip_signal.emit()
+
+func on_unequip() -> void:
+	pass
+	# on_unequip_signal.emit()
