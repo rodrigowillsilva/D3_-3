@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://6jotkwp1vkv4"]
+
+[ext_resource type="Script" path="res://Scripts/basic_enemy.gd" id="1_hscbn"]
+[ext_resource type="Texture2D" uid="uid://na3inpf4tw85" path="res://Graphics/sprites/flying_demon_no_back.png" id="2_4clyp"]
+[ext_resource type="Script" path="res://Scripts/damage_and_life_controller.gd" id="3_trf2m"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_uhw8w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jsqai"]
+transparency = 2
+alpha_scissor_threshold = 0.076
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("2_4clyp")
+billboard_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_ufwbt"]
+material = SubResource("StandardMaterial3D_jsqai")
+size = Vector2(2.3, 2.3)
+
+[node name="BasicEnemy" type="Area3D"]
+script = ExtResource("1_hscbn")
+health = 3.0
+SPEED = 7.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_uhw8w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_ufwbt")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+height = 0.01
+radius = 1.0
+neighbor_distance = 500.0
+debug_enabled = true
+
+[node name="DamageAndLifeController" type="Node3D" parent="."]
+script = ExtResource("3_trf2m")
+max_health = 3

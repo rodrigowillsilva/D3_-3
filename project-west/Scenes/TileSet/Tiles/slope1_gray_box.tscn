@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cewuk4w1njgpe"]
+
+[ext_resource type="Texture2D" uid="uid://3bt6ipw4c4gj" path="res://addons/kenney_prototype_textures/light/texture_09.png" id="1_imimh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2pieb"]
+albedo_texture = ExtResource("1_imimh")
+uv1_scale = Vector3(3, 2, 2)
+
+[sub_resource type="PrismMesh" id="PrismMesh_ytr68"]
+material = SubResource("StandardMaterial3D_2pieb")
+left_to_right = 1.0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tvfpe"]
+points = PackedVector3Array(0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5)
+
+[node name="SlopeGrayBox" type="MeshInstance3D"]
+mesh = SubResource("PrismMesh_ytr68")
+
+[node name="MeshInstance3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D"]
+shape = SubResource("ConvexPolygonShape3D_tvfpe")

@@ -1,21 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbixfw2ybvibg"]
+[gd_scene load_steps=3 format=3 uid="uid://cbixfw2ybvibg"]
 
 [ext_resource type="PackedScene" uid="uid://1ujdfnq5agh3" path="res://Scenes/Guns/gun.tscn" id="1_2ojfk"]
 [ext_resource type="Script" path="res://Scripts/revolver.gd" id="2_m4qv8"]
 
-[sub_resource type="Gradient" id="Gradient_3penl"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(0.349065, 0.349065, 0.349065, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_gmmne"]
-gradient = SubResource("Gradient_3penl")
-width = 29
-height = 14
-use_hdr = true
-
 [node name="Revolver" instance=ExtResource("1_2ojfk")]
 script = ExtResource("2_m4qv8")
 speed_boost_percent = 1.5
-
-[node name="Sprite3D" parent="." index="0"]
-texture = SubResource("GradientTexture2D_gmmne")

@@ -4,7 +4,7 @@ class_name GunController
 
 var guns: Array[Gun]
 var current_gun: Gun
-@export var anim_player: AnimationPlayer
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,8 +18,10 @@ func _ready() -> void:
 			########################	
 			
 			guns.append(child)
-			#anim_player.get_animation(child.get_name() + "_hide").track_insert_key(0, 
-								#anim_player.get_animation(child.get_name() + "_hide").get_length(), show_gun)
+			anim_player.get_animation(child.get_name() + "_hide").track_insert_key(1, 
+								anim_player.get_animation(child.get_name() + "_hide").get_length(), {"method": "show_gun", "args":[]})
+			
+			
 
 func shoot_gun() -> void:
 	current_gun.shoot()
@@ -28,7 +30,9 @@ func use_skill() -> void:
 	current_gun.skill()
 
 func reload_gun() -> void:
-	current_gun.reload()
+	if current_gun.reload() == Enums.GunReloadReturn.RELOAD:
+		print("reload gun controller")
+		anim_player.play(current_gun.get_name() + "_reload")
 
 
 func change_gun(gun_index: int) -> void:
@@ -42,13 +46,12 @@ func change_gun(gun_index: int) -> void:
 		if gun_index < 0:
 			gun_index = guns.size() - 1
 
-
-	print(guns[gun_index].get_name())
 	if current_gun == guns[gun_index]:
 		return
 
 	if not current_gun == null: 
 		current_gun.on_unequip()
+		anim_player.play(current_gun.get_name() + "_hide")
 
 	current_gun = guns[gun_index]
 	current_gun.on_equip()
@@ -56,5 +59,6 @@ func change_gun(gun_index: int) -> void:
 
 func show_gun() -> void:
 	#anim_player.stop()
-	#anim_player.play(current_gun.get_name() + "_show")
+	print(current_gun)
+	anim_player.play(current_gun.get_name() + "_show")
 	pass

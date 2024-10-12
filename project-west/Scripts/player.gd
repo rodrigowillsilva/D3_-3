@@ -44,12 +44,12 @@ func _ready() -> void:
 			)
 
 		gun_controller.change_gun(0)
-			
+		gun_controller.anim_player.play("Revolver_show")
 
 
 func _physics_process(delta: float) -> void:
-	var velocity_xz = Vector3(velocity.x, 0, velocity.z)
-	var velocity_y = Vector3(0, velocity.y, 0)
+	var velocity_xz = Vector3(get_real_velocity().x, 0, get_real_velocity().z)
+	var velocity_y = Vector3(0, get_real_velocity().y, 0)
 
 	# Add the gravity.
 	if not is_on_floor():
@@ -167,8 +167,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		
+		if event.is_action_pressed("ui_cancel"):
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		
 		if event.is_action_pressed("r"):
 			gun_controller.reload_gun()
+			print("reload pleyer")
 		elif event.is_action_pressed("mouse_scroll_up"):
 			gun_controller.change_gun(-1)
 		elif event.is_action_pressed("mouse_scroll_down"):

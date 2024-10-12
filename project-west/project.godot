@@ -23,6 +23,10 @@ Enums="*res://Scripts/enums.gd"
 
 window/vsync/vsync_mode=0
 
+[global_group]
+
+navigation_mesh_source_group=""
+
 [input]
 
 move_right={

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjtdpqi4c7xyb"]
+
+[ext_resource type="PackedScene" uid="uid://cu6tuwo3wkbru" path="res://Scenes/gray_box.tscn" id="1_8we67"]
+[ext_resource type="PackedScene" path="res://Scenes/spawnpoint.tscn" id="2_50bfp"]
+[ext_resource type="Script" path="res://Scripts/spawn_controller.gd" id="2_f2m8n"]
+
+[node name="spawn_inimigos" instance=ExtResource("1_8we67")]
+
+[node name="spawn_controller2" type="Node3D" parent="." index="3" node_paths=PackedStringArray("pool_point")]
+script = ExtResource("2_f2m8n")
+pool_point = NodePath("pool_point")
+
+[node name="spawnpoint" parent="spawn_controller2" index="0" instance=ExtResource("2_50bfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 2, -13)
+
+[node name="spawnpoint2" parent="spawn_controller2" index="1" instance=ExtResource("2_50bfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, -13)
+
+[node name="spawnpoint3" parent="spawn_controller2" index="2" instance=ExtResource("2_50bfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -13)
+
+[node name="spawnpoint4" parent="spawn_controller2" index="3" instance=ExtResource("2_50bfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, -13)
+
+[node name="pool_point" type="Marker3D" parent="spawn_controller2" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 2, -5)

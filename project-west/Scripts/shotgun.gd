@@ -105,9 +105,9 @@ func stop_grapling() -> void:
 
 
 func on_unequip() -> void:
-	$Sprite3D.visible = false
+	#$Sprite3D.visible = false
 	stop_grapling()
 
 func on_equip() -> void:
-	$Sprite3D.visible = true
+	#$Sprite3D.visible = true
 	print("Shotgun equiped")

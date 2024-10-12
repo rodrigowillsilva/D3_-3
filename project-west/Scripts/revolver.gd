@@ -19,10 +19,9 @@ func shoot() -> Enums.GunShootReturn:
 	if $GunRay.is_colliding():
 		var body = $GunRay.get_collider()
 		if body != null:
-			var damage_controller = body.get_children().find(DamageAndLifeController)
-			print(damage_controller)
-			if damage_controller != -1:
+			if body.has_method("take_damage"):
 				body.take_damage(Enums.DamageType.BULLET, 1)
+				hit_placeholder.global_transform.origin = $GunRay.get_collision_point()
 			else:
 				hit_placeholder.global_transform.origin = $GunRay.get_collision_point()
 	
@@ -36,11 +35,11 @@ func skill() -> void:
 
 func on_equip() -> void:
 	print("Revolver equiped")
-	$Sprite3D.visible = true
+	#$Sprite3D.visible = true
 	skill()
 	on_equip_signal.emit()
 
 func on_unequip() -> void:
-	$Sprite3D.visible = false
+	#$Sprite3D.visible = false
 	skill_active = false
 	on_unequip_signal.emit()

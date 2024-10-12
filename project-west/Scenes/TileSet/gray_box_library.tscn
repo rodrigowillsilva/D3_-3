@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1tec57aae3fr"]
+[gd_scene load_steps=4 format=3 uid="uid://c1tec57aae3fr"]
 
 [ext_resource type="PackedScene" uid="uid://cnd084uvsh28p" path="res://Scenes/TileSet/Tiles/floor_gray_box.tscn" id="1_idv35"]
 [ext_resource type="PackedScene" uid="uid://ykun1if5n2ns" path="res://Scenes/TileSet/Tiles/wall_gray_box.tscn" id="2_xp2wm"]
+[ext_resource type="PackedScene" uid="uid://cewuk4w1njgpe" path="res://Scenes/TileSet/Tiles/slope1_gray_box.tscn" id="3_kivum"]
 
 [node name="GrayBoxLibrary" type="Node3D"]
 
 [node name="FloorGrayBox" parent="." instance=ExtResource("1_idv35")]
 
 [node name="WallGrayBox" parent="." instance=ExtResource("2_xp2wm")]
+
+[node name="Slope1GrayBox" parent="." instance=ExtResource("3_kivum")]
