@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cu6tuwo3wkbru"]
+[gd_scene load_steps=19 format=3 uid="uid://cu6tuwo3wkbru"]
 
 [ext_resource type="MeshLibrary" uid="uid://bhmny2rbtg74v" path="res://Scenes/TileSet/Libraries/gray_box_lib.tres" id="1_a1wvm"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="2_qvl1s"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Scripts/gun_controller.gd" id="4_0pfjl"]
 [ext_resource type="PackedScene" uid="uid://cbixfw2ybvibg" path="res://Scenes/Guns/revolver.tscn" id="5_rrcug"]
 [ext_resource type="PackedScene" uid="uid://bbli8sjire3s2" path="res://Scenes/Guns/shotgun.tscn" id="5_ue5n7"]
+[ext_resource type="Texture2D" uid="uid://bev1b0k7p0o6u" path="res://Graphics/sprites/revolver.png" id="7_fgn0a"]
+[ext_resource type="Texture2D" uid="uid://g50i6fjb8i2b" path="res://Graphics/sprites/shotgun.png" id="8_lnd24"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_oh44j"]
 panorama = ExtResource("3_8wgnw")
@@ -18,7 +20,109 @@ background_mode = 2
 background_energy_multiplier = 0.03
 sky = SubResource("Sky_dvvac")
 
+[sub_resource type="Animation" id="Animation_4gbjm"]
+resource_name = "Revolver_show"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../guns_hud/Revolver:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(892, 891), Vector2(892, 491)]
+}
+
+[sub_resource type="Animation" id="Animation_xj4kh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../guns_hud/Revolver:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(892, 891)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../guns_hud/Shotgun:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(889, 896)]
+}
+
+[sub_resource type="Animation" id="Animation_76sxm"]
+resource_name = "Revolver_hide"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../guns_hud/Revolver:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(892, 491), Vector2(892, 891)]
+}
+
+[sub_resource type="Animation" id="Animation_mw55s"]
+resource_name = "Shotgun_show"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../guns_hud/Shotgun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(889, 896), Vector2(889, 496)]
+}
+
+[sub_resource type="Animation" id="Animation_x8xfk"]
+resource_name = "Shotgun_hide"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../guns_hud/Shotgun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(889, 496), Vector2(889, 896)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_up8rt"]
+_data = {
+"RESET": SubResource("Animation_xj4kh"),
+"Revolver_hide": SubResource("Animation_76sxm"),
+"Revolver_show": SubResource("Animation_4gbjm"),
+"Shotgun_hide": SubResource("Animation_x8xfk"),
+"Shotgun_show": SubResource("Animation_mw55s")
+}
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hjtqv"]
 height = 1.7
@@ -63,10 +167,29 @@ libraries = {
 [node name="Revolver" parent="Player/Head/GunController" instance=ExtResource("5_rrcug")]
 
 [node name="Shotgun" parent="Player/Head/GunController" instance=ExtResource("5_ue5n7")]
-pull_for_axis_mod = Vector3(1, 0.7, 1)
 max_ammo = 5
 fire_rate = 1.0
 reload_time = 1.0
+
+[node name="guns_hud" type="CanvasLayer" parent="Player/Head"]
+
+[node name="Control" type="Control" parent="Player/Head/guns_hud"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 46.0
+offset_bottom = 58.0
+
+[node name="Revolver" type="Sprite2D" parent="Player/Head/guns_hud"]
+position = Vector2(892, 891)
+rotation = -0.226893
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_fgn0a")
+
+[node name="Shotgun" type="Sprite2D" parent="Player/Head/guns_hud"]
+position = Vector2(889, 896)
+rotation = -0.226893
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("8_lnd24")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("CapsuleShape3D_hjtqv")
