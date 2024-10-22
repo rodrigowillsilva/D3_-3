@@ -19,7 +19,7 @@ shape = 0
 size = 0.3
 sections = 8
 
-[node name="Shotgun" instance=ExtResource("1_psox5")]
+[node name="Shotgun" node_paths=PackedStringArray("hit_placeholder") instance=ExtResource("1_psox5")]
 script = ExtResource("2_3b4g3")
 spread = 0.1
 pellets = 5
@@ -27,6 +27,7 @@ grapiling_max_dist = 100
 grapling_speed = 75
 pull_for_axis_mod = Vector3(1, 0.7, 1)
 max_grapling_time = 1.5
+hit_placeholder = []
 
 [node name="Hook" type="Area3D" parent="." index="2"]
 top_level = true

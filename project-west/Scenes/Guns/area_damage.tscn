@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://bokdmstjtnhfs"]
+
+[ext_resource type="Script" path="res://Scripts/area_damage.gd" id="1_kl6cb"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_82oij"]
+friction = 0.0
+bounce = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_afukm"]
+radius = 0.1
+
+[sub_resource type="SphereMesh" id="SphereMesh_xwkrp"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nqg3y"]
+height = 0.3
+radius = 2.0
+
+[node name="AreaDamage" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_82oij")
+gravity_scale = 2.0
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 3
+script = ExtResource("1_kl6cb")
+y_distance_to_explode = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_afukm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_xwkrp")
+
+[node name="Area3D" type="Area3D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_nqg3y")
+
+[node name="Timer" type="Timer" parent="Area3D"]
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="Area3D"]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

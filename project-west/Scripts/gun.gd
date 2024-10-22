@@ -12,6 +12,7 @@ signal on_unequip_signal
 @export var fire_rate: float
 @export var reload_time: float
 @export var skill_cooldown: float
+@export var auto_reload_time: float
 @export var timers: Array[Timer]
 
 @onready var ammo = max_ammo
@@ -33,7 +34,9 @@ func _ready() -> void:
 		can_skill = true
 	)
 
-	
+	timers[Enums.TimerType.AUTORELOAD].timeout.connect(func() -> void:
+		ammo = max_ammo
+	)
 
 
 func shoot() -> Enums.GunShootReturn:
@@ -69,9 +72,12 @@ func skill() -> void:
 	# skill_signal.emit()
 
 func on_equip() -> void:
+	timers[Enums.TimerType.AUTORELOAD].stop()
 	pass
 	# on_equip_signal.emit()
 
 func on_unequip() -> void:
+	timers[Enums.TimerType.RELOADCOOLDOWN].stop()
+	timers[Enums.TimerType.AUTORELOAD].start(auto_reload_time)
 	pass
 	# on_unequip_signal.emit()

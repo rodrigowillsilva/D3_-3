@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cu6tuwo3wkbru"]
+[gd_scene load_steps=32 format=3 uid="uid://cu6tuwo3wkbru"]
 
 [ext_resource type="MeshLibrary" uid="uid://bhmny2rbtg74v" path="res://Scenes/TileSet/Libraries/gray_box_lib.tres" id="1_a1wvm"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="2_qvl1s"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bev1b0k7p0o6u" path="res://Graphics/sprites/revolver.png" id="7_fgn0a"]
 [ext_resource type="Texture2D" uid="uid://g50i6fjb8i2b" path="res://Graphics/sprites/shotgun.png" id="8_lnd24"]
 [ext_resource type="PackedScene" uid="uid://cewuk4w1njgpe" path="res://Scenes/TileSet/Tiles/slope1_gray_box.tscn" id="9_8d1u3"]
+[ext_resource type="PackedScene" uid="uid://pldui2y8od0g" path="res://Scenes/Guns/cross.tscn" id="9_kaaw1"]
 [ext_resource type="Texture2D" uid="uid://c73hl3tk5ouar" path="res://addons/kenney_prototype_textures/red/texture_01.png" id="10_lnrr1"]
 [ext_resource type="Script" path="res://Scripts/spawn_controller.gd" id="11_xml1p"]
 [ext_resource type="PackedScene" path="res://Scenes/spawnpoint.tscn" id="12_msem0"]
@@ -28,12 +29,19 @@ ambient_light_color = Color(0.966192, 0.8029, 0.575499, 1)
 ambient_light_sky_contribution = 0.85
 adjustment_contrast = 1.08
 
+[sub_resource type="Gradient" id="Gradient_xqtl0"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_co7ij"]
+gradient = SubResource("Gradient_xqtl0")
+
 [sub_resource type="Animation" id="Animation_xj4kh"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../guns_hud/Revolver:position")
+tracks/0/path = NodePath("guns_hud/Revolver:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -45,7 +53,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../guns_hud/Shotgun:position")
+tracks/1/path = NodePath("guns_hud/Shotgun:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -57,7 +65,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../guns_hud/Revolver:rotation")
+tracks/2/path = NodePath("guns_hud/Revolver:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -65,6 +73,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [-0.13439]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("guns_hud/Cross:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(809, 813)]
 }
 
 [sub_resource type="Animation" id="Animation_76sxm"]
@@ -74,7 +94,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../guns_hud/Revolver:position")
+tracks/0/path = NodePath("guns_hud/Revolver:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -101,7 +121,7 @@ length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../guns_hud/Revolver:position")
+tracks/0/path = NodePath("guns_hud/Revolver:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -113,7 +133,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../guns_hud/Revolver:rotation")
+tracks/1/path = NodePath("guns_hud/Revolver:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -130,7 +150,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../guns_hud/Revolver:position")
+tracks/0/path = NodePath("guns_hud/Revolver:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -138,6 +158,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(757, 752), Vector2(703, 362)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("guns_hud/Revolver:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.13439]
 }
 
 [sub_resource type="Animation" id="Animation_x8xfk"]
@@ -147,7 +179,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../guns_hud/Shotgun:position")
+tracks/0/path = NodePath("guns_hud/Shotgun:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -175,7 +207,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../guns_hud/Shotgun:position")
+tracks/0/path = NodePath("guns_hud/Shotgun:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -185,8 +217,53 @@ tracks/0/keys = {
 "values": [Vector2(757, 752), Vector2(703, 362)]
 }
 
+[sub_resource type="Animation" id="Animation_bi23q"]
+resource_name = "Cross_hide"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("guns_hud/Cross:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(809, 813)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_ahau8"]
+resource_name = "Cross_show"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("guns_hud/Cross:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(788, 404)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_up8rt"]
 _data = {
+"Cross_hide": SubResource("Animation_bi23q"),
+"Cross_show": SubResource("Animation_ahau8"),
 "RESET": SubResource("Animation_xj4kh"),
 "Revolver_hide": SubResource("Animation_76sxm"),
 "Revolver_reload": SubResource("Animation_oymsc"),
@@ -234,7 +311,7 @@ floor_snap_length = 0.0
 script = ExtResource("2_qvl1s")
 max_speed = 10.0
 accel = 50.0
-decel = 50.0
+decel = 80.0
 jumpHeight = 2.0
 gravity = 20.0
 sens = 0.3
@@ -249,6 +326,73 @@ environment = SubResource("Environment_ifvgg")
 [node name="GunController" type="Node3D" parent="Player/Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.504471)
 script = ExtResource("4_0pfjl")
+
+[node name="guns_hud" type="CanvasLayer" parent="Player/Head/GunController"]
+follow_viewport_enabled = true
+
+[node name="Control" type="Control" parent="Player/Head/GunController/guns_hud"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 46.0
+offset_bottom = 58.0
+
+[node name="Revolver" type="TextureRect" parent="Player/Head/GunController/guns_hud"]
+offset_left = 703.0
+offset_top = 362.0
+offset_right = 1143.0
+offset_bottom = 929.0
+rotation = -0.13439
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("7_fgn0a")
+
+[node name="Shotgun" type="TextureRect" parent="Player/Head/GunController/guns_hud"]
+offset_left = 754.0
+offset_top = 754.0
+offset_right = 1204.0
+offset_bottom = 1308.0
+rotation = -0.15708
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_lnd24")
+
+[node name="Cross" type="TextureRect" parent="Player/Head/GunController/guns_hud"]
+offset_left = 809.0
+offset_top = 813.0
+offset_right = 873.0
+offset_bottom = 877.0
+scale = Vector2(3.84388, 3.45617)
+texture = SubResource("GradientTexture2D_co7ij")
+
+[node name="ColorRect" type="ColorRect" parent="Player/Head/GunController/guns_hud"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -1.0
+offset_right = 6.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+color = Color(1, 0, 1, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Player/Head/GunController/guns_hud"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -6.0
+offset_right = 1.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+color = Color(1, 0, 1, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Head/GunController"]
 libraries = {
@@ -268,64 +412,7 @@ fire_rate = 1.0
 reload_time = 1.0
 skill_cooldown = 3.0
 
-[node name="guns_hud" type="CanvasLayer" parent="Player/Head"]
-follow_viewport_enabled = true
-
-[node name="Control" type="Control" parent="Player/Head/guns_hud"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 46.0
-offset_bottom = 58.0
-
-[node name="Revolver" type="TextureRect" parent="Player/Head/guns_hud"]
-offset_left = 757.0
-offset_top = 752.0
-offset_right = 1197.0
-offset_bottom = 1319.0
-rotation = -0.13439
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("7_fgn0a")
-
-[node name="Shotgun" type="TextureRect" parent="Player/Head/guns_hud"]
-offset_left = 754.0
-offset_top = 754.0
-offset_right = 1204.0
-offset_bottom = 1308.0
-rotation = -0.15708
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("8_lnd24")
-
-[node name="ColorRect" type="ColorRect" parent="Player/Head/guns_hud"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -6.0
-offset_top = -1.0
-offset_right = 6.0
-offset_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-mouse_force_pass_scroll_events = false
-color = Color(1, 0, 1, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="Player/Head/guns_hud"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1.0
-offset_top = -6.0
-offset_right = 1.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-mouse_force_pass_scroll_events = false
-color = Color(1, 0, 1, 1)
+[node name="Cross" parent="Player/Head/GunController" instance=ExtResource("9_kaaw1")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("CapsuleShape3D_hjtqv")

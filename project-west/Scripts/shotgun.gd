@@ -8,6 +8,7 @@ class_name Shotgun
 @export var grapling_speed: int = 75
 @export var pull_for_axis_mod: Vector3 = Vector3(1, 0.7, 1)
 @export var max_grapling_time: float = 1.5
+@export var hit_placeholder: Array[Node3D]
 
 var grapling: bool = false	
 var grapling_dir: Vector3
@@ -50,10 +51,9 @@ func shoot() -> Enums.GunShootReturn:
 		return r
 
 	for i in range(pellets):
-		var dir = global_transform.basis.z + Vector3(randf_range(-spread, spread), randf_range(-spread, spread), randf_range(-spread, spread))
-		$GunRay.global_transform.origin = global_transform.origin
-		$GunRay.global_transform.basis = Basis()
-		$GunRay.global_transform.basis.z = dir
+		var dir = transform.basis.z + Vector3(randf_range(-spread, spread), randf_range(-spread, spread), randf_range(-spread, spread))
+		
+		$GunRay.target_position = dir * -1 * 10000
 		$GunRay.force_update_transform()
 		$GunRay.force_raycast_update()
 		if $GunRay.is_colliding():
@@ -63,8 +63,10 @@ func shoot() -> Enums.GunShootReturn:
 				print(damage_controller)
 				if damage_controller != -1:
 					body.take_damage(Enums.DamageType.BULLET, 1)
+					hit_placeholder[i].global_transform.origin = $GunRay.get_collision_point()
 				else:
-					$HitPlaceholder.global_transform.origin = $GunRay.get_collision_point()
+					print(body.get_name())
+					hit_placeholder[i].global_transform.origin = $GunRay.get_collision_point()
 
 
 	return Enums.GunShootReturn.SHOOT
@@ -82,7 +84,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event is InputEventMouseButton:
 			if event.is_released():
 				if event.is_action("mouse_2"):
-					print("stop_grapling")
 					stop_grapling()
 
 
@@ -105,9 +106,9 @@ func stop_grapling() -> void:
 
 
 func on_unequip() -> void:
-	#$Sprite3D.visible = false
+	super()
 	stop_grapling()
 
 func on_equip() -> void:
-	#$Sprite3D.visible = true
-	print("Shotgun equiped")
+	super()
+	

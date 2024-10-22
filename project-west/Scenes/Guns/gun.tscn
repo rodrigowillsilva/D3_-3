@@ -4,7 +4,7 @@
 
 [node name="Gun" type="Node3D" node_paths=PackedStringArray("timers")]
 script = ExtResource("1_fb1kr")
-timers = [NodePath("Timer"), NodePath("Timer2"), NodePath("Timer3")]
+timers = [NodePath("Timer"), NodePath("Timer2"), NodePath("Timer3"), NodePath("Timer4")]
 
 [node name="GunRay" type="RayCast3D" parent="."]
 enabled = false
@@ -23,3 +23,5 @@ autostart = true
 [node name="Timer3" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="Timer4" type="Timer" parent="."]

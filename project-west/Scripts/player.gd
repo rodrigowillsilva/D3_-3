@@ -68,15 +68,13 @@ func _physics_process(delta: float) -> void:
 
 
 	if direction:
-		if velocity_xz.length() < max_speed:
+		if velocity_xz.length() <= max_speed and direction.dot(velocity_xz.normalized()) >= 0:
 			velocity_xz = velocity_xz.move_toward(direction * max_speed, delta * air_mod * accel)
 		else:
 			velocity_xz = velocity_xz.move_toward(Vector3.ZERO, delta * air_mod * decel)
 	else:
 		velocity_xz = velocity_xz.move_toward(Vector3.ZERO, delta * air_mod * decel)
 	
-	# else:	
-	# 	velocity_xz = velocity_xz.move_toward(Vector3(), deceleration * delta)
 
 	velocity_xz = velocity_xz.clamp(-2 * max_speed * Vector3.ONE, 2 * max_speed * Vector3.ONE)
 
@@ -90,53 +88,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-# func velocity_accel(v_0: Vector3, direction: Vector3, delta: float) -> Vector3:
-# 	""" Given a positive initial 2D velocity and a delta time, return a positive
-# 	new velocity based on a custom 'game-feel' curve.
-# 	"""
-# 	#v_0 = clamped(v_0)
-
-# 	# Map to [0,1] to simplify
-# 	var speed = v_0.length() / max_speed
-
-# 	# Derive where we are in time [0,1] based on current speed
-# 	var t: float = 1 - sqrt(1 - speed)
-# 	if is_nan(t):
-# 		# speed is 1, so t is 1
-# 		t = 1
-# 	var t_new: float = t + (delta/t_accel)
-
-# 	# Calculate speed based on new t
-# 	if t_new >= 1:
-# 		return direction.normalized() * max_speed
-# 	var speed_new: float = clamp(1 - (1-t_new)*(1-t_new), 0 ,1)
-# 	return direction.normalized() * speed_new * max_speed
-
-
-# func velocity_decel(v_0: Vector3, delta: float) -> Vector3:
-# 	""" Given a positive initial 2D velocity and a delta time, return a new positive
-# 	velocity that is slower, based on the Player's parameters.
-# 	"""
-# 	var speed = v_0.length() / max_speed
-# 	var t: float = 1 - sqrt(speed)
-# 	if is_nan(t):
-# 		t = 1
-# 	var t_new: float = t + (delta/t_decel)
-# 	if t_new >= t_decel:
-# 		return Vector3()
-# 	var speed_new = clamp((1-t_new)*(1-t_new), 0, 1)
-# 	return v_0.normalized() * speed_new * max_speed
-
-# func clamped(v: Vector3) -> Vector3:
-# 	return v.clamp(-max_speed * Vector3.ONE, max_speed * Vector3.ONE)
-
-
-func take_damage(damage: float) -> void:
-	health -= damage
-	# signal damage taken
-	if health <= 0:
-		# signal the player's death 
-		pass
 
 #Callbacks 
 
@@ -172,7 +123,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		if event.is_action_pressed("r"):
 			gun_controller.reload_gun()
-			print("reload pleyer")
 		elif event.is_action_pressed("mouse_scroll_up"):
 			gun_controller.change_gun(-1)
 		elif event.is_action_pressed("mouse_scroll_down"):

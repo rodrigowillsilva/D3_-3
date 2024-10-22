@@ -34,12 +34,11 @@ func skill() -> void:
 		skill_signal.emit()
 
 func on_equip() -> void:
-	print("Revolver equiped")
-	#$Sprite3D.visible = true
+	super()
 	skill()
 	on_equip_signal.emit()
 
 func on_unequip() -> void:
-	#$Sprite3D.visible = false
+	super()
 	skill_active = false
 	on_unequip_signal.emit()

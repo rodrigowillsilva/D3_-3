@@ -11,12 +11,7 @@ func _ready() -> void:
 	# get all child guns
 	var children = get_children()
 	for child in children:
-		if child is Gun:
-
-			########################
-			# Settar todas as animações para cada sinal das armas
-			########################	
-			
+		if child is Gun:	
 			guns.append(child)
 			anim_player.get_animation(child.get_name() + "_hide").track_insert_key(1, 
 								anim_player.get_animation(child.get_name() + "_hide").get_length(), {"method": "show_gun", "args":[]})
@@ -40,6 +35,7 @@ func change_gun(gun_index: int) -> void:
 	#anim_player.stop()
 	#anim_player.play(current_gun.get_name() + "_hide")
 	if gun_index == -1:
+		print("change gun")	
 		gun_index = (gun_index + 1) % guns.size()
 	elif gun_index == -2:
 		gun_index = gun_index - 1
@@ -52,13 +48,12 @@ func change_gun(gun_index: int) -> void:
 	if not current_gun == null: 
 		current_gun.on_unequip()
 		anim_player.play(current_gun.get_name() + "_hide")
+		anim_player.play()
 
 	current_gun = guns[gun_index]
 	current_gun.on_equip()
 	
 
 func show_gun() -> void:
-	#anim_player.stop()
-	print(current_gun)
 	anim_player.play(current_gun.get_name() + "_show")
 	pass
