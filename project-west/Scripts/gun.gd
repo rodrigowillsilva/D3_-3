@@ -57,22 +57,18 @@ func reload() -> Enums.GunReloadReturn:
 	if ammo == max_ammo: return Enums.GunReloadReturn.CANT_RELOAD
 	if timers[Enums.TimerType.RELOADCOOLDOWN].time_left != 0: return Enums.GunReloadReturn.RELOADING
 	
-	print("reload gun")
 	timers[Enums.TimerType.RELOADCOOLDOWN].start(reload_time)
 	reload_signal.emit()
 
 	return Enums.GunReloadReturn.RELOAD
 
 func skill() -> void:
-	timers[Enums.TimerType.RELOADCOOLDOWN].stop()
-	# if not can_skill: return
-	# if timers[Enums.TimerType.SKILLCOOLDOWN].time_left != 0: return
-
-	# timers[Enums.TimerType.SKILLCOOLDOWN].start(skill_cooldown)
-	# skill_signal.emit()
+	pass
+	
 
 func on_equip() -> void:
 	timers[Enums.TimerType.AUTORELOAD].stop()
+	can_shoot = false
 	pass
 	# on_equip_signal.emit()
 

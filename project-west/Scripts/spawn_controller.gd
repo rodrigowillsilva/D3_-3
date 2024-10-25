@@ -1,13 +1,20 @@
 extends Node3D
 
+class_name SpawnController
+
 @export var pool_point : Marker3D
+@export var player: Node3D
 var spawnpoints : Array[SpawnPoint]
 var enemy_pool : Array[BasicEnemy]
 var enemy_control : Array[bool] 
 var timer : Timer
+var spawning : bool = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if not spawning: return
+
 	var sp = get_children()
 	for child in sp:
 		if child is SpawnPoint:
@@ -25,6 +32,7 @@ func _ready() -> void:
 			#spawn_enemy.set_process_input(false)
 			spawn_enemy.activated = false
 			spawn_enemy.position = pool_point.position
+			spawn_enemy.spawnController = self
 			enemy_control.append(true)
 			enemy_pool.append(spawn_enemy)
 			spawn_enemy.died.connect(enemy_died)

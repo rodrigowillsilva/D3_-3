@@ -6,5 +6,8 @@
 
 [node name="Cross" instance=ExtResource("1_7xri1")]
 script = ExtResource("2_o8inx")
-life_regen = 0.1
+life_regen_per_second = 1.0
 area_damage_scene = ExtResource("3_g1o5b")
+
+[node name="Timer5" type="Timer" parent="." index="5"]
+one_shot = true

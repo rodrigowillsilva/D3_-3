@@ -6,4 +6,4 @@ enum GunShootReturn { SHOOT, OUT_OF_AMMO, CANT_SHOOT }
 
 enum GunReloadReturn { RELOAD, CANT_RELOAD, RELOADING }
 
-enum DamageType { BULLET, EXPLOSION, MELEE, AREA }
+enum DamageType { BULLET, EXPLOSION, MELEE, AREA, ENEMY }

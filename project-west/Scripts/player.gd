@@ -14,12 +14,17 @@ var input_dir: Vector2
 
 var gun_skill_phisics_process = func (_delta: float) -> void: pass
 
+signal player_died
+
 func _ready() -> void:
+	$DamageAndLifeController.die_signal.connect(func() -> void:
+		player_died.emit()
+	)
+	
 	for gun in gun_controller.guns:
 		if gun is Revolver:
 			gun.skill_signal.connect(func() -> void:
 				self.max_speed *= gun.speed_boost_percent
-				print("Revolver skill")
 			)
 			gun.on_unequip_signal.connect(func() -> void:
 				self.max_speed /= gun.speed_boost_percent
@@ -27,7 +32,6 @@ func _ready() -> void:
 		
 		if gun is Shotgun:
 			gun.skill_signal.connect(func() -> void:
-				print("Shotgun skill")
 				gun_skill_phisics_process = func (_delta: float) -> void:
 					var gc = gun_controller
 					var cg = gc.current_gun as Shotgun
@@ -39,8 +43,12 @@ func _ready() -> void:
 					velocity += pull_force * cg.pull_for_axis_mod
 			)
 			gun.stop_grapling_signal.connect(func() -> void:
-				print("Shotgun stop skill")
 				gun_skill_phisics_process = func (_delta: float) -> void: pass
+			)
+		
+		if gun is Cross:
+			gun.skill_signal.connect(func() -> void:
+				$DamageAndLifeController.heal(gun.life_regen)
 			)
 
 		gun_controller.change_gun(0)
@@ -87,7 +95,10 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-
+func take_damage(damage_type: Enums.DamageType, damage: int):
+	if damage_type != Enums.DamageType.ENEMY: return
+	
+	$DamageAndLifeController.take_damage(damage_type, damage)
 
 #Callbacks 
 

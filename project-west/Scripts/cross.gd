@@ -3,10 +3,16 @@ extends Gun
 class_name Cross
 
 @export var hit_placeholder: Node3D
-@export var life_regen: float = 0.1
+@export var life_regen_per_second: float = 1
 @export var area_damage_scene: PackedScene
 
+var life_regen: float = 0
 var skill_active: bool = false
+
+func _process(_delta: float) -> void:
+	if skill_active:
+		life_regen = life_regen_per_second * _delta
+		skill_signal.emit()
 
 func shoot() -> Enums.GunShootReturn:
 	var r = super()
@@ -26,7 +32,7 @@ func shoot() -> Enums.GunShootReturn:
 func skill() -> void:
 	if not skill_active:
 		skill_active = true
-		skill_signal.emit()
+		
 
 func on_equip() -> void:
 	super()
