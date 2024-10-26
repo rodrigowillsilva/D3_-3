@@ -21,12 +21,14 @@ grow_vertical = 2
 script = ExtResource("1_x3yu6")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_xidx2")
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 49.0
 offset_top = 55.0
 offset_right = 652.0
@@ -48,6 +50,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="play" type="Button" parent="."]
+layout_mode = 0
 offset_left = 616.0
 offset_top = 557.0
 offset_right = 1219.0
