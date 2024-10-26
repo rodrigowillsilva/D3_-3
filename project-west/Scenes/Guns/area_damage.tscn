@@ -33,6 +33,7 @@ shape = SubResource("SphereShape3D_afukm")
 mesh = SubResource("SphereMesh_xwkrp")
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_mask = 5
 monitoring = false
 monitorable = false
 

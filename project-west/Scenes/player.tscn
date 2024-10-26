@@ -1,0 +1,430 @@
+[gd_scene load_steps=29 format=3 uid="uid://b0cb67s1s4bl7"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_oy6m3"]
+[ext_resource type="Texture2D" uid="uid://22hoon5mxtuu" path="res://Graphics/rogland_overcast_2k.hdr" id="2_vrfaj"]
+[ext_resource type="Script" path="res://Scripts/gun_controller.gd" id="3_n5d8b"]
+[ext_resource type="Texture2D" uid="uid://bev1b0k7p0o6u" path="res://Graphics/sprites/revolver.png" id="4_0lgdq"]
+[ext_resource type="Texture2D" uid="uid://g50i6fjb8i2b" path="res://Graphics/sprites/shotgun.png" id="5_kp3pv"]
+[ext_resource type="Shader" path="res://Shaders/VHS_pixel.gdshader" id="6_clqo0"]
+[ext_resource type="PackedScene" uid="uid://cbixfw2ybvibg" path="res://Scenes/Guns/revolver.tscn" id="6_giv8n"]
+[ext_resource type="PackedScene" uid="uid://bbli8sjire3s2" path="res://Scenes/Guns/shotgun.tscn" id="7_6pnla"]
+[ext_resource type="PackedScene" uid="uid://pldui2y8od0g" path="res://Scenes/Guns/cross.tscn" id="8_ybdkk"]
+[ext_resource type="Script" path="res://Scripts/damage_and_life_controller.gd" id="9_453o6"]
+
+[sub_resource type="Curve" id="Curve_ev63u"]
+_data = [Vector2(0.55988, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_hyr73"]
+curve_x = SubResource("Curve_ev63u")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_oh44j"]
+panorama = ExtResource("2_vrfaj")
+filter = false
+
+[sub_resource type="Sky" id="Sky_dvvac"]
+sky_material = SubResource("PanoramaSkyMaterial_oh44j")
+
+[sub_resource type="Environment" id="Environment_ifvgg"]
+background_mode = 2
+background_energy_multiplier = 0.05
+sky = SubResource("Sky_dvvac")
+ambient_light_source = 2
+ambient_light_color = Color(0.582376, 0.582376, 0.582376, 1)
+ambient_light_energy = 0.5
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+volumetric_fog_detail_spread = 4.92458
+volumetric_fog_sky_affect = 0.79
+adjustment_contrast = 1.08
+adjustment_color_correction = SubResource("CurveXYZTexture_hyr73")
+
+[sub_resource type="Gradient" id="Gradient_xqtl0"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_co7ij"]
+gradient = SubResource("Gradient_xqtl0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xwr6i"]
+shader = ExtResource("6_clqo0")
+shader_parameter/shake = 0.015
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.0
+shader_parameter/colorOffsetIntensity = 0.1
+shader_parameter/pixelSize = 1024.0
+shader_parameter/grainIntensity = 0.001
+shader_parameter/use_overlay = true
+shader_parameter/use_lens_distortion = false
+shader_parameter/overlay_color = Color(1, 1, 1, 10)
+shader_parameter/lens_distortion_strength = 0.0
+
+[sub_resource type="Animation" id="Animation_bi23q"]
+resource_name = "Cross_hide"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("guns_hud/Cross:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(809, 813)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_ahau8"]
+resource_name = "Cross_show"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("guns_hud/Cross:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(788, 404)]
+}
+
+[sub_resource type="Animation" id="Animation_xj4kh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("guns_hud/Revolver:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(757, 752)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("guns_hud/Shotgun:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(754, 754)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("guns_hud/Revolver:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.13439]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("guns_hud/Cross:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(809, 813)]
+}
+
+[sub_resource type="Animation" id="Animation_76sxm"]
+resource_name = "Revolver_hide"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("guns_hud/Revolver:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(703, 362), Vector2(757, 752)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_oymsc"]
+resource_name = "Revolver_reload"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("guns_hud/Revolver:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(706, 422), Vector2(703, 362)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("guns_hud/Revolver:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-0.368693, -0.13439]
+}
+
+[sub_resource type="Animation" id="Animation_4gbjm"]
+resource_name = "Revolver_show"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("guns_hud/Revolver:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(757, 752), Vector2(703, 362)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("guns_hud/Revolver:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.13439]
+}
+
+[sub_resource type="Animation" id="Animation_x8xfk"]
+resource_name = "Shotgun_hide"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("guns_hud/Shotgun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(703, 362), Vector2(757, 752)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_mw55s"]
+resource_name = "Shotgun_show"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("guns_hud/Shotgun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(757, 752), Vector2(703, 362)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_up8rt"]
+_data = {
+"Cross_hide": SubResource("Animation_bi23q"),
+"Cross_show": SubResource("Animation_ahau8"),
+"RESET": SubResource("Animation_xj4kh"),
+"Revolver_hide": SubResource("Animation_76sxm"),
+"Revolver_reload": SubResource("Animation_oymsc"),
+"Revolver_show": SubResource("Animation_4gbjm"),
+"Shotgun_hide": SubResource("Animation_x8xfk"),
+"Shotgun_show": SubResource("Animation_mw55s")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hjtqv"]
+height = 1.7
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("gun_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.10157, 1.80987, 5.88135)
+floor_max_angle = 0.261799
+script = ExtResource("1_oy6m3")
+health = 10.0
+max_speed = 10.0
+accel = 50.0
+decel = 80.0
+jumpHeight = 2.0
+gravity = 20.0
+sens = 0.3
+gun_controller = NodePath("Head/GunController")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[node name="PlayerCamera" type="Camera3D" parent="Head"]
+environment = SubResource("Environment_ifvgg")
+fov = 100.0
+
+[node name="GunController" type="Node3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.504471)
+script = ExtResource("3_n5d8b")
+
+[node name="guns_hud" type="CanvasLayer" parent="Head/GunController"]
+follow_viewport_enabled = true
+
+[node name="Control" type="Control" parent="Head/GunController/guns_hud"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 46.0
+offset_bottom = 58.0
+
+[node name="Revolver" type="TextureRect" parent="Head/GunController/guns_hud"]
+offset_left = 757.0
+offset_top = 752.0
+offset_right = 1197.0
+offset_bottom = 1319.0
+rotation = -0.13439
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_0lgdq")
+
+[node name="Shotgun" type="TextureRect" parent="Head/GunController/guns_hud"]
+offset_left = 754.0
+offset_top = 754.0
+offset_right = 1204.0
+offset_bottom = 1308.0
+rotation = -0.15708
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_kp3pv")
+
+[node name="Cross" type="TextureRect" parent="Head/GunController/guns_hud"]
+offset_left = 809.0
+offset_top = 813.0
+offset_right = 873.0
+offset_bottom = 877.0
+scale = Vector2(3.84388, 3.45617)
+texture = SubResource("GradientTexture2D_co7ij")
+
+[node name="ColorRect" type="ColorRect" parent="Head/GunController/guns_hud"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -1.0
+offset_right = 6.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+color = Color(1, 0, 1, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Head/GunController/guns_hud"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -6.0
+offset_right = 1.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+color = Color(1, 0, 1, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Head/GunController/guns_hud"]
+material = SubResource("ShaderMaterial_xwr6i")
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/GunController"]
+libraries = {
+"": SubResource("AnimationLibrary_up8rt")
+}
+
+[node name="Revolver" parent="Head/GunController" instance=ExtResource("6_giv8n")]
+max_ammo = 6
+fire_rate = 0.2
+reload_time = 0.6
+skill_cooldown = 10.0
+
+[node name="Shotgun" parent="Head/GunController" node_paths=PackedStringArray("hit_placeholder") instance=ExtResource("7_6pnla")]
+hit_placeholder = [null, null, null, null, null]
+max_ammo = 5
+fire_rate = 1.0
+reload_time = 1.0
+skill_cooldown = 3.0
+
+[node name="Cross" parent="Head/GunController" instance=ExtResource("8_ybdkk")]
+max_ammo = 1
+fire_rate = 0.1
+reload_time = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_hjtqv")
+
+[node name="DamageAndLifeController" type="Node3D" parent="."]
+script = ExtResource("9_453o6")
+
+[editable path="Head/GunController/Revolver"]
+[editable path="Head/GunController/Shotgun"]
+[editable path="Head/GunController/Cross"]

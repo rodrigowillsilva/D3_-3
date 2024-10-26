@@ -59,14 +59,12 @@ func shoot() -> Enums.GunShootReturn:
 		if $GunRay.is_colliding():
 			var body = $GunRay.get_collider()
 			if body != null:
-				var damage_controller = body.get_children().find(DamageAndLifeController)
-				print(damage_controller)
-				if damage_controller != -1:
+				if body.has_method("take_damage"):
 					body.take_damage(Enums.DamageType.BULLET, 1)
-					hit_placeholder[i].global_transform.origin = $GunRay.get_collision_point()
+					#hit_placeholder[i].global_transform.origin = $GunRay.get_collision_point()
 				else:
 					print(body.get_name())
-					hit_placeholder[i].global_transform.origin = $GunRay.get_collision_point()
+					#hit_placeholder[i].global_transform.origin = $GunRay.get_collision_point()
 
 
 	return Enums.GunShootReturn.SHOOT
@@ -108,7 +106,10 @@ func stop_grapling() -> void:
 func on_unequip() -> void:
 	super()
 	stop_grapling()
+	on_unequip_signal.emit()
+	
 
 func on_equip() -> void:
 	super()
+	on_equip_signal.emit()
 	

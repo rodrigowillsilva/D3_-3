@@ -57,11 +57,25 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var velocity_xz = Vector3(get_real_velocity().x, 0, get_real_velocity().z)
-	var velocity_y = Vector3(0, get_real_velocity().y, 0)
-
+	var velocity_y = Vector3.ZERO
+	if get_real_velocity().abs().y < 3:
+		velocity_y = Vector3(0, velocity.y, 0)
+	else:
+		velocity_y = Vector3(0, get_real_velocity().y, 0)
+	
 	# Add the gravity.
+	
+	# Assuming get_wall_normal() returns the wall normal
 	if not is_on_floor():
-		velocity_y += gravity * delta * Vector3(0, -1, 0)
+		var wall_normal = get_wall_normal().normalized()
+		# Define the down vector
+		var down_vector = Vector3(0, -1, 0)
+		# Project the down vector onto the plane defined by the wall normal
+		var tangent_vector = (down_vector - wall_normal * down_vector.dot(wall_normal)).normalized()
+		#print(tangent_vector)
+
+		velocity_y += gravity * delta * tangent_vector
+	#velocity_y += gravity * delta * Vector3(0, -1, 0)
 
 	# Handle jump.
 	if Input.is_action_just_pressed("space") and is_on_floor():
@@ -74,7 +88,6 @@ func _physics_process(delta: float) -> void:
 	# print(transform.basis * Vector3(input_dir.x, 0, input_dir.y))
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
-
 	if direction:
 		if velocity_xz.length() <= max_speed and direction.dot(velocity_xz.normalized()) >= 0:
 			velocity_xz = velocity_xz.move_toward(direction * max_speed, delta * air_mod * accel)
@@ -86,6 +99,8 @@ func _physics_process(delta: float) -> void:
 
 	velocity_xz = velocity_xz.clamp(-2 * max_speed * Vector3.ONE, 2 * max_speed * Vector3.ONE)
 
+	
+	
 	velocity = velocity_xz + velocity_y
 
 	gun_skill_phisics_process.call(delta)

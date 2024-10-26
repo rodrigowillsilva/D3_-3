@@ -19,7 +19,7 @@ func _ready() -> void:
 			
 			# set the animations to the signals
 			child.shoot_signal.connect(func() -> void:
-				anim_player.play(child.get_name() + "_  shoot")
+				anim_player.play(child.get_name() + "_shoot")
 			)
 
 			child.reload_signal.connect(func() -> void:
@@ -28,11 +28,11 @@ func _ready() -> void:
 
 			child.skill_signal.connect(func() -> void:
 				if child is not Revolver and child is not Cross:
-					print(child.get_name(), " aaa")
 					anim_player.play(child.get_name() + "_skill")
 			)
 			
 			child.on_unequip_signal.connect(func() -> void:
+				print(child.get_name(), " a")
 				anim_player.play(child.get_name() + "_hide")
 			)
 			
@@ -48,10 +48,7 @@ func reload_gun() -> void:
 	current_gun.reload()
 
 
-func change_gun(gun_index: int) -> void:
-	#anim_player.seek(anim_player.get_animation(current_gun.get_name() + "_hide").get_length(), true)
-	#anim_player.stop()
-	#anim_player.play(current_gun.get_name() + "_hide")
+func change_gun(gun_index: int) -> void:	
 	if gun_index == -1:
 		gun_index = (gun_index + 1) % guns.size()
 	elif gun_index == -2:
@@ -62,9 +59,9 @@ func change_gun(gun_index: int) -> void:
 	if current_gun == guns[gun_index]:
 		return
 
-	if not current_gun == null: 
+	if not current_gun == null:
 		current_gun.on_unequip()
-
+	
 	current_gun = guns[gun_index]
 	current_gun.on_equip()
 	
@@ -74,9 +71,10 @@ func show_gun() -> void:
 	pass
 
 func on_end_animations(animName: StringName) -> void:
-	if animName == current_gun.get_name() + "_show":
+	print(animName)
+	if animName.contains("_show"):
 		current_gun.can_shoot = true
-	elif animName == current_gun.get_name() + "_hide":
+	elif animName.contains("_hide"):
 		anim_player.play(current_gun.get_name() + "_show")
 
 	pass

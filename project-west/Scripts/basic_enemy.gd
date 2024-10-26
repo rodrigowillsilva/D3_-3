@@ -14,6 +14,7 @@ var mov: Vector3
 var nav_timer: Timer
 var next_nav_point: Vector3 = Vector3.ZERO
 var spawnController: SpawnController
+var state: String = "walk"
 
 signal died(enemy: BasicEnemy)
 
@@ -42,26 +43,19 @@ func _physics_process(delta):
 	if not map_ready: return
 	if not activated: return
 
-	# $NavigationAgent3D.set_target_position(player.global_transform.origin)
-	# next_nav_point = $NavigationAgent3D.get_next_path_position()
-
-	#var movement: Vector3 = next_nav_point - global_position
-	#print(movement)
-	#if movement.length() > 0.5:
-		#movement = movement.normalized() * SPEED
-		#transform.origin.x += movement.x * delta
-		#transform.origin.z += movement.z * delta
-
-	next_nav_point = $NavigationAgent3D.get_next_path_position()
-	mov = next_nav_point - global_position
-	$NavigationAgent3D.set_velocity(mov.normalized() * SPEED)
-	#if movement.length() > 0.5:
-	
+	if state == "walk":
+		next_nav_point = $NavigationAgent3D.get_next_path_position()
+		mov = next_nav_point - global_position
+		$NavigationAgent3D.set_velocity(mov.normalized() * SPEED)
 		
-	#velocity = -transform.basis.z
+		move_and_slide()
+		
+		if $NavigationAgent3D.is_target_reached():
+			state = "attack"
 	
-	move_and_slide()
-
+	elif state == "attack":
+		$AnimationPlayer.play(&"BasicEnemy_attack")
+		pass	
 
 
 func die():

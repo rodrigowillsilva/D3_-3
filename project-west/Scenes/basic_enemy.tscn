@@ -32,8 +32,7 @@ shape = SubResource("CylinderShape3D_uhw8w")
 mesh = SubResource("QuadMesh_ufwbt")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_desired_distance = 2.0
-target_desired_distance = 0.5
+target_desired_distance = 3.0
 avoidance_enabled = true
 radius = 1.0
 neighbor_distance = 30.0
@@ -42,5 +41,7 @@ debug_enabled = true
 
 [node name="DamageAndLifeController" type="Node3D" parent="."]
 script = ExtResource("3_trf2m")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

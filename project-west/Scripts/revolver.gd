@@ -21,9 +21,10 @@ func shoot() -> Enums.GunShootReturn:
 		if body != null:
 			if body.has_method("take_damage"):
 				body.take_damage(Enums.DamageType.BULLET, 1)
-				hit_placeholder.global_transform.origin = $GunRay.get_collision_point()
+				#hit_placeholder.global_transform.origin = $GunRay.get_collision_point()
 			else:
-				hit_placeholder.global_transform.origin = $GunRay.get_collision_point()
+				pass
+				#hit_placeholder.global_transform.origin = $GunRay.get_collision_point()
 	
 	return r
 

@@ -4,11 +4,13 @@ class_name SpawnController
 
 @export var pool_point : Marker3D
 @export var player: Node3D
+@export var initial_spawn_speed: int
+@export var spawn_curve: Curve
 var spawnpoints : Array[SpawnPoint]
 var enemy_pool : Array[BasicEnemy]
 var enemy_control : Array[bool] 
 var timer : Timer
-var spawning : bool = false
+var spawning : bool = true
 
 
 # Called when the node enters the scene tree for the first time.
@@ -31,6 +33,7 @@ func _ready() -> void:
 			#spawn_enemy.set_physics_process(false)
 			#spawn_enemy.set_process_input(false)
 			spawn_enemy.activated = false
+			spawn_enemy.set_deferred("process_mode", PROCESS_MODE_DISABLED)
 			spawn_enemy.position = pool_point.position
 			spawn_enemy.spawnController = self
 			enemy_control.append(true)
@@ -39,13 +42,6 @@ func _ready() -> void:
 			get_tree().get_root().get_node("/root/GrayBox").add_child.call_deferred(spawn_enemy)
 	timer.start(3)
 	pass
-
-func _physics_process(delta):
-	for enemy in enemy_pool:
-		if enemy.activated:
-			enemy.nav_agent.set_target_position(enemy.player.global_transform.origin)
-			enemy.next_nav_point = enemy.nav_agent.get_next_path_position()
-			
 	
 	
 
@@ -62,6 +58,7 @@ func pick_enemy():
 	return enemy_pool[index]
 	
 func on_timer_timeout():
+	print("spean")
 	if enemy_control.all(func(x) : return x == false) : 
 		timer.start()
 		return 
@@ -69,6 +66,7 @@ func on_timer_timeout():
 	print(which_enemy)
 	which_enemy.position = spawnpoints.pick_random().position + Vector3(0,1,0)
 	which_enemy.activated = true
+	which_enemy.set_deferred("process_mode", PROCESS_MODE_PAUSABLE)
 	which_enemy.spawn()
 	timer.start()
 
@@ -77,5 +75,6 @@ func enemy_died(enemy : BasicEnemy):
 	enemy_control[index] = true
 	enemy.position = pool_point.position
 	enemy.activated = false
+	enemy.set_deferred("process_mode", PROCESS_MODE_DISABLED)
 	timer.start()
 	pass
