@@ -19,21 +19,27 @@ func _ready() -> void:
 			
 			# set the animations to the signals
 			child.shoot_signal.connect(func() -> void:
-				anim_player.play(child.get_name() + "_shoot")
+				#anim_player.play(child.get_name() + "_shoot")
+				child.anim_sprite.play("Shoot")
+				child.muzzle_flash.emitting = true
 			)
 
 			child.reload_signal.connect(func() -> void:
-				anim_player.play(child.get_name() + "_reload")
+				print(child.get_name() + &"_reload")
+				#anim_player.play(child.get_name() + &"_reload")
+				child.anim_sprite.play("Reload")
 			)
 
 			child.skill_signal.connect(func() -> void:
 				if child is not Revolver and child is not Cross:
-					anim_player.play(child.get_name() + "_skill")
+					#anim_player.play(child.get_name() + "_skill")
+					child.anim_sprite.play("Skill")
 			)
 			
 			child.on_unequip_signal.connect(func() -> void:
 				print(child.get_name(), " a")
 				anim_player.play(child.get_name() + "_hide")
+				#child.anim_sprite.play("Hide")
 			)
 			
 			

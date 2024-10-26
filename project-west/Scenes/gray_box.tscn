@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bbli8sjire3s2" path="res://Scenes/Guns/shotgun.tscn" id="5_ue5n7"]
 [ext_resource type="Texture2D" uid="uid://bev1b0k7p0o6u" path="res://Graphics/sprites/revolver.png" id="7_fgn0a"]
 [ext_resource type="Texture2D" uid="uid://g50i6fjb8i2b" path="res://Graphics/sprites/shotgun.png" id="8_lnd24"]
-[ext_resource type="PackedScene" uid="uid://cewuk4w1njgpe" path="res://Scenes/TileSet/Tiles/slope1_gray_box.tscn" id="9_8d1u3"]
-[ext_resource type="PackedScene" uid="uid://pldui2y8od0g" path="res://Scenes/Guns/cross.tscn" id="9_kaaw1"]
+[ext_resource type="PackedScene" path="res://Scenes/TileSet/Tiles/slope1_gray_box.tscn" id="9_8d1u3"]
+[ext_resource type="PackedScene" uid="uid://cqfd4ktd4sn8c" path="res://Scenes/Guns/cross.tscn" id="9_kaaw1"]
 [ext_resource type="Texture2D" uid="uid://c73hl3tk5ouar" path="res://addons/kenney_prototype_textures/red/texture_01.png" id="10_lnrr1"]
 [ext_resource type="Script" path="res://Scripts/damage_and_life_controller.gd" id="10_wg1ef"]
 [ext_resource type="Script" path="res://Scripts/spawn_controller.gd" id="11_xml1p"]
@@ -311,6 +311,7 @@ wall_min_slide_angle = 0.349066
 floor_max_angle = 0.349066
 floor_snap_length = 0.0
 script = ExtResource("2_qvl1s")
+health = null
 max_speed = 10.0
 accel = 50.0
 decel = 80.0

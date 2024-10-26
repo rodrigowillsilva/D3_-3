@@ -1,24 +1,44 @@
-[gd_scene load_steps=7 format=3 uid="uid://6jotkwp1vkv4"]
+[gd_scene load_steps=11 format=3 uid="uid://chw21s0rqp6ag"]
 
 [ext_resource type="Script" path="res://Scripts/basic_enemy.gd" id="1_hscbn"]
-[ext_resource type="Texture2D" uid="uid://na3inpf4tw85" path="res://Graphics/sprites/flying_demon_no_back.png" id="2_4clyp"]
+[ext_resource type="Texture2D" uid="uid://1oem4fun6hq8" path="res://Graphics/demons/walking_zombie/quadro_zombie0000.png" id="3_0iyd3"]
 [ext_resource type="Script" path="res://Scripts/damage_and_life_controller.gd" id="3_trf2m"]
+[ext_resource type="Texture2D" uid="uid://cmg0e0o3jp7i1" path="res://Graphics/demons/walking_zombie/quadro_zombie0001.png" id="4_0l6xa"]
+[ext_resource type="Texture2D" uid="uid://cbjmp4kjcupii" path="res://Graphics/demons/walking_zombie/quadro_zombie0002.png" id="5_ufa0d"]
+[ext_resource type="Texture2D" uid="uid://cc4ihx5ae6wns" path="res://Graphics/demons/walking_zombie/quadro_zombie0003.png" id="6_u62ll"]
+[ext_resource type="Texture2D" uid="uid://8san5xuvuxmn" path="res://Graphics/demons/walking_zombie/quadro_zombie0004.png" id="7_6esuj"]
+[ext_resource type="Texture2D" uid="uid://bsii810o70mbu" path="res://Graphics/demons/walking_zombie/quadro_zombie0005.png" id="8_6i1rd"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_uhw8w"]
+radius = 0.7
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jsqai"]
-transparency = 2
-alpha_scissor_threshold = 0.076
-alpha_antialiasing_mode = 0
-albedo_texture = ExtResource("2_4clyp")
-billboard_mode = 2
-
-[sub_resource type="QuadMesh" id="QuadMesh_ufwbt"]
-material = SubResource("StandardMaterial3D_jsqai")
-size = Vector2(2.3, 2.3)
+[sub_resource type="SpriteFrames" id="SpriteFrames_411ag"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_0iyd3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0l6xa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ufa0d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_u62ll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6esuj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6i1rd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="BasicEnemy" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.32085, 0)
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_hscbn")
@@ -27,9 +47,6 @@ SPEED = 7.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_uhw8w")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("QuadMesh_ufwbt")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 target_desired_distance = 3.0
@@ -43,5 +60,10 @@ debug_enabled = true
 script = ExtResource("3_trf2m")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.185, 0, 0, 0, 0.185, 0, 0, 0, 0.185, 0.278229, -0.167467, 0)
+shaded = true
+sprite_frames = SubResource("SpriteFrames_411ag")
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

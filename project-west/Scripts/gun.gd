@@ -14,8 +14,10 @@ signal on_unequip_signal
 @export var skill_cooldown: float
 @export var auto_reload_time: float
 @export var timers: Array[Timer]
+@export var muzzle_flash: CPUParticles3D
 
 @onready var ammo = max_ammo
+@onready var anim_sprite: AnimatedSprite3D = $AnimatedSprite3D
 
 var can_shoot: bool = true
 var can_skill: bool = true

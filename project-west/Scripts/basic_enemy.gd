@@ -26,7 +26,7 @@ func _ready():
 		player = spawnController.player
 
 	NavigationServer3D.map_changed.connect(func(_map): map_ready = true)
-	$DamageAndLifeController.max_health - health
+	$DamageAndLifeController.max_health = health
 	$DamageAndLifeController.die_signal.connect(die)
 	nav_timer = Timer.new()
 	add_child(nav_timer)
@@ -42,6 +42,13 @@ func _ready():
 func _physics_process(delta):
 	if not map_ready: return
 	if not activated: return
+	
+	#make the enemy only rotate in the y axis to look at the player
+	var player_look = player.global_transform.origin
+	player_look.y = global_position.y
+	look_at(player_look, Vector3.UP)
+	
+
 
 	if state == "walk":
 		next_nav_point = $NavigationAgent3D.get_next_path_position()

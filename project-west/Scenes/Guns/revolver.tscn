@@ -1,8 +1,128 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbixfw2ybvibg"]
+[gd_scene load_steps=29 format=3 uid="uid://cbixfw2ybvibg"]
 
 [ext_resource type="PackedScene" uid="uid://1ujdfnq5agh3" path="res://Scenes/Guns/gun.tscn" id="1_2ojfk"]
 [ext_resource type="Script" path="res://Scripts/revolver.gd" id="2_m4qv8"]
+[ext_resource type="Texture2D" uid="uid://8xe1dynmnnmj" path="res://Graphics/guns/revolver/quadro_revolver0000.png" id="3_3p4w3"]
+[ext_resource type="Texture2D" uid="uid://ber4niq6vut4r" path="res://Graphics/guns/revolver/quadro_revolver0001.png" id="4_a15wa"]
+[ext_resource type="Texture2D" uid="uid://b1r41njy0rq0k" path="res://Graphics/guns/revolver/quadro_revolver0002.png" id="5_e6ugr"]
+[ext_resource type="Texture2D" uid="uid://dhd64iry7xjx7" path="res://Graphics/guns/revolver/quadro_revolver0003.png" id="6_nlcek"]
+[ext_resource type="Texture2D" uid="uid://dm5vrvjc2aywr" path="res://Graphics/guns/revolver/quadro_revolver0004.png" id="7_yh46l"]
+[ext_resource type="Texture2D" uid="uid://ds5hg1y6g2fcw" path="res://Graphics/guns/revolver/quadro_revolver0005.png" id="8_n2icq"]
+[ext_resource type="Texture2D" uid="uid://8gd36y7lu05f" path="res://Graphics/guns/revolver/quadro_revolver0006.png" id="9_2x0ht"]
+[ext_resource type="Texture2D" uid="uid://ooohv5t2e2oq" path="res://Graphics/guns/revolver/quadro_revolver0007.png" id="10_qrymk"]
+[ext_resource type="Texture2D" uid="uid://bmvji0spkhin" path="res://Graphics/guns/revolver/quadro_revolver0008.png" id="11_upjh3"]
+[ext_resource type="Texture2D" uid="uid://cyo142wgq7qwr" path="res://Graphics/guns/revolver/quadro_revolver0009.png" id="12_gdlhv"]
+[ext_resource type="Texture2D" uid="uid://i60rwxg1tcix" path="res://Graphics/guns/revolver/quadro_revolver0010.png" id="13_el53d"]
+[ext_resource type="Texture2D" uid="uid://b88vsepctloxn" path="res://Graphics/guns/revolver/quadro_revolver0011.png" id="14_53hen"]
+[ext_resource type="Texture2D" uid="uid://ctbea78q73dd6" path="res://Graphics/guns/revolver/quadro_revolver0012.png" id="15_2645b"]
+[ext_resource type="Texture2D" uid="uid://bya43euug3fhj" path="res://Graphics/guns/revolver/quadro_revolver0013.png" id="16_ns5b5"]
+[ext_resource type="Texture2D" uid="uid://vqdqq1vhcsaq" path="res://Graphics/guns/revolver/quadro_revolver0014.png" id="17_d5obc"]
+[ext_resource type="Texture2D" uid="uid://6n4b0ffbg0nx" path="res://Graphics/guns/revolver/quadro_revolver0015.png" id="18_i14bj"]
+[ext_resource type="Texture2D" uid="uid://b0vj86q80imtm" path="res://Graphics/guns/revolver/quadro_revolver0016.png" id="19_uy5ek"]
+[ext_resource type="Texture2D" uid="uid://cgn6ln5mfai80" path="res://Graphics/guns/revolver/quadro_revolver0017.png" id="20_374gi"]
+[ext_resource type="Texture2D" uid="uid://bmnkir6dyuuaf" path="res://Graphics/guns/revolver/quadro_revolver0018.png" id="21_tav3o"]
+[ext_resource type="Texture2D" uid="uid://b2rvwjsii02j3" path="res://Graphics/guns/revolver/quadro_revolver0019.png" id="22_51kx7"]
+[ext_resource type="Texture2D" uid="uid://bhvk4oom5kg5u" path="res://Graphics/guns/revolver/quadro_revolver0020.png" id="23_qpajb"]
+[ext_resource type="Texture2D" uid="uid://c8hv2ltit43k5" path="res://Graphics/guns/revolver/quadro_revolver0021.png" id="24_alilh"]
+[ext_resource type="Texture2D" uid="uid://druaqsig5rygu" path="res://Graphics/guns/revolver/quadro_revolver0022.png" id="25_7owpu"]
+[ext_resource type="Texture2D" uid="uid://cr1gdweern70a" path="res://Graphics/guns/revolver/quadro_revolver0023.png" id="26_a3fgn"]
+[ext_resource type="Texture2D" uid="uid://bc1fi5cllu536" path="res://Graphics/guns/revolver/revolver_default.png" id="27_xtgxj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_youw4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_3p4w3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_a15wa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_e6ugr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nlcek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_yh46l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_n2icq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2x0ht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qrymk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_upjh3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_gdlhv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_el53d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_53hen")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_2645b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ns5b5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_d5obc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_i14bj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_uy5ek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_374gi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_tav3o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_51kx7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_qpajb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_alilh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_7owpu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_a3fgn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_xtgxj")
+}],
+"loop": false,
+"name": &"Reload",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_3p4w3")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Revolver" instance=ExtResource("1_2ojfk")]
 script = ExtResource("2_m4qv8")
 speed_boost_percent = 1.5
+
+[node name="AnimatedSprite3D" parent="." index="7"]
+transform = Transform3D(0.078, 0, 0, 0, 0.078, 0, 0, 0, 0.078, 1.21802, -0.91341, 0)
+sprite_frames = SubResource("SpriteFrames_youw4")

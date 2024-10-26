@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cnd084uvsh28p" path="res://Scenes/TileSet/Tiles/floor_gray_box.tscn" id="1_idv35"]
 [ext_resource type="PackedScene" uid="uid://ykun1if5n2ns" path="res://Scenes/TileSet/Tiles/wall_gray_box.tscn" id="2_xp2wm"]
-[ext_resource type="PackedScene" uid="uid://cewuk4w1njgpe" path="res://Scenes/TileSet/Tiles/slope1_gray_box.tscn" id="3_kivum"]
+[ext_resource type="PackedScene" path="res://Scenes/TileSet/Tiles/slope1_gray_box.tscn" id="3_kivum"]
 
 [node name="GrayBoxLibrary" type="Node3D"]
 

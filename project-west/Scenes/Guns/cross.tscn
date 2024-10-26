@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://pldui2y8od0g"]
+[gd_scene load_steps=4 format=3 uid="uid://cqfd4ktd4sn8c"]
 
 [ext_resource type="PackedScene" uid="uid://1ujdfnq5agh3" path="res://Scenes/Guns/gun.tscn" id="1_7xri1"]
 [ext_resource type="Script" path="res://Scripts/cross.gd" id="2_o8inx"]
-[ext_resource type="PackedScene" uid="uid://bokdmstjtnhfs" path="res://Scenes/Guns/area_damage.tscn" id="3_g1o5b"]
+[ext_resource type="PackedScene" uid="uid://cxccpx2n81645" path="res://Scenes/Guns/area_damage.tscn" id="3_g1o5b"]
 
 [node name="Cross" instance=ExtResource("1_7xri1")]
 script = ExtResource("2_o8inx")

@@ -44,6 +44,14 @@ func _physics_process(delta: float) -> void:
 		if ($Hook.global_transform.origin - global_transform.origin).length() > grapiling_max_dist:
 			stop_grapling()
 		
+		# Update the cilinder mesh to act as a rope
+
+		$Rope.global_position = $Marker3D.global_position.lerp($Hook.global_transform.origin, 0.5)
+		$Rope.look_at($Hook.global_position)
+		var mesh = $Rope/RopeMesh.mesh as CylinderMesh
+		mesh.height = (hook.global_transform.origin - global_transform.origin).length()
+
+		
 			
 func shoot() -> Enums.GunShootReturn:
 	var r = super()
@@ -94,6 +102,8 @@ func start_grapling() -> void:
 	$Hook/CollisionShape3D.disabled = false
 	current_grapling_speed = grapling_speed
 	grapling_timer.start(max_grapling_time)
+	var mesh = $Rope/RopeMesh.mesh as CylinderMesh
+	mesh.height = 0
 
 func stop_grapling() -> void:
 	$Hook.visible = false

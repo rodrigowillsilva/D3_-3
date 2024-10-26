@@ -1,13 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://1ujdfnq5agh3"]
+[gd_scene load_steps=6 format=3 uid="uid://1ujdfnq5agh3"]
 
 [ext_resource type="Script" path="res://Scripts/gun.gd" id="1_fb1kr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bkfig"]
+albedo_color = Color(1, 0.647059, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.458824, 0, 1)
+emission_energy_multiplier = 9.71
+
+[sub_resource type="BoxMesh" id="BoxMesh_cc4ga"]
+material = SubResource("StandardMaterial3D_bkfig")
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="Curve" id="Curve_6apwv"]
+max_value = 100.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(0.99999, 51.6981), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_v58hj"]
+_data = [Vector2(0, 0.758491), 0.0, -5.0311, 0, 0, Vector2(0.494413, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Gun" type="Node3D" node_paths=PackedStringArray("timers")]
 script = ExtResource("1_fb1kr")
 timers = [NodePath("Timer"), NodePath("Timer2"), NodePath("Timer3"), NodePath("Timer4")]
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.295947, -0.240008, 0)
 
 [node name="GunRay" type="RayCast3D" parent="."]
 enabled = false
@@ -29,3 +45,25 @@ one_shot = true
 autostart = true
 
 [node name="Timer4" type="Timer" parent="."]
+
+[node name="Muzzle" type="CPUParticles3D" parent="."]
+emitting = false
+lifetime = 0.3
+explosiveness = 1.0
+fixed_fps = 60
+mesh = SubResource("BoxMesh_cc4ga")
+direction = Vector3(0, 0, -1)
+spread = 13.54
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 8.0
+damping_max = 100.0
+damping_curve = SubResource("Curve_6apwv")
+angle_max = 102.9
+scale_amount_min = 0.0
+scale_amount_curve = SubResource("Curve_v58hj")
+
+[node name="Bullet" type="CPUParticles3D" parent="."]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.333495, 0, 0, 0, 0.333495, 0, 0, 0, 0.333495, 1.21802, -0.91341, 0)

@@ -9,6 +9,7 @@ extends CharacterBody3D
 @export var gravity: float
 @export var sens: float
 @export var gun_controller: GunController
+@export var r: Rope3D
 
 var input_dir: Vector2
 
@@ -56,6 +57,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if Input.is_key_pressed(KEY_T):
+		r.make()
+	
 	var velocity_xz = Vector3(get_real_velocity().x, 0, get_real_velocity().z)
 	var velocity_y = Vector3.ZERO
 	if get_real_velocity().abs().y < 3:
