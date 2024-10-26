@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c73hl3tk5ouar" path="res://addons/kenney_prototype_textures/red/texture_01.png" id="10_lnrr1"]
 [ext_resource type="Script" path="res://Scripts/damage_and_life_controller.gd" id="10_wg1ef"]
 [ext_resource type="Script" path="res://Scripts/spawn_controller.gd" id="11_xml1p"]
-[ext_resource type="PackedScene" path="res://Scenes/spawnpoint.tscn" id="12_msem0"]
+[ext_resource type="PackedScene" uid="uid://bjfvm7wkvp13" path="res://Scenes/spawnpoint.tscn" id="12_msem0"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_oh44j"]
 panorama = ExtResource("3_juw1y")

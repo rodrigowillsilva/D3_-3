@@ -78,13 +78,13 @@ accel = 30.0
 decel = 30.0
 sens = 0.25
 
-[node name="Revolver" parent="Player/Head/GunController" index="1" node_paths=PackedStringArray("hit_placeholder")]
+[node name="Revolver" parent="Player/Head/GunController" index="2" node_paths=PackedStringArray("hit_placeholder")]
 hit_placeholder = NodePath("../../../../MeshInstance3D5")
 fire_rate = 1.0
 reload_time = 1.0
 skill_cooldown = 1.0
 
-[node name="Shotgun" parent="Player/Head/GunController" index="2"]
+[node name="Shotgun" parent="Player/Head/GunController" index="3"]
 grapling_speed = 50
 
 [node name="ColorRect" type="ColorRect" parent="Player/Head" index="2"]
@@ -103,12 +103,6 @@ pivot_offset = Vector2(5, 5)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
-
-[node name="Revolver" parent="Player/Head/guns_hud" index="1"]
-visible = false
-
-[node name="Shotgun" parent="Player/Head/guns_hud" index="2"]
-visible = false
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.50786, 0)
