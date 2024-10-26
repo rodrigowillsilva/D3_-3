@@ -564,9 +564,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("59_o7k23")
 }],
-"loop": true,
+"loop": false,
 "name": &"Reload",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [],
 "loop": true,
@@ -693,6 +693,12 @@ offset_bottom = 877.0
 scale = Vector2(3.84388, 3.45617)
 texture = SubResource("GradientTexture2D_co7ij")
 
+[node name="ColorRect3" type="ColorRect" parent="Player/Head/GunController/guns_hud"]
+material = SubResource("ShaderMaterial_xwr6i")
+offset_right = 1600.0
+offset_bottom = 900.0
+mouse_filter = 2
+
 [node name="ColorRect" type="ColorRect" parent="Player/Head/GunController/guns_hud"]
 anchors_preset = 8
 anchor_left = 0.5
@@ -724,12 +730,6 @@ grow_vertical = 2
 mouse_filter = 2
 mouse_force_pass_scroll_events = false
 color = Color(1, 0, 1, 1)
-
-[node name="ColorRect3" type="ColorRect" parent="Player/Head/GunController/guns_hud"]
-material = SubResource("ShaderMaterial_xwr6i")
-offset_right = 1152.0
-offset_bottom = 648.0
-mouse_filter = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Head/GunController"]
 libraries = {
@@ -796,12 +796,14 @@ animation = &"Reload"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.304166, -0.139347, -0.14753)
 emitting = false
 amount = 1
+visibility_aabb = AABB(-4, -4, -4, 8, 8, 8.045)
+local_coords = true
 trail_enabled = true
 trail_lifetime = 1.32
 process_material = SubResource("ParticleProcessMaterial_0al75")
 draw_pass_1 = SubResource("RibbonTrailMesh_nl4qa")
 
-[node name="Shotgun" type="Node3D" parent="Player/Head/GunController" node_paths=PackedStringArray("hit_placeholder", "timers")]
+[node name="Shotgun" type="Node3D" parent="Player/Head/GunController" node_paths=PackedStringArray("hit_placeholder", "timers", "muzzle_flash")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
 script = ExtResource("34_q0sen")
 hit_placeholder = [null, null, null, null, null]
@@ -810,6 +812,7 @@ fire_rate = 1.0
 reload_time = 1.0
 skill_cooldown = 3.0
 timers = [NodePath("Timer"), NodePath("Timer2"), NodePath("Timer3"), NodePath("Timer4")]
+muzzle_flash = NodePath("Muzzle")
 
 [node name="Rope" type="Node3D" parent="Player/Head/GunController/Shotgun"]
 top_level = true
@@ -852,6 +855,7 @@ autostart = true
 [node name="Muzzle" type="CPUParticles3D" parent="Player/Head/GunController/Shotgun"]
 emitting = false
 lifetime = 0.3
+one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
 mesh = SubResource("BoxMesh_cc4ga")

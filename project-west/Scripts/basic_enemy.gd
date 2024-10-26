@@ -62,6 +62,10 @@ func _physics_process(delta):
 	
 	elif state == "attack":
 		$AnimationPlayer.play(&"BasicEnemy_attack")
+		var dist = global_position.distance_to(player.global_position)
+		if dist > 3:
+			state = "walk"
+		
 		pass	
 
 
