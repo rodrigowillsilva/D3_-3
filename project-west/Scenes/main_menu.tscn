@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bit8lyx3oc1rb"]
 
-[ext_resource type="Script" path="res://main_menu.gd" id="1_6wg7o"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_6wg7o"]
 [ext_resource type="Texture2D" uid="uid://celqrhxvy1b2c" path="res://Graphics/menu_project_west.png" id="2_y4brl"]
 [ext_resource type="FontFile" uid="uid://d1dlguxswy045" path="res://Graphics/CowboyOutlaw-R9qGM.otf" id="3_heqn5"]
 
@@ -47,16 +47,28 @@ theme_override_font_sizes/font_size = 64
 text = "Play"
 flat = true
 
+[node name="tutorial" type="Button" parent="."]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 396.0
+offset_right = 652.0
+offset_bottom = 461.0
+theme_override_fonts/font = ExtResource("3_heqn5")
+theme_override_font_sizes/font_size = 64
+text = "Tutorial"
+flat = true
+
 [node name="quit" type="Button" parent="."]
 layout_mode = 2
 offset_left = 49.0
-offset_top = 436.0
+offset_top = 462.0
 offset_right = 652.0
-offset_bottom = 494.0
+offset_bottom = 527.0
 theme_override_fonts/font = ExtResource("3_heqn5")
 theme_override_font_sizes/font_size = 64
 text = "Quit"
 flat = true
 
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
