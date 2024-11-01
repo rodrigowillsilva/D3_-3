@@ -12,12 +12,12 @@
 [ext_resource type="Script" path="res://Scripts/damage_and_life_controller.gd" id="10_0vl55"]
 [ext_resource type="Texture2D" uid="uid://ber4niq6vut4r" path="res://Graphics/guns/revolver/quadro_revolver0001.png" id="10_i7kws"]
 [ext_resource type="Texture2D" uid="uid://b1r41njy0rq0k" path="res://Graphics/guns/revolver/quadro_revolver0002.png" id="11_34cq3"]
-[ext_resource type="PackedScene" path="res://Scenes/TileSet/Tiles/slope1_gray_box.tscn" id="11_rodpo"]
+[ext_resource type="PackedScene" uid="uid://cewuk4w1njgpe" path="res://Scenes/TileSet/Tiles/slope1_gray_box.tscn" id="11_rodpo"]
 [ext_resource type="Texture2D" uid="uid://dhd64iry7xjx7" path="res://Graphics/guns/revolver/quadro_revolver0003.png" id="12_4ggfx"]
 [ext_resource type="Texture2D" uid="uid://c73hl3tk5ouar" path="res://addons/kenney_prototype_textures/red/texture_01.png" id="12_ueexy"]
 [ext_resource type="Script" path="res://Scripts/spawn_controller.gd" id="13_gmphb"]
 [ext_resource type="Texture2D" uid="uid://dm5vrvjc2aywr" path="res://Graphics/guns/revolver/quadro_revolver0004.png" id="13_y4bmc"]
-[ext_resource type="PackedScene" path="res://Scenes/spawnpoint.tscn" id="14_dkk5x"]
+[ext_resource type="PackedScene" uid="uid://bjfvm7wkvp13" path="res://Scenes/spawnpoint.tscn" id="14_dkk5x"]
 [ext_resource type="Texture2D" uid="uid://ds5hg1y6g2fcw" path="res://Graphics/guns/revolver/quadro_revolver0005.png" id="14_rbt0p"]
 [ext_resource type="Texture2D" uid="uid://8gd36y7lu05f" path="res://Graphics/guns/revolver/quadro_revolver0006.png" id="15_7ws4m"]
 [ext_resource type="PackedScene" uid="uid://cxccpx2n81645" path="res://Scenes/Guns/area_damage.tscn" id="16_bu3wn"]
@@ -71,20 +71,20 @@
 _data = [Vector2(0.55988, 1), 0.0, 0.0, 0, 0]
 point_count = 1
 
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_hyr73"]
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_fxwqd"]
 curve_x = SubResource("Curve_ev63u")
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_oh44j"]
 panorama = ExtResource("3_v7eag")
 filter = false
 
-[sub_resource type="Sky" id="Sky_dvvac"]
+[sub_resource type="Sky" id="Sky_k22ys"]
 sky_material = SubResource("PanoramaSkyMaterial_oh44j")
 
 [sub_resource type="Environment" id="Environment_ifvgg"]
 background_mode = 2
 background_energy_multiplier = 0.05
-sky = SubResource("Sky_dvvac")
+sky = SubResource("Sky_k22ys")
 ambient_light_source = 2
 ambient_light_color = Color(0.582376, 0.582376, 0.582376, 1)
 ambient_light_energy = 0.5
@@ -94,14 +94,14 @@ volumetric_fog_density = 0.01
 volumetric_fog_detail_spread = 4.92458
 volumetric_fog_sky_affect = 0.79
 adjustment_contrast = 1.08
-adjustment_color_correction = SubResource("CurveXYZTexture_hyr73")
+adjustment_color_correction = SubResource("CurveXYZTexture_fxwqd")
 
-[sub_resource type="Gradient" id="Gradient_xqtl0"]
+[sub_resource type="Gradient" id="Gradient_egjew"]
 offsets = PackedFloat32Array(1)
 colors = PackedColorArray(1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_co7ij"]
-gradient = SubResource("Gradient_xqtl0")
+gradient = SubResource("Gradient_egjew")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xwr6i"]
 shader = ExtResource("7_jc6gg")
@@ -329,14 +329,14 @@ _data = {
 "Shotgun_show": SubResource("Animation_mw55s")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bkfig"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_klpeq"]
 albedo_color = Color(1, 0.647059, 0, 1)
 emission_enabled = true
 emission = Color(1, 0.458824, 0, 1)
 emission_energy_multiplier = 9.71
 
 [sub_resource type="BoxMesh" id="BoxMesh_cc4ga"]
-material = SubResource("StandardMaterial3D_bkfig")
+material = SubResource("StandardMaterial3D_klpeq")
 size = Vector3(0.1, 0.1, 0.1)
 
 [sub_resource type="Curve" id="Curve_6apwv"]
@@ -443,7 +443,7 @@ animations = [{
 _data = [Vector2(0, 0.0339622), 0.0, 0.0, 0, 0, Vector2(1, 0.169811), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_o8bxc"]
+[sub_resource type="CurveTexture" id="CurveTexture_yvsmr"]
 curve = SubResource("Curve_0pnpn")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0al75"]
@@ -452,13 +452,13 @@ spread = 0.0
 initial_velocity_min = 100.0
 initial_velocity_max = 100.0
 gravity = Vector3(0, 0, 0)
-scale_curve = SubResource("CurveTexture_o8bxc")
+scale_curve = SubResource("CurveTexture_yvsmr")
 
-[sub_resource type="Curve" id="Curve_0wk8a"]
+[sub_resource type="Curve" id="Curve_4e4fp"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.54717), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v8cww"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ph2m5"]
 albedo_color = Color(1, 0.615686, 0, 1)
 emission_enabled = true
 emission = Color(0.991974, 0.552208, 7.70092e-07, 1)
@@ -466,19 +466,19 @@ emission_energy_multiplier = 10.31
 use_particle_trails = true
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_nl4qa"]
-material = SubResource("StandardMaterial3D_v8cww")
+material = SubResource("StandardMaterial3D_ph2m5")
 shape = 0
 size = 12.659
 sections = 3
 section_length = 97.011
 section_segments = 11
-curve = SubResource("Curve_0wk8a")
+curve = SubResource("Curve_4e4fp")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5jbnq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0qpyq"]
 albedo_color = Color(0.302784, 0.205134, 0.0641735, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_86ws8"]
-material = SubResource("StandardMaterial3D_5jbnq")
+material = SubResource("StandardMaterial3D_0qpyq")
 top_radius = 0.01
 bottom_radius = 0.01
 radial_segments = 16
