@@ -1,19 +1,13 @@
-[gd_scene load_steps=108 format=3 uid="uid://bj6dty3xysfef"]
+[gd_scene load_steps=105 format=3 uid="uid://bj6dty3xysfef"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ie75e"]
-[ext_resource type="PackedScene" uid="uid://5vqcu00jx4ht" path="res://Graphics/Models/ModelsGLB/Terrain/Terrain.glb" id="1_y8tac"]
 [ext_resource type="Texture2D" uid="uid://22hoon5mxtuu" path="res://Graphics/rogland_overcast_2k.hdr" id="2_5ehki"]
-[ext_resource type="PackedScene" uid="uid://ht55xbt1k8hk" path="res://Graphics/Models/ModelsGLB/WesternStructure1/WesternStructure1.glb" id="2_ocfkw"]
 [ext_resource type="PackedScene" uid="uid://cuomig8dffgqi" path="res://Graphics/Models/ModelsGLB/Igreja/IgrejaCutHole.glb" id="3_o5pjx"]
 [ext_resource type="Script" path="res://Scripts/gun_controller.gd" id="3_owthw"]
-[ext_resource type="PackedScene" uid="uid://b7yg0dfnetb0t" path="res://Graphics/Models/ModelsGLB/GenericEstructure/GenericStructure.glb" id="4_831og"]
 [ext_resource type="Texture2D" uid="uid://bev1b0k7p0o6u" path="res://Graphics/sprites/revolver.png" id="4_qam8a"]
-[ext_resource type="PackedScene" uid="uid://diak72qkxkkih" path="res://Graphics/Models/ModelsGLB/Well/Well.glb" id="5_gfnji"]
 [ext_resource type="Texture2D" uid="uid://g50i6fjb8i2b" path="res://Graphics/sprites/shotgun.png" id="5_yq07d"]
-[ext_resource type="PackedScene" uid="uid://b57mwmuq626v6" path="res://Graphics/Models/ModelsGLB/SaleiroEBalde/SaleiroEBalde.glb" id="6_1vgtw"]
 [ext_resource type="Shader" path="res://Shaders/VHS_pixel.gdshader" id="6_ewe3e"]
 [ext_resource type="Script" path="res://Scripts/revolver.gd" id="7_n8i1p"]
-[ext_resource type="PackedScene" uid="uid://chj0j23hix22m" path="res://Graphics/Models/ModelsGLB/Carroca/Carroca.glb" id="7_vo2x1"]
 [ext_resource type="Texture2D" uid="uid://8xe1dynmnnmj" path="res://Graphics/guns/revolver/quadro_revolver0000.png" id="8_w2bry"]
 [ext_resource type="Texture2D" uid="uid://ber4niq6vut4r" path="res://Graphics/guns/revolver/quadro_revolver0001.png" id="9_vgpk7"]
 [ext_resource type="Texture2D" uid="uid://b1r41njy0rq0k" path="res://Graphics/guns/revolver/quadro_revolver0002.png" id="10_vytgy"]
@@ -68,6 +62,12 @@
 [ext_resource type="Script" path="res://Scripts/cross.gd" id="59_uqn21"]
 [ext_resource type="PackedScene" uid="uid://cxccpx2n81645" path="res://Scenes/Guns/area_damage.tscn" id="60_5qusq"]
 [ext_resource type="Script" path="res://Scripts/damage_and_life_controller.gd" id="61_aiin1"]
+[ext_resource type="PackedScene" uid="uid://dirgknrp04mko" path="res://Graphics/Models/ColGBLS/Terrain/Terrain.glb" id="62_3fehu"]
+[ext_resource type="PackedScene" uid="uid://ht55xbt1k8hk" path="res://Graphics/Models/ModelsGLB/WesternStructure1/WesternStructure1.glb" id="64_f1f3t"]
+[ext_resource type="PackedScene" uid="uid://b7yg0dfnetb0t" path="res://Graphics/Models/ModelsGLB/GenericEstructure/GenericStructure.glb" id="65_hhfxu"]
+[ext_resource type="PackedScene" uid="uid://diak72qkxkkih" path="res://Graphics/Models/ModelsGLB/Well/Well.glb" id="66_exexb"]
+[ext_resource type="PackedScene" uid="uid://b57mwmuq626v6" path="res://Graphics/Models/ModelsGLB/SaleiroEBalde/SaleiroEBalde.glb" id="67_rld78"]
+[ext_resource type="PackedScene" uid="uid://chj0j23hix22m" path="res://Graphics/Models/ModelsGLB/Carroca/Carroca.glb" id="68_u5n8d"]
 
 [sub_resource type="Curve" id="Curve_cudfd"]
 _data = [Vector2(0.55988, 1), 0.0, 0.0, 0, 0]
@@ -579,23 +579,14 @@ animations = [{
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3qtfo"]
 height = 1.7
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_wm205"]
-size = Vector3(28.3684, 1, 28.6181)
+[sub_resource type="BoxShape3D" id="BoxShape3D_pl7vs"]
+size = Vector3(27.6393, 14.3311, 7.88385)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_5c837"]
-size = Vector3(5.76991, 5.98849, 4.43539)
+[sub_resource type="BoxShape3D" id="BoxShape3D_p6qnd"]
+size = Vector3(9.21938, 14.5656, 8.04431)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_f4wjy"]
-size = Vector3(2.88278, 0.668045, 4.34668)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_n67xx"]
-size = Vector3(0.386292, 3.56628, 0.394287)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_rw1v0"]
-size = Vector3(5.72823, 0.264648, 4.47601)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_6uj3u"]
-size = Vector3(1, 69.8084, 114.058)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ca4ei"]
+size = Vector3(7.25928, 26.6229, 7.27383)
 
 [node name="main_map" type="Node3D"]
 
@@ -913,97 +904,62 @@ script = ExtResource("61_aiin1")
 
 [node name="structures" type="Node3D" parent="."]
 
-[node name="GenericStructure5" parent="structures" instance=ExtResource("4_831og")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 74.8561, 0, -7.33644)
+[node name="WesternStructure2" parent="structures" instance=ExtResource("64_f1f3t")]
+transform = Transform3D(-2.5, 0, -2.18557e-07, 0, 2.5, 0, 2.18557e-07, 0, -2.5, 47, 0, 3)
 
-[node name="WesternStructure4" parent="structures" instance=ExtResource("2_ocfkw")]
-transform = Transform3D(-3, 0, -4.52987e-07, 0, 3, 0, 4.52987e-07, 0, -3, 85.4617, 0, -26.2226)
-
-[node name="WesternStructure3" parent="structures" instance=ExtResource("2_ocfkw")]
-transform = Transform3D(-2.12132, 0, 2.12132, 0, 3, 0, -2.12132, 0, -2.12132, 79.2481, 0, 22.7004)
-
-[node name="Carroca" parent="structures" instance=ExtResource("7_vo2x1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.6283, -0.578979, 13.0092)
-
-[node name="SaleiroEBalde" parent="structures" instance=ExtResource("6_1vgtw")]
-transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 63.1898, 0, -41.8373)
-
-[node name="GenericStructure4" parent="structures" instance=ExtResource("4_831og")]
-transform = Transform3D(-3, 0, -4.52987e-07, 0, 3, 0, 4.52987e-07, 0, -3, 41.5561, 0, -39.2966)
-
-[node name="GenericStructure3" parent="structures" instance=ExtResource("4_831og")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 54.8479, 0, 28.5854)
-
-[node name="GenericStructure2" parent="structures" instance=ExtResource("4_831og")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 36.925, 0, 28.585)
-
-[node name="Well" parent="structures" instance=ExtResource("5_gfnji")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8.53994, 0, 21.8456)
-
-[node name="WesternStructure2" parent="structures" instance=ExtResource("2_ocfkw")]
-transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 18.5841, 0, -48.0169)
-
-[node name="GenericStructure" parent="structures" instance=ExtResource("4_831og")]
-transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 3.27392, 0, -33.5508)
+[node name="Terrain" parent="structures" instance=ExtResource("62_3fehu")]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
 
 [node name="IgrejaCutHole" parent="structures" instance=ExtResource("3_o5pjx")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -14.5095, 0, -7.92823)
+transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 7, -1.34619, -29)
 
-[node name="WesternStructure1" parent="structures" instance=ExtResource("2_ocfkw")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.121553, 16.5472)
+[node name="StaticBody3D" type="StaticBody3D" parent="structures/IgrejaCutHole"]
+transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, 7.25, 0, 1.75)
 
-[node name="Terrain" parent="structures" instance=ExtResource("1_y8tac")]
-transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 29.4399, 0, -0.750912)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="structures/IgrejaCutHole/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.00949, 6.66556, -28.9324)
+shape = SubResource("BoxShape3D_pl7vs")
 
-[node name="collisions" type="StaticBody3D" parent="structures/Terrain"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="structures/IgrejaCutHole/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.78625, 6.78279, -20.5265)
+shape = SubResource("BoxShape3D_p6qnd")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="structures/Terrain/collisions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.115327, 0, 0.234582)
-shape = SubResource("BoxShape3D_wm205")
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="structures/IgrejaCutHole/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.83655, 23.7687, -28.9018)
+shape = SubResource("BoxShape3D_ca4ei")
 
-[node name="favor não destruir" parent="structures" instance=ExtResource("2_ocfkw")]
-transform = Transform3D(-3, 0, -4.52987e-07, 0, 3, 0, 4.52987e-07, 0, -3, 85.4617, 0, 191.428)
+[node name="WesternStructure1" parent="structures" instance=ExtResource("64_f1f3t")]
+transform = Transform3D(-1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, -18, 0, -17)
 
-[node name="collisions" type="StaticBody3D" parent="structures/favor não destruir"]
+[node name="GenericStructure" parent="structures" instance=ExtResource("65_hhfxu")]
+transform = Transform3D(-2.5, 0, -2.18557e-07, 0, 2.5, 0, 2.18557e-07, 0, -2.5, 31, 0, -12)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="structures/favor não destruir/collisions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.672722, 2.98665, -0.00679016)
-shape = SubResource("BoxShape3D_5c837")
+[node name="Well" parent="structures" instance=ExtResource("66_exexb")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 15)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="structures/favor não destruir/collisions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.92801, 0.0125707, -0.0356445)
-shape = SubResource("BoxShape3D_f4wjy")
+[node name="GenericStructure2" parent="structures" instance=ExtResource("65_hhfxu")]
+transform = Transform3D(-1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, -26, 0, 6)
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="structures/favor não destruir/collisions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1895, 1.28314, -1.94869)
-shape = SubResource("BoxShape3D_n67xx")
+[node name="GenericStructure3" parent="structures" instance=ExtResource("65_hhfxu")]
+transform = Transform3D(-1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, -26, 0, 23)
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="structures/favor não destruir/collisions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1895, 1.28314, 2.01256)
-shape = SubResource("BoxShape3D_n67xx")
+[node name="WesternStructure3" parent="structures" instance=ExtResource("64_f1f3t")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -31, 0, 49)
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="structures/favor não destruir/collisions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.81777, 3.2909, 0.0307617)
-shape = SubResource("BoxShape3D_f4wjy")
+[node name="GenericStructure4" parent="structures" instance=ExtResource("65_hhfxu")]
+transform = Transform3D(-1.09278e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -1.09278e-07, 42, 0, 35)
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="structures/favor não destruir/collisions"]
-transform = Transform3D(0.992546, -0.121869, 0, 0.121869, 0.992546, 0, 0, 0, 1, -0.726631, 6.38072, 0.019928)
-shape = SubResource("BoxShape3D_rw1v0")
+[node name="WesternStructure4" parent="structures" instance=ExtResource("64_f1f3t")]
+transform = Transform3D(-2.16506, 0, 1.25, 0, 2.5, 0, -1.25, 0, -2.16506, 41, 0, 60)
 
-[node name="invisible walls" type="StaticBody3D" parent="structures"]
+[node name="GenericStructure5" parent="structures" instance=ExtResource("65_hhfxu")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 17, 0, 61)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="structures/invisible walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6857, 34.4042, -4.57341)
-shape = SubResource("BoxShape3D_6uj3u")
+[node name="GenericStructure6" parent="structures" instance=ExtResource("65_hhfxu")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -7, 0, 61)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="structures/invisible walls"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 38.2906, 34.4042, -57.2327)
-shape = SubResource("BoxShape3D_6uj3u")
+[node name="SaleiroEBalde" parent="structures" instance=ExtResource("67_rld78")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 6, 0.3, 62)
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="structures/invisible walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.443, 34.4042, -4.57341)
-shape = SubResource("BoxShape3D_6uj3u")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="structures/invisible walls"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 38.2906, 34.4042, 44.5505)
-shape = SubResource("BoxShape3D_6uj3u")
+[node name="Carroca" parent="structures" instance=ExtResource("68_u5n8d")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -16, -0.3, 16)
