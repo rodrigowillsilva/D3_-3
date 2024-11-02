@@ -10,6 +10,8 @@ extends CharacterBody3D
 @export var sens: float
 @export var gun_controller: GunController
 @export var r: Rope3D
+@onready var audioplay = $"../Music"
+@onready var audiosteps = $"../audio_steps"
 
 var input_dir: Vector2
 
@@ -162,5 +164,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.pressed:
 			if event.keycode >= 49 and event.keycode < 49 + gun_controller.guns.size():
 				gun_controller.change_gun(event.keycode - 49)
+	if velocity != Vector3.ZERO:
+		audiosteps.play()
+	else:
+		velocity == Vector3.ZERO
+		audiosteps.stop()
 
-		
+func _on_music_finished() -> void:
+	audioplay.play()
