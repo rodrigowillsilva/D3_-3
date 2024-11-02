@@ -26,6 +26,7 @@ Enums="*res://Scripts/enums.gd"
 window/size/viewport_width=1600
 window/size/viewport_height=900
 window/size/resizable=false
+window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 
 [editor_plugins]

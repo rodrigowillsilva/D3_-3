@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://bj6dty3xysfef"]
+[gd_scene load_steps=106 format=3 uid="uid://bj6dty3xysfef"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ie75e"]
 [ext_resource type="Texture2D" uid="uid://22hoon5mxtuu" path="res://Graphics/rogland_overcast_2k.hdr" id="2_5ehki"]
@@ -68,6 +68,7 @@
 [ext_resource type="PackedScene" uid="uid://diak72qkxkkih" path="res://Graphics/Models/ModelsGLB/Well/Well.glb" id="66_exexb"]
 [ext_resource type="PackedScene" uid="uid://b57mwmuq626v6" path="res://Graphics/Models/ModelsGLB/SaleiroEBalde/SaleiroEBalde.glb" id="67_rld78"]
 [ext_resource type="PackedScene" uid="uid://chj0j23hix22m" path="res://Graphics/Models/ModelsGLB/Carroca/Carroca.glb" id="68_u5n8d"]
+[ext_resource type="AudioStream" uid="uid://cse0c8gfdvcix" path="res://Audio/sounds/524240__badoink__hard-rock-loop.wav" id="69_yil0t"]
 
 [sub_resource type="Curve" id="Curve_cudfd"]
 _data = [Vector2(0.55988, 1), 0.0, 0.0, 0, 0]
@@ -963,3 +964,9 @@ transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 6,
 
 [node name="Carroca" parent="structures" instance=ExtResource("68_u5n8d")]
 transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -16, -0.3, 16)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("69_yil0t")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
