@@ -18,14 +18,14 @@ func _ready() -> void:
 			# 					anim_player.get_animation(child.get_name() + "_hide").get_length(), {"method": "show_gun", "args":[]})
 			
 			# set the animations to the signals
-			child.shoot_signal.connect(func() -> void:
-				#anim_player.play(child.get_name() + "_shoot")
-				child.anim_sprite.play("Shoot")
-				child.muzzle_flash.emitting = true
-			)
+			if not child is Cross: 
+				child.shoot_signal.connect(func() -> void:
+					#anim_player.play(child.get_name() + "_shoot")
+					$AnimationPlayer.play("Shoot")
+					child.muzzle_flash.emitting = true
+				)
 
 			child.reload_signal.connect(func() -> void:
-				print(child.get_name() + &"_reload")
 				#anim_player.play(child.get_name() + &"_reload")
 				child.anim_sprite.play("Reload")
 			)

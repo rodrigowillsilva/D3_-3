@@ -11,6 +11,7 @@ var enemy_pool : Array[BasicEnemy]
 var enemy_control : Array[bool] 
 var timer : Timer
 var spawning : bool = true
+var tim: float
 
 
 # Called when the node enters the scene tree for the first time.
@@ -27,7 +28,7 @@ func _ready() -> void:
 	var enemy : Array[PackedScene]
 	enemy.append(load("res://Scenes/basic_enemy.tscn"))
 	for e in enemy:
-		for i in range (10):
+		for i in range (50):
 			var spawn_enemy = e.instantiate()
 			#spawn_enemy.set_process(false)
 			#spawn_enemy.set_physics_process(false)
@@ -39,7 +40,7 @@ func _ready() -> void:
 			enemy_control.append(true)
 			enemy_pool.append(spawn_enemy)
 			spawn_enemy.died.connect(enemy_died)
-			get_tree().get_root().get_node("/root/GrayBox").add_child.call_deferred(spawn_enemy)
+			get_tree().get_root().get_node("/root/main_map").add_child.call_deferred(spawn_enemy)
 	timer.start(3)
 	pass
 	
@@ -58,7 +59,6 @@ func pick_enemy():
 	return enemy_pool[index]
 	
 func on_timer_timeout():
-	print("spean")
 	if enemy_control.all(func(x) : return x == false) : 
 		timer.start()
 		return 
@@ -68,7 +68,9 @@ func on_timer_timeout():
 	which_enemy.activated = true
 	which_enemy.set_deferred("process_mode", PROCESS_MODE_PAUSABLE)
 	which_enemy.spawn()
-	timer.start()
+	var time = initial_spawn_speed * spawn_curve.interpolate(tim)
+	tim = clamp(tim + 0.033, 0, 1)
+	timer.start(tim)
 
 func enemy_died(enemy : BasicEnemy):
 	var index = enemy_pool.find(enemy)
@@ -76,5 +78,5 @@ func enemy_died(enemy : BasicEnemy):
 	enemy.position = pool_point.position
 	enemy.activated = false
 	enemy.set_deferred("process_mode", PROCESS_MODE_DISABLED)
-	timer.start()
+	#timer.start()
 	pass
