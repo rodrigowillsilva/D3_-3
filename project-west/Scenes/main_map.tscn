@@ -70,8 +70,13 @@
 [ext_resource type="PackedScene" uid="uid://diak72qkxkkih" path="res://Graphics/Models/ModelsGLB/Well/Well.glb" id="66_exexb"]
 [ext_resource type="PackedScene" uid="uid://b57mwmuq626v6" path="res://Graphics/Models/ModelsGLB/SaleiroEBalde/SaleiroEBalde.glb" id="67_rld78"]
 [ext_resource type="PackedScene" uid="uid://chj0j23hix22m" path="res://Graphics/Models/ModelsGLB/Carroca/Carroca.glb" id="68_u5n8d"]
-[ext_resource type="Script" path="res://Scripts/spawn_controller.gd" id="69_kwsl5"]
-[ext_resource type="PackedScene" path="res://Scenes/spawnpoint.tscn" id="70_odqno"]
+
+[sub_resource type="Curve" id="Curve_cudfd"]
+_data = [Vector2(0.55988, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_hyr73"]
+curve_x = SubResource("Curve_cudfd")
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ch22b"]
 panorama = ExtResource("2_5ehki")
@@ -1149,110 +1154,3 @@ transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 6,
 
 [node name="Carroca" parent="structures" instance=ExtResource("68_u5n8d")]
 transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -16, -0.3, 16)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="structures/Carroca" groups=["navigation_mesh_source_group"]]
-collision_layer = 7
-collision_mask = 7
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="structures/Carroca/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2251, 2.58936, -0.0190544)
-shape = SubResource("BoxShape3D_plsas")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="structures" groups=["navigation_mesh_source_group"]]
-collision_layer = 7
-collision_mask = 7
-
-[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="structures/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -6.255, 0, -18.743)
-depth = 100.575
-polygon = PackedVector2Array(15.1318, -12.8448, 40.1301, -5.75068, 59.3856, 19.9233, 60.7368, 54.7182, 52.6293, 82.7569, 22.9015, 94.2426, -1.42116, 91.8779, -29.4598, 68.9065, -31.4867, 39.5165, -31.8245, 23.3014, -13.9203, -4.39942, 6.3486, -11.4935, 0.943551, -15.2095, -16.9607, -9.12883, -36.5539, 22.9636, -35.5405, 46.6107, -34.8649, 72.6224, -3.44805, 96.2695, 21.5503, 98.6342, 58.3721, 85.7972, 67.4931, 55.056, 68.5066, 19.9233, 46.5486, -10.8179, 14.1183, -19.2633)
-
-[node name="WesternStructure5" parent="structures" instance=ExtResource("64_f1f3t")]
-transform = Transform3D(-2.16506, 0, 1.25, 0, 2.5, 0, -1.25, 0, -2.16506, 41, 0, 60)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="structures/WesternStructure5" groups=["navigation_mesh_source_group"]]
-collision_layer = 7
-collision_mask = 7
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="structures/WesternStructure5/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.367065, 0.786491, 0.0401319)
-shape = SubResource("BoxShape3D_bv11e")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="structures/WesternStructure5/StaticBody3D"]
-transform = Transform3D(0.832921, -0.553391, 0, 0.553391, 0.832921, 0, 1.42109e-14, -2.84217e-13, 1, -1.52975, 7.86165, -0.00268531)
-shape = SubResource("BoxShape3D_ydkei")
-
-[node name="WesternStructure6" parent="structures" instance=ExtResource("64_f1f3t")]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -31, 0, 49)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="structures/WesternStructure6" groups=["navigation_mesh_source_group"]]
-collision_layer = 7
-collision_mask = 7
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="structures/WesternStructure6/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.367065, 0.786491, 0.0401319)
-shape = SubResource("BoxShape3D_bv11e")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="structures/WesternStructure6/StaticBody3D"]
-transform = Transform3D(0.832921, -0.553391, 0, 0.553391, 0.832921, 0, 1.42109e-14, -2.84217e-13, 1, -1.52975, 7.86165, -0.00268531)
-shape = SubResource("BoxShape3D_ydkei")
-
-[node name="WesternStructure7" parent="structures" instance=ExtResource("64_f1f3t")]
-transform = Transform3D(-1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, -18, 0, -17)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="structures/WesternStructure7" groups=["navigation_mesh_source_group"]]
-collision_layer = 7
-collision_mask = 7
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="structures/WesternStructure7/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.367065, 0.786491, 0.0401319)
-shape = SubResource("BoxShape3D_bv11e")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="structures/WesternStructure7/StaticBody3D"]
-transform = Transform3D(0.832921, -0.553391, 0, 0.553391, 0.832921, 0, 1.42109e-14, -2.84217e-13, 1, -1.52975, 7.86165, -0.00268531)
-shape = SubResource("BoxShape3D_ydkei")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.452212, -0.295851, 0.841413, -0.891908, -0.15242, 0.425757, 0.00228786, -0.942995, -0.332798, 3.71034, 11.4192, -3.01693)
-light_energy = 0.3
-light_angular_distance = 1.0
-shadow_enabled = true
-directional_shadow_mode = 1
-directional_shadow_blend_splits = true
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.9128, 25.2312, -1.09541)
-light_color = Color(1, 0.43, 0.43, 1)
-light_energy = 16.0
-light_volumetric_fog_energy = 0.98
-light_size = 0.52
-omni_range = 162.279
-
-[node name="spawn_controller" type="Node3D" parent="." node_paths=PackedStringArray("pool_point", "player")]
-process_mode = 1
-script = ExtResource("69_kwsl5")
-pool_point = NodePath("pool_point")
-player = NodePath("../Player")
-initial_spawn_speed = 2
-spawn_curve = SubResource("Curve_vku4h")
-
-[node name="spawnpoint" parent="spawn_controller" instance=ExtResource("70_odqno")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3068, 1, 0.231216)
-
-[node name="spawnpoint2" parent="spawn_controller" instance=ExtResource("70_odqno")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1434, 1, -2.36251)
-
-[node name="spawnpoint3" parent="spawn_controller" instance=ExtResource("70_odqno")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7885, 1, 41.9428)
-
-[node name="spawnpoint4" parent="spawn_controller" instance=ExtResource("70_odqno")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6265, 1, 49.139)
-
-[node name="pool_point" type="Marker3D" parent="spawn_controller"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -258.826, 0.999992, -259.158)
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." groups=["navigation_mesh_source_group"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.38419e-07, 0)
-navigation_mesh = SubResource("NavigationMesh_7dhy0")
-
-[editable path="structures/Terrain"]

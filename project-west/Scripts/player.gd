@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-
+@onready var music_player = $"../Music"
 @export var health: float
 @export var max_speed: float
 @export var accel: float
@@ -21,7 +21,7 @@ func _ready() -> void:
 	$DamageAndLifeController.die_signal.connect(func() -> void:
 		$"/root/GameManager".end_level.emit()
 	)
-	
+	music_player.play()
 	for gun in gun_controller.guns:
 		if gun is Revolver:
 			gun.skill_signal.connect(func() -> void:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bit8lyx3oc1rb"]
+[gd_scene load_steps=13 format=3 uid="uid://bit8lyx3oc1rb"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_6wg7o"]
 [ext_resource type="Texture2D" uid="uid://celqrhxvy1b2c" path="res://Graphics/menu_project_west.png" id="2_y4brl"]
 [ext_resource type="FontFile" uid="uid://d1dlguxswy045" path="res://Graphics/CowboyOutlaw-R9qGM.otf" id="3_heqn5"]
+[ext_resource type="AudioStream" uid="uid://cse0c8gfdvcix" path="res://Audio/sounds/524240__badoink__hard-rock-loop.wav" id="4_vg8wl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7t85p"]
 font = ExtResource("3_heqn5")
@@ -10,6 +11,23 @@ font_size = 127
 font_color = Color(0.929412, 1, 0.368627, 1)
 shadow_size = 18
 shadow_color = Color(0.64743, 0.315217, 0.179438, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6t3qe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lthce"]
+bg_color = Color(0.791999, 0.791999, 0.791999, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ale6w"]
+bg_color = Color(0.925353, 0.925353, 0.925353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xiif7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bvw3o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_50nmt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51s6x"]
+bg_color = Color(0.529067, 0.529067, 0.529067, 1)
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -22,8 +40,8 @@ script = ExtResource("1_6wg7o")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_right = 2670.0
+offset_bottom = 1502.0
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_y4brl")
 
@@ -36,39 +54,72 @@ offset_bottom = 166.0
 text = "Project West"
 label_settings = SubResource("LabelSettings_7t85p")
 
-[node name="play" type="Button" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -579.0
+offset_top = -248.0
+offset_right = -380.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="play" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-offset_left = 49.0
-offset_top = 330.0
-offset_right = 652.0
-offset_bottom = 395.0
 theme_override_fonts/font = ExtResource("3_heqn5")
 theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6t3qe")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lthce")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ale6w")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xiif7")
 text = "Play"
 flat = true
 
-[node name="tutorial" type="Button" parent="."]
-layout_mode = 0
-offset_left = 49.0
-offset_top = 396.0
-offset_right = 652.0
-offset_bottom = 461.0
+[node name="tutorial" type="Button" parent="VBoxContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("3_heqn5")
 theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6t3qe")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lthce")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ale6w")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bvw3o")
 text = "Tutorial"
 flat = true
 
-[node name="quit" type="Button" parent="."]
+[node name="options" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-offset_left = 49.0
-offset_top = 462.0
-offset_right = 652.0
-offset_bottom = 527.0
 theme_override_fonts/font = ExtResource("3_heqn5")
 theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6t3qe")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lthce")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ale6w")
+theme_override_styles/normal = SubResource("StyleBoxFlat_50nmt")
+text = "Options"
+flat = true
+
+[node name="quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_heqn5")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6t3qe")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lthce")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ale6w")
+theme_override_styles/normal = SubResource("StyleBoxFlat_51s6x")
 text = "Quit"
 flat = true
 
-[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="tutorial" to="." method="_on_tutorial_pressed"]
-[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_vg8wl")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="VBoxContainer/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="VBoxContainer/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]
