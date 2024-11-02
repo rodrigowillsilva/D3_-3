@@ -23,12 +23,13 @@ func _ready() -> void:
 		if child is SpawnPoint:
 			spawnpoints.append(child)
 	timer = Timer.new()
+	timer.one_shot = true
 	add_child(timer)
 	timer.timeout.connect(on_timer_timeout)
 	var enemy : Array[PackedScene]
 	enemy.append(load("res://Scenes/basic_enemy.tscn"))
 	for e in enemy:
-		for i in range (50):
+		for i in range (20):
 			var spawn_enemy = e.instantiate()
 			#spawn_enemy.set_process(false)
 			#spawn_enemy.set_physics_process(false)
@@ -51,16 +52,21 @@ func _process(delta: float) -> void:
 	pass
 	
 func pick_enemy():
-	var index = randi_range(0, 9)
+	var index = randi_range(0, 19)
+	var i = 0;
 	while not enemy_control[index]:
-		index = randi_range(0, 9)
+		index = randi_range(0, 19)
+		i += 1
+		if i >= 1000:
+			print("spawn error!!!")
+			break
 	enemy_control[index] = false
 	
 	return enemy_pool[index]
 	
 func on_timer_timeout():
 	if enemy_control.all(func(x) : return x == false) : 
-		timer.start()
+		timer.start(initial_spawn_speed * spawn_curve.sample(tim))
 		return 
 	var which_enemy = pick_enemy()
 	print(which_enemy)
@@ -68,9 +74,10 @@ func on_timer_timeout():
 	which_enemy.activated = true
 	which_enemy.set_deferred("process_mode", PROCESS_MODE_PAUSABLE)
 	which_enemy.spawn()
-	var time = initial_spawn_speed * spawn_curve.interpolate(tim)
-	tim = clamp(tim + 0.033, 0, 1)
-	timer.start(tim)
+	var time = initial_spawn_speed * spawn_curve.sample(tim)
+	print(time)
+	tim = clamp(tim + 0.02, 0, 1)
+	timer.start(1)
 
 func enemy_died(enemy : BasicEnemy):
 	var index = enemy_pool.find(enemy)

@@ -61,7 +61,7 @@ func reload() -> Enums.GunReloadReturn:
 	
 	timers[Enums.TimerType.RELOADCOOLDOWN].start(reload_time)
 	reload_signal.emit()
-	
+
 	return Enums.GunReloadReturn.RELOAD
 
 func skill() -> void:

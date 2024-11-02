@@ -29,13 +29,12 @@ func _ready():
 	NavigationServer3D.map_changed.connect(func(_map): map_ready = true)
 	$DamageAndLifeController.max_health = health
 	$DamageAndLifeController.die_signal.connect(die)
-	nav_timer = Timer.new()
-	add_child(nav_timer)
-	nav_timer.timeout.connect(func(): 
-		$NavigationAgent3D.set_target_position(player.global_transform.origin)
-		
-	)
-	nav_timer.start(0.1)
+	#nav_timer = Timer.new()
+	#add_child(nav_timer)
+	#nav_timer.timeout.connect(func(): 
+		#
+	#)
+	#nav_timer.start(0.1)
 	pass
 
 
@@ -49,21 +48,16 @@ func _physics_process(delta):
 	player_look.y = global_position.y
 	look_at(player_look, Vector3.UP)
 	
-
-
 	if state == "walk":
-		next_nav_point = $NavigationAgent3D.get_next_path_position()
-		mov = next_nav_point - global_position
-		$NavigationAgent3D.set_velocity(mov.normalized() * SPEED)
 		
 		move_and_slide()
-		
+		attack_timer = 0
 		if $NavigationAgent3D.is_target_reached():
 			state = "attack"
 	
 	elif state == "attack":
 		attack_timer+= delta
-		$AnimationPlayer.play(&"BasicEnemy_attack")
+		#$AnimationPlayer.play(&"BasicEnemy_attack")
 		var dist = global_position.distance_to(player.global_position)
 		if attack_timer > 1:
 			attack_player()
@@ -78,6 +72,7 @@ func _physics_process(delta):
 		
 		if attack_timer >= 2:
 			state = "walk"
+			attack_timer = 0
 
 func attack_player():
 	player.take_damage(Enums.DamageType.ENEMY, 1)
@@ -113,4 +108,8 @@ func hit():
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	if not $NavigationAgent3D.is_target_reached():
 		velocity = safe_velocity
+		$NavigationAgent3D.set_target_position(player.global_transform.origin)
+		next_nav_point = $NavigationAgent3D.get_next_path_position()
+		mov = next_nav_point - global_position
+		$NavigationAgent3D.set_velocity(mov.normalized() * SPEED)
 	pass # Replace with function body.

@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbli8sjire3s2"]
+[gd_scene load_steps=6 format=3 uid="uid://bbli8sjire3s2"]
 
 [ext_resource type="PackedScene" uid="uid://1ujdfnq5agh3" path="res://Scenes/Guns/gun.tscn" id="1_psox5"]
 [ext_resource type="Script" path="res://Scripts/shotgun.gd" id="2_3b4g3"]
-[ext_resource type="AudioStream" uid="uid://bjth8nfwfq1jy" path="res://Audio/sounds/564480__lumikon__shotgun-shot-sfx.wav" id="3_nhbuh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5jbnq"]
 albedo_color = Color(0.302784, 0.205134, 0.0641735, 1)
@@ -45,8 +44,3 @@ shape = SubResource("SphereShape3D_blk8u")
 
 [node name="Marker3D" type="Marker3D" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.293661, -0.204356, 5.96046e-08)
-
-[node name="shotgun_shot" type="AudioStreamPlayer" parent="." index="11"]
-stream = ExtResource("3_nhbuh")
-volume_db = -20.0
-bus = &"SFX"

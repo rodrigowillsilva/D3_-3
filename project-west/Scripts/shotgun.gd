@@ -2,8 +2,6 @@ extends Gun
 
 class_name Shotgun
 
-@onready var audio_stream_player = $shotgun_shot
-
 @export var spread: float = 0.1
 @export var pellets: int = 5
 @export var grapiling_max_dist: int = 100
@@ -59,7 +57,7 @@ func shoot() -> Enums.GunShootReturn:
 	var r = super()
 	if r != Enums.GunShootReturn.SHOOT:
 		return r
-	audio_stream_player.play()
+
 	for i in range(pellets):
 		var dir = transform.basis.z + Vector3(randf_range(-spread, spread), randf_range(-spread, spread), randf_range(-spread, spread))
 		

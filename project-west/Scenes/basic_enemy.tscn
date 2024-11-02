@@ -10,7 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://bsii810o70mbu" path="res://Graphics/demons/walking_zombie/quadro_zombie0005.png" id="8_6i1rd"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_uhw8w"]
-radius = 0.7
+height = 2.22337
+radius = 0.682433
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_411ag"]
 animations = [{
@@ -46,14 +47,15 @@ health = 3.0
 SPEED = 7.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00347066, 0.0198225, -0.0193906)
 shape = SubResource("CylinderShape3D_uhw8w")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 2.0
 target_desired_distance = 3.0
 avoidance_enabled = true
-radius = 1.0
-neighbor_distance = 30.0
-max_neighbors = 25
+height = 2.0
+radius = 2.0
 
 [node name="DamageAndLifeController" type="Node3D" parent="."]
 script = ExtResource("3_trf2m")
