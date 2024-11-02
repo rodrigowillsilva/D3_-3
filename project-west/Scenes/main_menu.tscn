@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_6wg7o"]
 [ext_resource type="Texture2D" uid="uid://celqrhxvy1b2c" path="res://Graphics/menu_project_west.png" id="2_y4brl"]
 [ext_resource type="FontFile" uid="uid://d1dlguxswy045" path="res://Graphics/CowboyOutlaw-R9qGM.otf" id="3_heqn5"]
-[ext_resource type="AudioStream" uid="uid://cse0c8gfdvcix" path="res://Audio/sounds/524240__badoink__hard-rock-loop.wav" id="4_vg8wl"]
+[ext_resource type="AudioStream" uid="uid://bjcf5om3qgw1l" path="res://Audio/sounds/music03.mp3" id="4_00u0f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7t85p"]
 font = ExtResource("3_heqn5")
@@ -114,8 +114,8 @@ text = "Quit"
 flat = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_vg8wl")
-volume_db = -20.0
+stream = ExtResource("4_00u0f")
+volume_db = -10.0
 autoplay = true
 bus = &"Music"
 

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/settings.gd" id="1_hkloa"]
 [ext_resource type="Texture2D" uid="uid://celqrhxvy1b2c" path="res://Graphics/menu_project_west.png" id="2_s4sqe"]
 [ext_resource type="FontFile" uid="uid://d1dlguxswy045" path="res://Graphics/CowboyOutlaw-R9qGM.otf" id="3_skxkc"]
-[ext_resource type="AudioStream" uid="uid://cse0c8gfdvcix" path="res://Audio/sounds/524240__badoink__hard-rock-loop.wav" id="4_ivac2"]
+[ext_resource type="AudioStream" uid="uid://bjcf5om3qgw1l" path="res://Audio/sounds/music03.mp3" id="4_c8d2d"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_56y85"]
 
@@ -132,7 +132,7 @@ flat = true
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_ivac2")
+stream = ExtResource("4_c8d2d")
 volume_db = -20.0
 autoplay = true
 bus = &"Music"
