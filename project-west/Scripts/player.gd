@@ -19,7 +19,7 @@ signal player_died
 
 func _ready() -> void:
 	$DamageAndLifeController.die_signal.connect(func() -> void:
-		player_died.emit()
+		$"/root/GameManager".end_level.emit()
 	)
 	
 	for gun in gun_controller.guns:

@@ -28,6 +28,7 @@ func _on_body_entered(_body: Node) -> void:
 func start_area_damage() -> void:
 	#deactivate the rigidbody so the body stays in place
 	freeze = true
+	$MeshInstance3D2.set_deferred("visible", true)
 	$CollisionShape3D.set_deferred("disabled",true)
 	$Area3D.set_deferred("monitoring", true)
 	$Area3D.set_deferred("monitorable", true)

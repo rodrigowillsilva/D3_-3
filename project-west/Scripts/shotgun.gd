@@ -104,11 +104,14 @@ func start_grapling() -> void:
 	grapling_timer.start(max_grapling_time)
 	var mesh = $Rope/RopeMesh.mesh as CylinderMesh
 	mesh.height = 0
+	
 
 func stop_grapling() -> void:
 	$Hook.visible = false
 	grapling = false
 	$Hook/CollisionShape3D.disabled = true
+	var mesh = $Rope/RopeMesh.mesh as CylinderMesh
+	mesh.height = 0
 	stop_grapling_signal.emit()
 	timers[Enums.TimerType.SKILLCOOLDOWN].start(skill_cooldown)
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkye0xn4cij7g"
-path.s3tc="res://.godot/imported/cross_and_water.png-f8a303b06b112d30665ae6df952a1267.s3tc.ctex"
+uid="uid://bbwynfi2sfgjc"
+path.s3tc="res://.godot/imported/Muzzle.png-0273175c753df3802022ccdc9c8b45d1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Graphics/guns/cross_and_water/cross_and_water.png"
-dest_files=["res://.godot/imported/cross_and_water.png-f8a303b06b112d30665ae6df952a1267.s3tc.ctex"]
+source_file="res://Graphics/sprites/Muzzle.png"
+dest_files=["res://.godot/imported/Muzzle.png-0273175c753df3802022ccdc9c8b45d1.s3tc.ctex"]
 
 [params]
 

@@ -42,10 +42,10 @@ func _ready() -> void:
 
 
 func shoot() -> Enums.GunShootReturn:
-	timers[Enums.TimerType.RELOADCOOLDOWN].stop()
 	if not can_shoot: return Enums.GunShootReturn.CANT_SHOOT
 	if timers[Enums.TimerType.SHOOTCOOLDOWN].time_left != 0: return Enums.GunShootReturn.CANT_SHOOT
 	if ammo <= 0: return Enums.GunShootReturn.OUT_OF_AMMO
+	timers[Enums.TimerType.RELOADCOOLDOWN].stop()
 	timers[Enums.TimerType.SHOOTCOOLDOWN].start(fire_rate)
 	ammo -= 1
 	shoot_signal.emit()

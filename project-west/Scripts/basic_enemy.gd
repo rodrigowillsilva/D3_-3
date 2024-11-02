@@ -15,6 +15,7 @@ var nav_timer: Timer
 var next_nav_point: Vector3 = Vector3.ZERO
 var spawnController: SpawnController
 var state: String = "walk"
+var attack_timer: float
 
 signal died(enemy: BasicEnemy)
 
@@ -61,13 +62,26 @@ func _physics_process(delta):
 			state = "attack"
 	
 	elif state == "attack":
+		attack_timer+= delta
 		$AnimationPlayer.play(&"BasicEnemy_attack")
 		var dist = global_position.distance_to(player.global_position)
+		if attack_timer > 1:
+			attack_player()
+		if dist < 1:
+			attack_player()
 		if dist > 3:
 			state = "walk"
-		
-		pass	
+			attack_timer = 0
 
+	elif state == "wait":
+		attack_timer += delta
+		
+		if attack_timer >= 2:
+			state = "walk"
+
+func attack_player():
+	player.take_damage(Enums.DamageType.ENEMY, 1)
+	state == "wait"
 
 func die():
 	died.emit(self)	

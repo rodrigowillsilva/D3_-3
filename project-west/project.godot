@@ -20,6 +20,7 @@ config/icon="res://Graphics/icon.svg"
 [autoload]
 
 Enums="*res://Scripts/enums.gd"
+GameManager="*res://Scenes/game_manager.tscn"
 
 [display]
 

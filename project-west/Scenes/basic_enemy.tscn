@@ -54,7 +54,6 @@ avoidance_enabled = true
 radius = 1.0
 neighbor_distance = 30.0
 max_neighbors = 25
-debug_enabled = true
 
 [node name="DamageAndLifeController" type="Node3D" parent="."]
 script = ExtResource("3_trf2m")
