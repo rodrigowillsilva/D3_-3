@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://baybl52hgdc2y"]
+[gd_scene load_steps=7 format=3 uid="uid://baybl52hgdc2y"]
 
 [ext_resource type="Script" path="res://Singletons/Sons/sound_manager.gd" id="1_obn4k"]
 [ext_resource type="AudioStream" uid="uid://cedhtbhfnhva8" path="res://Musicas/music01.mp3" id="2_ubg0n"]
 [ext_resource type="AudioStream" uid="uid://bjcf5om3qgw1l" path="res://Musicas/music03.mp3" id="3_as5fr"]
+[ext_resource type="AudioStream" uid="uid://bjth8nfwfq1jy" path="res://Audio/sounds/564480__lumikon__shotgun-shot-sfx.wav" id="4_sxuay"]
+[ext_resource type="AudioStream" uid="uid://dfvep5surc8au" path="res://Audio/sounds/683311__pnmcarrierailfan__pistol-gun-shot-mix.mp3" id="5_3tf8f"]
+[ext_resource type="AudioStream" uid="uid://cju8f0lp5sthv" path="res://Audio/sounds/464528__pcmac__gun_reload.wav" id="6_dawtj"]
 
 [node name="Sons" type="Node"]
 script = ExtResource("1_obn4k")
@@ -18,5 +21,17 @@ stream = ExtResource("3_as5fr")
 bus = &"Musicas"
 
 [node name="SFX" type="Node" parent="."]
+
+[node name="TiroShotgun" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_sxuay")
+bus = &"SFX"
+
+[node name="TiroRevolver" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("5_3tf8f")
+bus = &"SFX"
+
+[node name="Recarregamento" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_dawtj")
+bus = &"SFX"
 
 [node name="Ambiente" type="Node" parent="."]

@@ -1,0 +1,105 @@
+[gd_scene load_steps=11 format=3 uid="uid://de7tfaw7bl8ng"]
+
+[ext_resource type="Texture2D" uid="uid://dewovqf3pdsg1" path="res://Graphics/PauseMenu/janela1.png" id="1_r4a3i"]
+[ext_resource type="Texture2D" uid="uid://dm4o7528112hr" path="res://Graphics/PauseMenu/estrela2.png" id="2_b3mgm"]
+[ext_resource type="Texture2D" uid="uid://dtn6ul0pc20e8" path="res://Graphics/PauseMenu/brilho.png" id="3_qvgqo"]
+[ext_resource type="Texture2D" uid="uid://2f4epkij2gu7" path="res://Graphics/PauseMenu/cranio.png" id="4_dhjvw"]
+[ext_resource type="Texture2D" uid="uid://bxr44q340chom" path="res://Graphics/PauseMenu/poster.png" id="5_bde5y"]
+[ext_resource type="Shader" path="res://Shaders/defaultWaveShader.gdshader" id="5_w5hpt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qor3k"]
+shader = ExtResource("5_w5hpt")
+shader_parameter/width = 5.0
+shader_parameter/speed = 60.0
+shader_parameter/height = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1dg1q"]
+shader = ExtResource("5_w5hpt")
+shader_parameter/width = 5.0
+shader_parameter/speed = 120.0
+shader_parameter/height = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bbm74"]
+shader = ExtResource("5_w5hpt")
+shader_parameter/width = -5.0
+shader_parameter/speed = 120.0
+shader_parameter/height = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kh61l"]
+shader = ExtResource("5_w5hpt")
+shader_parameter/width = -10.0
+shader_parameter/speed = 10.0
+shader_parameter/height = 5.0
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="cranio" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_qor3k")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -29.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_dhjvw")
+
+[node name="quadro" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -51.0
+offset_right = 128.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_r4a3i")
+
+[node name="estrela" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_1dg1q")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -97.0
+offset_bottom = -97.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_b3mgm")
+
+[node name="brilho" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_bbm74")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -68.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qvgqo")
+
+[node name="poster" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_kh61l")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -51.0
+offset_right = -8.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_bde5y")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxr44q340chom"
-path="res://.godot/imported/poster.png-c08d4ecd2dec492edeb7f3299d153cff.ctex"
+uid="uid://dewovqf3pdsg1"
+path="res://.godot/imported/janela1.png-73a76d66898a26d34c7a7327c7bae0b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/PauseMenu/poster.png"
-dest_files=["res://.godot/imported/poster.png-c08d4ecd2dec492edeb7f3299d153cff.ctex"]
+source_file="res://Graphics/PauseMenu/janela1.png"
+dest_files=["res://.godot/imported/janela1.png-73a76d66898a26d34c7a7327c7bae0b2.ctex"]
 
 [params]
 

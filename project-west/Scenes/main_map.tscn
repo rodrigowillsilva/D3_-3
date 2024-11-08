@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=3 uid="uid://bj6dty3xysfef"]
+[gd_scene load_steps=127 format=3 uid="uid://bj6dty3xysfef"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ie75e"]
 [ext_resource type="Script" path="res://Scenes/main_map.gd" id="1_xifff"]
@@ -68,12 +68,16 @@
 [ext_resource type="PackedScene" uid="uid://dirgknrp04mko" path="res://Graphics/Models/ColGBLS/Terrain/Terrain.glb" id="62_3fehu"]
 [ext_resource type="Texture2D" uid="uid://bbwynfi2sfgjc" path="res://Graphics/sprites/Muzzle.png" id="62_t22an"]
 [ext_resource type="PackedScene" uid="uid://ht55xbt1k8hk" path="res://Graphics/Models/ModelsGLB/WesternStructure1/WesternStructure1.glb" id="64_f1f3t"]
+[ext_resource type="AudioStream" uid="uid://bjth8nfwfq1jy" path="res://Audio/sounds/564480__lumikon__shotgun-shot-sfx.wav" id="65_bxqng"]
 [ext_resource type="PackedScene" uid="uid://b7yg0dfnetb0t" path="res://Graphics/Models/ModelsGLB/GenericEstructure/GenericStructure.glb" id="65_hhfxu"]
 [ext_resource type="PackedScene" uid="uid://diak72qkxkkih" path="res://Graphics/Models/ModelsGLB/Well/Well.glb" id="66_exexb"]
+[ext_resource type="AudioStream" uid="uid://dfvep5surc8au" path="res://Audio/sounds/683311__pnmcarrierailfan__pistol-gun-shot-mix.mp3" id="66_rylxx"]
 [ext_resource type="PackedScene" uid="uid://b57mwmuq626v6" path="res://Graphics/Models/ModelsGLB/SaleiroEBalde/SaleiroEBalde.glb" id="67_rld78"]
+[ext_resource type="AudioStream" uid="uid://cju8f0lp5sthv" path="res://Audio/sounds/464528__pcmac__gun_reload.wav" id="67_v001a"]
 [ext_resource type="PackedScene" uid="uid://chj0j23hix22m" path="res://Graphics/Models/ModelsGLB/Carroca/Carroca.glb" id="68_u5n8d"]
 [ext_resource type="Script" path="res://Scripts/spawn_controller.gd" id="69_kwsl5"]
 [ext_resource type="PackedScene" uid="uid://bjfvm7wkvp13" path="res://Scenes/spawnpoint.tscn" id="70_odqno"]
+[ext_resource type="PackedScene" uid="uid://d2mjsg8c3esbf" path="res://Graphics/Models/ColGBLS/Poste/Poste.glb" id="78_mv1cg"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ch22b"]
 panorama = ExtResource("2_5ehki")
@@ -174,6 +178,42 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(-0.095, -0.648, -0.155), Vector3(-0.095, 0.222, -0.155)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cross/AnimatedSprite3D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shotgun/AnimatedSprite3D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Revolver/AnimatedSprite3D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_xj4kh"]
 length = 0.001
@@ -261,6 +301,78 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0.0349066)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SFX/Recarregamento:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SFX/TiroShotgun:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Shotgun/AnimatedSprite3D:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Cross/AnimatedSprite3D:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Revolver/AnimatedSprite3D:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SFX/TiroRevolver:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_76sxm"]
 resource_name = "Revolver_hide"
@@ -292,7 +404,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_oymsc"]
 resource_name = "Revolver_reload"
-length = 2.0
+length = 1.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -300,15 +412,27 @@ tracks/0/path = NodePath("Revolver/AnimatedSprite3D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.5, 0.6, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667, 1, 1.03333, 1.16667, 1.26667, 1.66667, 1.76667, 1.83333, 1.93333),
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.5, 0.6, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667, 1, 1.03333, 1.16667, 1.26667, 1.36667, 1.42515, 1.50783, 1.58997),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 20, 22, 24]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SFX/Recarregamento:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_swx2c"]
 resource_name = "Revolver_shoot"
-length = 0.1
+length = 0.5
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -334,6 +458,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(-0.015, -0.34, 0), Vector3(-0.015, -0.175, 0), Vector3(-0.015, -0.275, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SFX/TiroRevolver:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_4gbjm"]
 resource_name = "Revolver_show"
@@ -350,6 +486,54 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, -1, 0), Vector3(-0.015, -0.375, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Revolver/AnimatedSprite3D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shotgun/AnimatedSprite3D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cross/AnimatedSprite3D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Revolver/AnimatedSprite3D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_x8xfk"]
@@ -382,11 +566,47 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_wcypc"]
 resource_name = "Shotgun_reload"
-step = 0.01
+length = 1.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SFX/Recarregamento:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.01),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shotgun:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.35, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.09, 0), Vector3(0.16, -0.06, 0), Vector3(0.16, -0.415, 0), Vector3(0, -0.09, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shotgun:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.445059), Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_qjuks"]
 resource_name = "Shotgun_shoot"
-length = 0.1
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -410,7 +630,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.02, 0.05),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, -0.06, 0), Vector3(0, -0.06, 0), Vector3(0, -0.22, 0)]
+"values": [Vector3(0, -0.115, 0), Vector3(0, -0.225, 0), Vector3(0, -0.03, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -422,7 +642,19 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0.02, 0.04),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0.0349066), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, -0.18326), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SFX/TiroShotgun:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_mw55s"]
@@ -439,7 +671,43 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, -0.7, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, -0.7, 0), Vector3(0, -0.115, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Revolver/AnimatedSprite3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shotgun/AnimatedSprite3D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cross/AnimatedSprite3D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_up8rt"]
@@ -1029,6 +1297,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.293661, -0.204356, 5.96046e
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Player/Head/GunController/Shotgun"]
 transform = Transform3D(0.107596, -0.0228703, 0, 0.0228703, 0.107596, 0, 0, 0, 0.11, 0.299942, -0.314682, 0)
+visible = false
 modulate = Color(0.58118, 0.570339, 0.568893, 1)
 sprite_frames = SubResource("SpriteFrames_50sda")
 animation = &"Reload"
@@ -1088,6 +1357,7 @@ scale_amount_curve = SubResource("Curve_x1f4n")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Player/Head/GunController/Cross"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.095, -0.653, -0.155)
+visible = false
 modulate = Color(0.707967, 0.707967, 0.707967, 1)
 pixel_size = 0.0019
 sprite_frames = SubResource("SpriteFrames_tlws1")
@@ -1096,6 +1366,21 @@ sprite_frames = SubResource("SpriteFrames_tlws1")
 transform = Transform3D(0.142477, -0.192546, -0.204576, 0.253215, 0.187369, 0, 0.121687, -0.16445, 0.239528, 0.245, -0.115, -0.26)
 visible = false
 mesh = SubResource("QuadMesh_0er2i")
+
+[node name="SFX" type="Node" parent="Player/Head/GunController"]
+
+[node name="TiroShotgun" type="AudioStreamPlayer" parent="Player/Head/GunController/SFX"]
+stream = ExtResource("65_bxqng")
+bus = &"SFX"
+
+[node name="TiroRevolver" type="AudioStreamPlayer" parent="Player/Head/GunController/SFX"]
+stream = ExtResource("66_rylxx")
+pitch_scale = 1.38
+bus = &"SFX"
+
+[node name="Recarregamento" type="AudioStreamPlayer" parent="Player/Head/GunController/SFX"]
+stream = ExtResource("67_v001a")
+bus = &"SFX"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("CapsuleShape3D_3qtfo")
@@ -1339,4 +1624,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -258.826, 0.999992, -259.158)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.38419e-07, 0)
 navigation_mesh = SubResource("NavigationMesh_7dhy0")
 
+[node name="Poste" parent="." instance=ExtResource("78_mv1cg")]
+transform = Transform3D(-0.247819, 0, 0.653761, 0, 0.549117, 0, -0.924873, 0, -0.175175, 32.926, 0, 8.504)
+
+[node name="CollisionShape3D" parent="Poste/col" index="0"]
+disabled = true
+
+[editable path="Player/Head/GunController/Shotgun/Rope/Rope3D"]
 [editable path="structures/Terrain"]
+[editable path="Poste"]
