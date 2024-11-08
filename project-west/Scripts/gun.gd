@@ -17,7 +17,7 @@ signal on_unequip_signal
 @export var muzzle_flash: CPUParticles3D
 
 @onready var ammo = max_ammo
-@onready var anim_sprite: AnimatedSprite3D = $AnimatedSprite3D
+#@onready var anim_sprite: AnimationPlayer = $Player/Head/GunController/AnimationPlayer
 
 var can_shoot: bool = true
 var can_skill: bool = true

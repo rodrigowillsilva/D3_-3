@@ -339,10 +339,10 @@ offset_right = 46.0
 offset_bottom = 58.0
 
 [node name="Revolver" type="TextureRect" parent="Player/Head/GunController/guns_hud"]
-offset_left = 757.0
-offset_top = 752.0
-offset_right = 1197.0
-offset_bottom = 1319.0
+offset_left = 703.0
+offset_top = 362.0
+offset_right = 1143.0
+offset_bottom = 929.0
 rotation = -0.13439
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("7_fgn0a")

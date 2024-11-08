@@ -10,9 +10,6 @@ extends CharacterBody3D
 @export var sens: float
 @export var gun_controller: GunController
 @export var r: Rope3D
-@onready var audioplay = $"../Music"
-@onready var audiosteps = $"../audio_steps"
-
 var input_dir: Vector2
 
 var gun_skill_phisics_process = func (_delta: float) -> void: pass
@@ -21,7 +18,7 @@ signal player_died
 
 func _ready() -> void:
 	$DamageAndLifeController.die_signal.connect(func() -> void:
-		$"/root/GameManager".end_level.emit()
+		player_died.emit()
 	)
 	
 	for gun in gun_controller.guns:
@@ -164,11 +161,5 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.pressed:
 			if event.keycode >= 49 and event.keycode < 49 + gun_controller.guns.size():
 				gun_controller.change_gun(event.keycode - 49)
-	if velocity != Vector3.ZERO:
-		audiosteps.play()
-	else:
-		velocity == Vector3.ZERO
-		audiosteps.stop()
 
-func _on_music_finished() -> void:
-	audioplay.play()
+		

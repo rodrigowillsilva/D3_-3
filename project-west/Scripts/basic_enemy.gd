@@ -8,7 +8,7 @@ var activated := true
 @export var attack_range : float
 @export var health : float
 @export var SPEED : float
-@export var player: Node3D
+@export var player: CharacterBody3D
 
 var mov: Vector3
 var nav_timer: Timer
@@ -76,12 +76,14 @@ func _physics_process(delta):
 
 func attack_player():
 	player.take_damage(Enums.DamageType.ENEMY, 1)
+	@warning_ignore("standalone_expression")
 	state == "wait"
 
 func die():
 	died.emit(self)	
 	
 	
+@warning_ignore("unused_parameter")
 func move(movement):
 	pass
 	

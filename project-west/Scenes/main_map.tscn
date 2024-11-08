@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://deb7cjnvbq07y"]
+[gd_scene load_steps=122 format=3 uid="uid://bj6dty3xysfef"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ie75e"]
 [ext_resource type="Texture2D" uid="uid://22hoon5mxtuu" path="res://Graphics/rogland_overcast_2k.hdr" id="2_5ehki"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://cr1gdweern70a" path="res://Graphics/guns/revolver/quadro_revolver0023.png" id="31_m1hdt"]
 [ext_resource type="Texture2D" uid="uid://bc1fi5cllu536" path="res://Graphics/guns/revolver/revolver_default.png" id="32_lbjlh"]
 [ext_resource type="Script" path="res://Scripts/shotgun.gd" id="33_hbi5n"]
+[ext_resource type="PackedScene" uid="uid://cxcrxm8x8terr" path="res://addons/addons/rope3d/Rope3D.tscn" id="34_6w4dv"]
 [ext_resource type="Texture2D" uid="uid://cvsjems13ov2d" path="res://Graphics/guns/shotgun/quadro_shotgun0000.png" id="34_58e2a"]
 [ext_resource type="Texture2D" uid="uid://bx8mugbtm7g45" path="res://Graphics/guns/shotgun/quadro_shotgun0001.png" id="35_ux08d"]
 [ext_resource type="Texture2D" uid="uid://cmaajcjwnv6id" path="res://Graphics/guns/shotgun/quadro_shotgun0002.png" id="36_ivakp"]
@@ -71,7 +72,7 @@
 [ext_resource type="PackedScene" uid="uid://b57mwmuq626v6" path="res://Graphics/Models/ModelsGLB/SaleiroEBalde/SaleiroEBalde.glb" id="67_rld78"]
 [ext_resource type="PackedScene" uid="uid://chj0j23hix22m" path="res://Graphics/Models/ModelsGLB/Carroca/Carroca.glb" id="68_u5n8d"]
 [ext_resource type="Script" path="res://Scripts/spawn_controller.gd" id="69_kwsl5"]
-[ext_resource type="PackedScene" path="res://Scenes/spawnpoint.tscn" id="70_odqno"]
+[ext_resource type="PackedScene" uid="uid://bjfvm7wkvp13" path="res://Scenes/spawnpoint.tscn" id="70_odqno"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ch22b"]
 panorama = ExtResource("2_5ehki")
@@ -247,6 +248,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Shotgun:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.0349066)]
+}
 
 [sub_resource type="Animation" id="Animation_76sxm"]
 resource_name = "Revolver_hide"
@@ -354,10 +367,14 @@ tracks/0/keys = {
 "values": [Vector3(0, -0.7, 0), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_wcypc"]
+resource_name = "Shotgun_reload"
+step = 0.01
+
 [sub_resource type="Animation" id="Animation_swx2c"]
-resource_name = "Shoot"
+resource_name = "Revolver_shoot"
 length = 0.1
-step = 0.1
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -370,6 +387,59 @@ tracks/0/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Revolver:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.03),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.015, -0.34, 0), Vector3(-0.015, -0.175, 0), Vector3(-0.015, -0.275, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qjuks"]
+resource_name = "Shotgun_shoot"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shotgun:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.05),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.06, 0), Vector3(0, -0.06, 0), Vector3(0, -0.22, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shotgun:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.02, 0.04),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.0349066), Vector3(0, 0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_up8rt"]
 _data = {
@@ -378,9 +448,11 @@ _data = {
 "RESET": SubResource("Animation_xj4kh"),
 "Revolver_hide": SubResource("Animation_76sxm"),
 "Revolver_reload": SubResource("Animation_oymsc"),
+"Revolver_shoot": SubResource("Animation_swx2c"),
 "Revolver_show": SubResource("Animation_4gbjm"),
-"Shoot": SubResource("Animation_swx2c"),
 "Shotgun_hide": SubResource("Animation_x8xfk"),
+"Shotgun_reload": SubResource("Animation_wcypc"),
+"Shotgun_shoot": SubResource("Animation_qjuks"),
 "Shotgun_show": SubResource("Animation_mw55s")
 }
 
@@ -696,7 +768,7 @@ agent_radius = 1.0
 
 [node name="main_map" type="Node3D"]
 
-[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("gun_controller")]
+[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("gun_controller", "r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.10157, 1.80987, -4.31875)
 wall_min_slide_angle = 0.349066
 floor_stop_on_slope = false
@@ -712,6 +784,7 @@ jumpHeight = 2.0
 gravity = 20.0
 sens = 0.3
 gun_controller = NodePath("Head/GunController")
+r = NodePath("Head/GunController/Shotgun/Rope/Rope3D")
 
 [node name="Head" type="Node3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
@@ -735,6 +808,7 @@ offset_bottom = 58.0
 
 [node name="Revolver" type="TextureRect" parent="Player/Head/GunController/guns_hud"]
 visible = false
+modulate = Color(0.314316, 0.314316, 0.314316, 1)
 offset_left = 757.0
 offset_top = 752.0
 offset_right = 1197.0
@@ -745,6 +819,7 @@ texture = ExtResource("4_qam8a")
 
 [node name="Shotgun" type="TextureRect" parent="Player/Head/GunController/guns_hud"]
 visible = false
+modulate = Color(0.513233, 0.513233, 0.513233, 1)
 offset_left = 757.0
 offset_top = 752.0
 offset_right = 1207.0
@@ -755,6 +830,7 @@ texture = ExtResource("5_yq07d")
 
 [node name="Cross" type="TextureRect" parent="Player/Head/GunController/guns_hud"]
 visible = false
+modulate = Color(0.489622, 0.489622, 0.489622, 1)
 offset_left = 809.0
 offset_top = 813.0
 offset_right = 873.0
@@ -859,6 +935,7 @@ scale_amount_curve = SubResource("Curve_x1f4n")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Player/Head/GunController/Revolver"]
 transform = Transform3D(0.116547, -0.0184593, 0, 0.0184593, 0.116547, 0, 0, 0, 0.118, 0.27, 0, 0)
+modulate = Color(0.707967, 0.707967, 0.707967, 1)
 sprite_frames = SubResource("SpriteFrames_g8lv8")
 animation = &"Reload"
 
@@ -874,7 +951,7 @@ process_material = SubResource("ParticleProcessMaterial_lpbxg")
 draw_pass_1 = SubResource("RibbonTrailMesh_t2vy5")
 
 [node name="Shotgun" type="Node3D" parent="Player/Head/GunController" node_paths=PackedStringArray("hit_placeholder", "timers", "muzzle_flash")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
+transform = Transform3D(0.999391, -0.0348995, 0, 0.0348995, 0.999391, 0, 0, 0, 1, 0, -0.7, 0)
 script = ExtResource("33_hbi5n")
 hit_placeholder = [null, null, null, null, null]
 max_ammo = 5
@@ -886,6 +963,8 @@ muzzle_flash = NodePath("Muzzle")
 
 [node name="Rope" type="Node3D" parent="Player/Head/GunController/Shotgun"]
 top_level = true
+
+[node name="Rope3D" parent="Player/Head/GunController/Shotgun/Rope" instance=ExtResource("34_6w4dv")]
 
 [node name="RopeMesh" type="MeshInstance3D" parent="Player/Head/GunController/Shotgun/Rope"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -948,16 +1027,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.293661, -0.204356, 5.96046e
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Player/Head/GunController/Shotgun"]
 transform = Transform3D(0.107596, -0.0228703, 0, 0.0228703, 0.107596, 0, 0, 0, 0.11, 0.299942, -0.314682, 0)
+modulate = Color(0.58118, 0.570339, 0.568893, 1)
 sprite_frames = SubResource("SpriteFrames_50sda")
 animation = &"Reload"
 
-[node name="Cross" type="Node3D" parent="Player/Head/GunController" node_paths=PackedStringArray("timers")]
+[node name="Cross" type="Node3D" parent="Player/Head/GunController" node_paths=PackedStringArray("timers", "muzzle_flash")]
 script = ExtResource("59_uqn21")
 area_damage_scene = ExtResource("60_5qusq")
 max_ammo = 1000
 fire_rate = 2.0
 reload_time = 1.0
 timers = [NodePath("Timer"), NodePath("Timer2"), NodePath("Timer3"), NodePath("Timer4")]
+muzzle_flash = NodePath("Muzzle")
 
 [node name="GunRay" type="RayCast3D" parent="Player/Head/GunController/Cross"]
 enabled = false
@@ -1005,6 +1086,7 @@ scale_amount_curve = SubResource("Curve_x1f4n")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Player/Head/GunController/Cross"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.095, -0.653, -0.155)
+modulate = Color(0.707967, 0.707967, 0.707967, 1)
 pixel_size = 0.0019
 sprite_frames = SubResource("SpriteFrames_tlws1")
 
