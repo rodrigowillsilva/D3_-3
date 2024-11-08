@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/tutorial.gd" id="1_x3yu6"]
 [ext_resource type="Texture2D" uid="uid://celqrhxvy1b2c" path="res://Graphics/menu_project_west.png" id="1_xidx2"]
 [ext_resource type="FontFile" uid="uid://d1dlguxswy045" path="res://Graphics/CowboyOutlaw-R9qGM.otf" id="2_83aj5"]
-[ext_resource type="AudioStream" uid="uid://bjcf5om3qgw1l" path="res://Audio/sounds/music03.mp3" id="4_q3dj8"]
+[ext_resource type="AudioStream" uid="uid://bjcf5om3qgw1l" path="res://Musicas/music03.mp3" id="4_q3dj8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xjcv7"]
 font = ExtResource("2_83aj5")

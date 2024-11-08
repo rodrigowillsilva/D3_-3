@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bw4ov1svgn4oi"]
+[gd_scene load_steps=8 format=3 uid="uid://dxnaxolqym1k"]
 
 [ext_resource type="Script" path="res://Scenes/settings.gd" id="1_hkloa"]
 [ext_resource type="Texture2D" uid="uid://celqrhxvy1b2c" path="res://Graphics/menu_project_west.png" id="2_s4sqe"]
 [ext_resource type="FontFile" uid="uid://d1dlguxswy045" path="res://Graphics/CowboyOutlaw-R9qGM.otf" id="3_skxkc"]
-[ext_resource type="AudioStream" uid="uid://bjcf5om3qgw1l" path="res://Audio/sounds/music03.mp3" id="4_c8d2d"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_56y85"]
 
@@ -27,27 +26,23 @@ script = ExtResource("1_hkloa")
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.54099, 0.54099, 0.54099, 1)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -804.0
-offset_top = -448.0
-offset_right = 812.0
-offset_bottom = 461.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_s4sqe")
 expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-offset_left = 307.0
-offset_top = 59.0
-offset_right = 1276.0
-offset_bottom = 374.0
+anchor_left = 0.0776042
+anchor_top = 0.175
+anchor_right = 0.582292
+anchor_bottom = 0.565741
 theme_override_constants/separation = 20
+metadata/_edit_use_anchors_ = true
 
 [node name="Volume2" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -109,15 +104,11 @@ popup/item_2/id = 2
 
 [node name="Back" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -723.0
-offset_top = 349.0
-offset_right = -621.0
-offset_bottom = 406.0
+anchors_preset = -1
+anchor_left = 0.0776042
+anchor_top = 0.840741
+anchor_right = 0.136979
+anchor_bottom = 0.893519
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_skxkc")
@@ -128,14 +119,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_7j1rx")
 theme_override_styles/normal = SubResource("StyleBoxFlat_fsli7")
 text = "Back"
 flat = true
-
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
-
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_c8d2d")
-volume_db = -20.0
-autoplay = true
-bus = &"Music"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="value_changed" from="VBoxContainer/Volume" to="." method="_on_volume_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/music_slider" to="." method="_on_music_slider_value_changed"]

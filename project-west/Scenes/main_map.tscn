@@ -1,6 +1,7 @@
-[gd_scene load_steps=122 format=3 uid="uid://bj6dty3xysfef"]
+[gd_scene load_steps=123 format=3 uid="uid://bj6dty3xysfef"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ie75e"]
+[ext_resource type="Script" path="res://Scenes/main_map.gd" id="1_xifff"]
 [ext_resource type="Texture2D" uid="uid://22hoon5mxtuu" path="res://Graphics/rogland_overcast_2k.hdr" id="2_5ehki"]
 [ext_resource type="PackedScene" uid="uid://cuomig8dffgqi" path="res://Graphics/Models/ModelsGLB/Igreja/IgrejaCutHole.glb" id="3_o5pjx"]
 [ext_resource type="Script" path="res://Scripts/gun_controller.gd" id="3_owthw"]
@@ -305,6 +306,35 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 20, 22, 24]
 }
 
+[sub_resource type="Animation" id="Animation_swx2c"]
+resource_name = "Revolver_shoot"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Revolver:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.03),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.015, -0.34, 0), Vector3(-0.015, -0.175, 0), Vector3(-0.015, -0.275, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_4gbjm"]
 resource_name = "Revolver_show"
 length = 0.2
@@ -350,55 +380,9 @@ tracks/1/keys = {
 "values": [Vector3(0, -0.05, 0), Vector3(0, -0.7, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_mw55s"]
-resource_name = "Shotgun_show"
-length = 0.2
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Shotgun:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, -0.7, 0), Vector3(0, 0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_wcypc"]
 resource_name = "Shotgun_reload"
 step = 0.01
-
-[sub_resource type="Animation" id="Animation_swx2c"]
-resource_name = "Revolver_shoot"
-length = 0.1
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Revolver:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.02, 0.03),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(-0.015, -0.34, 0), Vector3(-0.015, -0.175, 0), Vector3(-0.015, -0.275, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_qjuks"]
 resource_name = "Shotgun_shoot"
@@ -439,6 +423,23 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0.0349066), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mw55s"]
+resource_name = "Shotgun_show"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shotgun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.7, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_up8rt"]
@@ -767,6 +768,7 @@ agent_height = 3.0
 agent_radius = 1.0
 
 [node name="main_map" type="Node3D"]
+script = ExtResource("1_xifff")
 
 [node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("gun_controller", "r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.10157, 1.80987, -4.31875)

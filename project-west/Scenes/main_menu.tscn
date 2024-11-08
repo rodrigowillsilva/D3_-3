@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bit8lyx3oc1rb"]
+[gd_scene load_steps=12 format=3 uid="uid://bit8lyx3oc1rb"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_6wg7o"]
 [ext_resource type="Texture2D" uid="uid://celqrhxvy1b2c" path="res://Graphics/menu_project_west.png" id="2_y4brl"]
 [ext_resource type="FontFile" uid="uid://d1dlguxswy045" path="res://Graphics/CowboyOutlaw-R9qGM.otf" id="3_heqn5"]
-[ext_resource type="AudioStream" uid="uid://bjcf5om3qgw1l" path="res://Audio/sounds/music03.mp3" id="4_00u0f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7t85p"]
 font = ExtResource("3_heqn5")
@@ -39,10 +38,12 @@ grow_vertical = 2
 script = ExtResource("1_6wg7o")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 2670.0
-offset_bottom = 1502.0
-scale = Vector2(0.6, 0.6)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_y4brl")
 
 [node name="Label" type="Label" parent="."]
@@ -56,18 +57,14 @@ label_settings = SubResource("LabelSettings_7t85p")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -579.0
-offset_top = -248.0
-offset_right = -380.0
-offset_bottom = 80.0
-grow_horizontal = 2
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.223148
+anchor_right = 0.138646
+anchor_bottom = 0.651852
 grow_vertical = 2
 theme_override_constants/separation = 15
+metadata/_edit_use_anchors_ = true
 
 [node name="play" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -112,11 +109,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ale6w")
 theme_override_styles/normal = SubResource("StyleBoxFlat_51s6x")
 text = "Quit"
 flat = true
-
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_00u0f")
-volume_db = -10.0
-autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/tutorial" to="." method="_on_tutorial_pressed"]

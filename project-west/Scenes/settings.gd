@@ -1,8 +1,9 @@
 extends Control
 
 @onready var SFX_BUS_ID = AudioServer.get_bus_index("SFX")
-@onready var MUSIC_BUS_ID = AudioServer.get_bus_index("Music")
+@onready var MUSIC_BUS_ID = AudioServer.get_bus_index("Musicas")
 @onready var MASTER_BUS_ID = AudioServer.get_bus_index("Master")
+@onready var AMBIENTE = AudioServer.get_bus_index("Ambiente")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://baybl52hgdc2y"]
+
+[ext_resource type="Script" path="res://Singletons/Sons/sound_manager.gd" id="1_obn4k"]
+[ext_resource type="AudioStream" uid="uid://cedhtbhfnhva8" path="res://Musicas/music01.mp3" id="2_ubg0n"]
+[ext_resource type="AudioStream" uid="uid://bjcf5om3qgw1l" path="res://Musicas/music03.mp3" id="3_as5fr"]
+
+[node name="Sons" type="Node"]
+script = ExtResource("1_obn4k")
+
+[node name="Musicas" type="Node" parent="."]
+
+[node name="MM1" type="AudioStreamPlayer" parent="Musicas"]
+stream = ExtResource("2_ubg0n")
+bus = &"Musicas"
+
+[node name="MM2" type="AudioStreamPlayer" parent="Musicas"]
+stream = ExtResource("3_as5fr")
+bus = &"Musicas"
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Ambiente" type="Node" parent="."]
