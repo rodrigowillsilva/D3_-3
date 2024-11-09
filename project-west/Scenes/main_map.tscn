@@ -1226,7 +1226,7 @@ scale_amount_curve = SubResource("Curve_x1f4n")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Player/Head/GunController/Revolver"]
 transform = Transform3D(0.116547, -0.0184593, 0, 0.0184593, 0.116547, 0, 0, 0, 0.118, 0.27, 0, 0)
-modulate = Color(0.763701, 0.691466, 0.66009, 1)
+modulate = Color(0.610142, 0.417793, 0.393618, 1)
 sprite_frames = SubResource("SpriteFrames_g8lv8")
 animation = &"Reload"
 
@@ -1537,6 +1537,12 @@ shape = SubResource("BoxShape3D_x8v4c")
 [node name="SaleiroEBalde" parent="structures" instance=ExtResource("67_rld78")]
 transform = Transform3D(-1.60744e-08, 0, 0.36774, 0, 0.36774, 0, -0.36774, 0, -1.60744e-08, 6, 0.39269, 62)
 
+[node name="SaleiroEBalde2" parent="structures" instance=ExtResource("67_rld78")]
+transform = Transform3D(-0.367615, 0, 0.00958779, 0, 0.36774, 0, -0.00958779, 0, -0.367615, -28.3697, 0.39269, 33.0443)
+
+[node name="SaleiroEBalde3" parent="structures" instance=ExtResource("67_rld78")]
+transform = Transform3D(-0.367615, 0, 0.00958779, 0, 0.36774, 0, -0.00958779, 0, -0.367615, 45.214, 0.39269, 17.6257)
+
 [node name="Carroca" parent="structures" instance=ExtResource("68_u5n8d")]
 transform = Transform3D(0.0503528, 0, 0.698187, 0, 0.7, 0, -0.698187, 0, 0.0503528, -16, -0.3, 16)
 
@@ -1636,7 +1642,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6265, 1, 49.139)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -258.826, 0.999992, -259.158)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." groups=["navigation_mesh_source_group"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.38419e-07, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.265, 0)
 navigation_mesh = SubResource("NavigationMesh_7dhy0")
 
 [node name="Poste" parent="." instance=ExtResource("78_mv1cg")]
@@ -1680,7 +1686,6 @@ collision_mask = 0
 disabled = true
 
 [node name="Lights" type="Node3D" parent="."]
-visible = false
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(0.999986, -0.00527087, 0, 0.00527087, 0.999986, 0, 0, 0, 1, -22.1315, 4.52537, 2.60853)
