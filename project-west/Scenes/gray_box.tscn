@@ -415,6 +415,7 @@ reload_time = 1.0
 skill_cooldown = 3.0
 
 [node name="Cross" parent="Player/Head/GunController" instance=ExtResource("9_kaaw1")]
+life_regen_per_second = 60.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("CapsuleShape3D_hjtqv")

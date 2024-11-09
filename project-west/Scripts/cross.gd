@@ -3,10 +3,10 @@ extends Gun
 class_name Cross
 
 @export var hit_placeholder: Node3D
-@export var life_regen_per_second: float = 1
+@export var life_regen_per_second: float = 60
 @export var area_damage_scene: PackedScene
 
-var life_regen: float = 0
+var life_regen: float = 1
 var skill_active: bool = false
 
 func _process(_delta: float) -> void:

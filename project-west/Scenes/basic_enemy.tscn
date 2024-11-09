@@ -68,6 +68,9 @@ script = ExtResource("3_trf2m")
 transform = Transform3D(0.185, 0, 0, 0, 0.185, 0, 0, 0, 0.185, 0.278229, -0.167467, 0)
 shaded = true
 sprite_frames = SubResource("SpriteFrames_411ag")
+autoplay = "default"
+frame = 4
+frame_progress = 0.33306
 
 [node name="GPUParticles3D" parent="." instance=ExtResource("9_jv0j4")]
 

@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctjp0f3tjxfi3"]
+
+[ext_resource type="PackedScene" uid="uid://chw21s0rqp6ag" path="res://Scenes/basic_enemy.tscn" id="1_pbxpv"]
+[ext_resource type="Texture2D" uid="uid://2i47y5q434mj" path="res://Graphics/demons/shooter_zombie/quadro_zombie_shooter0000.png" id="2_p8dql"]
+[ext_resource type="Texture2D" uid="uid://dvqqa3gp3cuc0" path="res://Graphics/demons/shooter_zombie/quadro_zombie_shooter0001.png" id="3_ww3km"]
+[ext_resource type="Texture2D" uid="uid://ctt3wnj03y0ad" path="res://Graphics/demons/shooter_zombie/quadro_zombie_shooter0002.png" id="4_jt6am"]
+[ext_resource type="Texture2D" uid="uid://djp03ee4uyi5l" path="res://Graphics/demons/shooter_zombie/quadro_zombie_shooter0003.png" id="5_ef0u6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2cmqe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_p8dql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ww3km")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jt6am")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ef0u6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BasicEnemy" instance=ExtResource("1_pbxpv")]
+attack_range = 4.0
+health = 6.0
+SPEED = 4.0
+
+[node name="AnimatedSprite3D" parent="." index="4"]
+visible = false
+
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="." index="5"]
+transform = Transform3D(0.185, 0, 0, 0, 0.185, 0, 0, 0, 0.185, 0.078229, -0.167467, 0)
+shaded = true
+sprite_frames = SubResource("SpriteFrames_2cmqe")
+autoplay = "default"
+frame_progress = 0.242558

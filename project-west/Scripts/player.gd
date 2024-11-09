@@ -21,6 +21,7 @@ func _ready() -> void:
 		player_died.emit()
 	)
 	
+	
 	for gun in gun_controller.guns:
 		if gun is Revolver:
 			gun.skill_signal.connect(func() -> void:
@@ -56,6 +57,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	
 	if Input.is_key_pressed(KEY_T):
 		r.make()
 	
@@ -117,6 +119,7 @@ func take_damage(damage_type: Enums.DamageType, damage: int):
 	if damage_type != Enums.DamageType.ENEMY: return
 	
 	$DamageAndLifeController.take_damage(damage_type, damage)
+	health -= 1
 
 #Callbacks 
 

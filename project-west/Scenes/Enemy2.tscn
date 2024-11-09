@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=3 uid="uid://b8sjdbfgaq2an"]
+
+[ext_resource type="PackedScene" uid="uid://chw21s0rqp6ag" path="res://Scenes/basic_enemy.tscn" id="1_uv8o1"]
+[ext_resource type="Texture2D" uid="uid://bf70pmpd0scj" path="res://Graphics/demons/brute/quadro_brute0000.png" id="2_b7gjw"]
+[ext_resource type="Texture2D" uid="uid://cdfnj436l5e85" path="res://Graphics/demons/brute/quadro_brute0001.png" id="3_5dc15"]
+[ext_resource type="Texture2D" uid="uid://c1ue11rulrvft" path="res://Graphics/demons/brute/quadro_brute0002.png" id="4_brexq"]
+[ext_resource type="Texture2D" uid="uid://ce8m4jhrwcfw0" path="res://Graphics/demons/brute/quadro_brute0003.png" id="5_syg70"]
+[ext_resource type="Texture2D" uid="uid://be42lt5a65fj4" path="res://Graphics/demons/brute/quadro_brute0004.png" id="6_tpk8g"]
+[ext_resource type="Texture2D" uid="uid://de3ux7mi2yhfp" path="res://Graphics/demons/brute/quadro_brute0005.png" id="7_fsx21"]
+[ext_resource type="Texture2D" uid="uid://l1gtudabjmkm" path="res://Graphics/demons/brute/quadro_brute0006.png" id="8_s6o5d"]
+[ext_resource type="Texture2D" uid="uid://c80nlsopo4fol" path="res://Graphics/demons/brute/quadro_brute0007.png" id="9_kv3dh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5o8vi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b7gjw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5dc15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_brexq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_syg70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tpk8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fsx21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_s6o5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_kv3dh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BasicEnemy" instance=ExtResource("1_uv8o1")]
+attack_range = 2.0
+health = 8.0
+SPEED = 5.0
+
+[node name="AnimatedSprite3D" parent="." index="4"]
+visible = false
+frame_progress = 0.77516
+
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="." index="5"]
+transform = Transform3D(0.185, 0, 0, 0, 0.185, 0, 0, 0, 0.185, -0.258001, 1.15315, 0.18953)
+shaded = true
+sprite_frames = SubResource("SpriteFrames_5o8vi")
+autoplay = "default"
+frame_progress = 0.805505

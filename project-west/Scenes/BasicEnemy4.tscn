@@ -1,0 +1,68 @@
+[gd_scene load_steps=12 format=3 uid="uid://dc803gb8gcyam"]
+
+[ext_resource type="PackedScene" uid="uid://chw21s0rqp6ag" path="res://Scenes/basic_enemy.tscn" id="1_rq3d8"]
+[ext_resource type="Texture2D" uid="uid://i5nvcgvle41r" path="res://Graphics/demons/flying_demon/quadro_flying_demon0000.png" id="2_30o6s"]
+[ext_resource type="Texture2D" uid="uid://d18xqhqx2l00w" path="res://Graphics/demons/flying_demon/quadro_flying_demon0001.png" id="3_xwsyp"]
+[ext_resource type="Texture2D" uid="uid://bjwi3gq74l6be" path="res://Graphics/demons/flying_demon/quadro_flying_demon0002.png" id="4_n41cj"]
+[ext_resource type="Texture2D" uid="uid://cjg4jk7juu5em" path="res://Graphics/demons/flying_demon/quadro_flying_demon0003.png" id="5_yc5vs"]
+[ext_resource type="Texture2D" uid="uid://b4i1lgtus3y51" path="res://Graphics/demons/flying_demon/quadro_flying_demon0004.png" id="6_rpdqr"]
+[ext_resource type="Texture2D" uid="uid://bk504nlrp1swl" path="res://Graphics/demons/flying_demon/quadro_flying_demon0005.png" id="7_skf5k"]
+[ext_resource type="Texture2D" uid="uid://tr76fwkli3y0" path="res://Graphics/demons/flying_demon/quadro_flying_demon0006.png" id="8_csren"]
+[ext_resource type="Texture2D" uid="uid://f8hnadvf4tt6" path="res://Graphics/demons/flying_demon/quadro_flying_demon0007.png" id="9_0s3p1"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ntuv8"]
+height = 1.61581
+radius = 0.682433
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rs6nu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_30o6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xwsyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_n41cj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_yc5vs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rpdqr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_skf5k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_csren")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_0s3p1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BasicEnemy" instance=ExtResource("1_rq3d8")]
+attack_range = 3.0
+health = 2.0
+SPEED = 10.0
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("CylinderShape3D_ntuv8")
+
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="." index="4"]
+transform = Transform3D(0.230618, 0, 0, 0, 0.230618, 0, 0, 0, 0.230618, -0.106642, 0.300674, 0)
+shaded = true
+sprite_frames = SubResource("SpriteFrames_rs6nu")
+autoplay = "default"
+frame_progress = 0.111734
+
+[node name="AnimatedSprite3D" parent="." index="5"]
+visible = false
+
+[node name="GPUParticles3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.229469, 0)
