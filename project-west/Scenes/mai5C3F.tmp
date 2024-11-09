@@ -1169,10 +1169,9 @@ mouse_filter = 2
 mouse_force_pass_scroll_events = false
 color = Color(1, 0, 1, 1)
 
-[node name="Coracao" parent="Player/Head/GunController/guns_hud" node_paths=PackedStringArray("vida", "score") instance=ExtResource("8_qhqf8")]
+[node name="Coracao" parent="Player/Head/GunController/guns_hud" node_paths=PackedStringArray("vida") instance=ExtResource("8_qhqf8")]
 mouse_filter = 2
 vida = NodePath("../../../../DamageAndLifeController")
-score = NodePath("../../../../../spawn_controller")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Head/GunController"]
 libraries = {
@@ -1631,7 +1630,7 @@ script = ExtResource("69_kwsl5")
 pool_point = NodePath("pool_point")
 player = NodePath("../Player")
 initial_spawn_speed = 4.0
-quantidade_inimigos = 30
+quantidade_inimigos = 50
 
 [node name="spawnpoint" parent="spawn_controller" instance=ExtResource("70_odqno")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3068, 1, 0.231216)
@@ -1790,15 +1789,6 @@ transform = Transform3D(0.383086, 0, 0.391125, 0, 0.235839, 0, -0.587026, 0, 0.2
 
 [node name="Cerca25" parent="Cercas" instance=ExtResource("79_i1f3m")]
 transform = Transform3D(-0.353805, 0, 0.403184, 0, 0.235839, 0, -0.605125, 0, -0.235734, -6.27911, 0.417969, -26.9621)
-
-[node name="Cerca29" parent="Cercas" instance=ExtResource("79_i1f3m")]
-transform = Transform3D(-0.353805, 0, 0.403184, 0, 0.235839, 0, -0.605125, 0, -0.235734, -24.0089, 0.417969, -14.2755)
-
-[node name="Cerca30" parent="Cercas" instance=ExtResource("79_i1f3m")]
-transform = Transform3D(-0.456023, 0, 0.354696, 0, 0.235839, 0, -0.532351, 0, -0.30384, -30.567, 0.535862, -10.4061)
-
-[node name="Cerca31" parent="Cercas" instance=ExtResource("79_i1f3m")]
-transform = Transform3D(-0.64038, 0, 0.189941, 0, 0.235839, 0, -0.285075, 0, -0.426674, -36.3974, 0.535862, -5.29489)
 
 [node name="Cerca26" parent="Cercas" instance=ExtResource("79_i1f3m")]
 transform = Transform3D(-0.694826, 0, -0.0413933, 0, 0.235839, 0, 0.0581141, 0, -0.494907, -39.5725, 0.417969, 10.834)

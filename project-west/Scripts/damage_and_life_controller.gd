@@ -4,6 +4,7 @@ class_name DamageAndLifeController
 
 var health: int = 100
 var max_health: int = 100
+var isAlive : bool = true
 
 signal die_signal
 signal take_damage_signal

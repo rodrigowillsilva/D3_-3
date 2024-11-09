@@ -12,6 +12,7 @@ var enemy_control : Array[bool]
 var timer : Timer
 var timerSpawn : Timer
 var spawning : bool = true
+var inimigos_mortos : int
 
 
 # Called when the node enters the scene tree for the first time.
@@ -50,7 +51,7 @@ func _ready() -> void:
 			spawn_enemy.died.connect(enemy_died)
 			get_parent().add_child.call_deferred(spawn_enemy)
 	timer.start(initial_spawn_speed)
-	timerSpawn.start(2)
+	timerSpawn.start(30)
 	
 	
 
@@ -77,7 +78,8 @@ func on_timer_timeout():
 	if enemy_control.all(func(x) : return x == false) : 
 		timer.start()
 		return 
-	var which_enemy = pick_enemy()
+	var which_enemy : BasicEnemy = pick_enemy()
+	
 	if(which_enemy == null):
 		timer.start(initial_spawn_speed)
 		return
@@ -95,5 +97,6 @@ func enemy_died(enemy : BasicEnemy):
 	enemy.position = pool_point.position
 	enemy.activated = false
 	enemy.set_deferred("process_mode", PROCESS_MODE_DISABLED)
+	inimigos_mortos += 1
 	timer.start()
 	pass
