@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=3 uid="uid://bj6dty3xysfef"]
+[gd_scene load_steps=130 format=3 uid="uid://bj6dty3xysfef"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ie75e"]
 [ext_resource type="Script" path="res://Scenes/main_map.gd" id="1_xifff"]
@@ -79,6 +79,7 @@
 [ext_resource type="PackedScene" uid="uid://bjfvm7wkvp13" path="res://Scenes/spawnpoint.tscn" id="70_odqno"]
 [ext_resource type="PackedScene" uid="uid://d2mjsg8c3esbf" path="res://Graphics/Models/ColGBLS/Poste/Poste.glb" id="78_mv1cg"]
 [ext_resource type="PackedScene" uid="uid://c2v5j0lp1kpw3" path="res://Graphics/Models/ColGBLS/Cerca/Cerca.glb" id="79_i1f3m"]
+[ext_resource type="PackedScene" uid="uid://de7tfaw7bl8ng" path="res://Scenes/PauseMenu/pause_menu.tscn" id="80_gp3i1"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ch22b"]
 panorama = ExtResource("2_5ehki")
@@ -1831,6 +1832,12 @@ transform = Transform3D(-0.691529, 0, 0.0465209, 0, 0.235839, 0, -0.0786554, 0, 
 
 [node name="Cerca20" parent="Cercas" instance=ExtResource("79_i1f3m")]
 transform = Transform3D(-0.624212, 0, 0.182066, 0, 0.235839, 0, -0.307828, 0, -0.369193, 54.8475, 0.401731, 25.2024)
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 50
+
+[node name="PauseMenu" parent="PauseMenu" instance=ExtResource("80_gp3i1")]
 
 [editable path="Player/Head/GunController/Shotgun/Rope/Rope3D"]
 [editable path="structures/Terrain"]

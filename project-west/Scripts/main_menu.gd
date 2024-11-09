@@ -4,6 +4,7 @@ extends Control
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	SM.category_stop(0)
 	SM.category_finder(0,"MM1",false)
 
 func _on_play_pressed() -> void:

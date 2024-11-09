@@ -9,3 +9,5 @@ func _ready() -> void:
 	Player.player_died.connect(func() -> void:
 		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 	)
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
