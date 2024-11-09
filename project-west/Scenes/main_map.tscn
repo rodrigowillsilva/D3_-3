@@ -1,4 +1,4 @@
-[gd_scene load_steps=130 format=3 uid="uid://bj6dty3xysfef"]
+[gd_scene load_steps=131 format=3 uid="uid://bj6dty3xysfef"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ie75e"]
 [ext_resource type="Script" path="res://Scenes/main_map.gd" id="1_xifff"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://g50i6fjb8i2b" path="res://Graphics/sprites/shotgun.png" id="5_yq07d"]
 [ext_resource type="Shader" path="res://Shaders/VHS_pixel.gdshader" id="6_ewe3e"]
 [ext_resource type="Script" path="res://Scripts/revolver.gd" id="7_n8i1p"]
+[ext_resource type="PackedScene" uid="uid://r2wsdcr3p8bl" path="res://Graphics/UI/coracao.tscn" id="8_qhqf8"]
 [ext_resource type="Texture2D" uid="uid://8xe1dynmnnmj" path="res://Graphics/guns/revolver/quadro_revolver0000.png" id="8_w2bry"]
 [ext_resource type="Texture2D" uid="uid://ber4niq6vut4r" path="res://Graphics/guns/revolver/quadro_revolver0001.png" id="9_vgpk7"]
 [ext_resource type="Texture2D" uid="uid://b1r41njy0rq0k" path="res://Graphics/guns/revolver/quadro_revolver0002.png" id="10_vytgy"]
@@ -1167,6 +1168,10 @@ grow_vertical = 2
 mouse_filter = 2
 mouse_force_pass_scroll_events = false
 color = Color(1, 0, 1, 1)
+
+[node name="Coracao" parent="Player/Head/GunController/guns_hud" node_paths=PackedStringArray("vida") instance=ExtResource("8_qhqf8")]
+mouse_filter = 2
+vida = NodePath("../../../../DamageAndLifeController")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Head/GunController"]
 libraries = {
