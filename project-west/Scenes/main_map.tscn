@@ -470,6 +470,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Revolver/AnimatedSprite3D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_4gbjm"]
 resource_name = "Revolver_show"
@@ -1040,6 +1052,7 @@ script = ExtResource("1_xifff")
 
 [node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("gun_controller", "r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.10157, 1.80987, -4.31875)
+collision_layer = 9
 wall_min_slide_angle = 0.349066
 floor_stop_on_slope = false
 floor_constant_speed = true
@@ -1155,7 +1168,7 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03, 0)
 script = ExtResource("7_n8i1p")
 max_ammo = 6
-fire_rate = 0.2
+fire_rate = 0.6
 reload_time = 2.0
 skill_cooldown = 10.0
 timers = [NodePath("Timer"), NodePath("Timer2"), NodePath("Timer3"), NodePath("Timer4")]
@@ -1626,6 +1639,10 @@ navigation_mesh = SubResource("NavigationMesh_7dhy0")
 
 [node name="Poste" parent="." instance=ExtResource("78_mv1cg")]
 transform = Transform3D(-0.247819, 0, 0.653761, 0, 0.549117, 0, -0.924873, 0, -0.175175, 32.926, 0, 8.504)
+
+[node name="col" parent="Poste" index="4"]
+collision_layer = 8
+collision_mask = 0
 
 [node name="CollisionShape3D" parent="Poste/col" index="0"]
 disabled = true

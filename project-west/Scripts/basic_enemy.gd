@@ -9,6 +9,7 @@ var activated := true
 @export var health : float
 @export var SPEED : float
 @export var player: CharacterBody3D
+@export var acerto: GPUParticles3D
 
 var mov: Vector3
 var nav_timer: Timer
@@ -80,7 +81,7 @@ func attack_player():
 	state == "wait"
 
 func die():
-	died.emit(self)	
+	died.emit(self)
 	
 	
 @warning_ignore("unused_parameter")
@@ -92,6 +93,7 @@ func spawn():
 
 func take_damage(damage_type: Enums.DamageType, damage: int):
 	$DamageAndLifeController.take_damage(damage_type, damage)
+	acerto.emitting = true
 	
 func _target_in_range():
 	return global_position.distance_to(player.global_position) < attack_range

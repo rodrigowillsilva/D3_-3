@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://chw21s0rqp6ag"]
+[gd_scene load_steps=12 format=3 uid="uid://chw21s0rqp6ag"]
 
 [ext_resource type="Script" path="res://Scripts/basic_enemy.gd" id="1_hscbn"]
 [ext_resource type="Texture2D" uid="uid://1oem4fun6hq8" path="res://Graphics/demons/walking_zombie/quadro_zombie0000.png" id="3_0iyd3"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cc4ihx5ae6wns" path="res://Graphics/demons/walking_zombie/quadro_zombie0003.png" id="6_u62ll"]
 [ext_resource type="Texture2D" uid="uid://8san5xuvuxmn" path="res://Graphics/demons/walking_zombie/quadro_zombie0004.png" id="7_6esuj"]
 [ext_resource type="Texture2D" uid="uid://bsii810o70mbu" path="res://Graphics/demons/walking_zombie/quadro_zombie0005.png" id="8_6i1rd"]
+[ext_resource type="PackedScene" uid="uid://babhd8d3oodax" path="res://Scenes/Particles3D/gpu_particles_3d.tscn" id="9_jv0j4"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_uhw8w"]
 height = 2.22337
@@ -39,12 +40,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="BasicEnemy" type="CharacterBody3D"]
+[node name="BasicEnemy" type="CharacterBody3D" node_paths=PackedStringArray("acerto")]
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_hscbn")
 health = 3.0
 SPEED = 7.0
+acerto = NodePath("GPUParticles3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00347066, 0.0198225, -0.0193906)
@@ -66,5 +68,7 @@ script = ExtResource("3_trf2m")
 transform = Transform3D(0.185, 0, 0, 0, 0.185, 0, 0, 0, 0.185, 0.278229, -0.167467, 0)
 shaded = true
 sprite_frames = SubResource("SpriteFrames_411ag")
+
+[node name="GPUParticles3D" parent="." instance=ExtResource("9_jv0j4")]
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
